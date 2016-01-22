@@ -8,7 +8,7 @@ constant LIB = 'MagickWand';
 
 # MagickBooleanType MagickReadImage(MagickWand *wand,const char *filename)
 sub MagickReadImage(Pointer $wand, Str $file-name)
-  returns Bool
+  returns bool
   is native(LIB, v5) is export { * }
 
 # MagickWand *NewMagickWand(void)
@@ -20,24 +20,28 @@ sub NewMagickWand()
 sub DestroyMagickWand(Pointer $wand)
   returns Pointer
   is native(LIB, v5) is export { * }
-  
 
 # MagickBooleanType MagickWriteImage(MagickWand *wand, const char *filename)
 sub MagickWriteImage(Pointer $wand, Str $file-name)
-  returns Bool
+  returns bool
   is native(LIB, v5) is export { * }
 
 # MagickBooleanType MagickAutoGammaImage(MagickWand *wand)
 sub MagickAutoGammaImage(Pointer $wand)
-  returns Bool
+  returns bool
   is native(LIB, v5) is export { * }
 
 # MagickBooleanType MagickAutoLevelImage(MagickWand *wand)
 sub MagickAutoLevelImage(Pointer $wand)
-  returns Bool
+  returns bool
   is native(LIB, v5) is export { * }
 
 # double MagickGetImageGamma(MagickWand *wand)
 sub MagickGetImageGamma(Pointer $wand)
-  returns Num
+  returns num64
+  is native(LIB, v5) is export { * }
+
+# MagickBooleanType MagickSepiaToneImage(MagickWand *wand, const double threshold)
+sub MagickSepiaToneImage(Pointer $wand, num64 $threshold)
+  returns bool
   is native(LIB, v5) is export { * }
