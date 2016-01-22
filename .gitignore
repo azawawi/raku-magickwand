@@ -14,6 +14,7 @@ Build.bat
 /META.json
 /MYMETA.*
 nytprof.out
+.precomp
 /pm_to_blib
 *.o
 *.bs
