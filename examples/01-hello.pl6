@@ -27,3 +27,4 @@ $comparison-wand.write-image("output2.png");
 # And cleanup...
 $original-wand.cleanup;
 $filtered-wand.cleanup;
+$comparison-wand.cleanup;
