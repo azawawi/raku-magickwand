@@ -12,9 +12,13 @@ sub library {
     return sprintf("lib%s.so.4", LIB);
   } elsif library-exists(LIB, v5) {
     return sprintf("lib%s.so.5", LIB);
-  } else {
-    die sprintf("Cannot find %s v4..v5", LIB);
+  } elsif $*KERNEL.name eq 'darwin' ) {
+    # TODO a more robust solution for homebrew-installed ImageMagick
+    return "libMagickWand-6.Q16.so";
   }
+
+  # Fallback
+  return sprintf("lib%s.so", LIB);
 }
 
 constant MagickTrue   is export = 1;
