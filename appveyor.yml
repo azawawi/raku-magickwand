@@ -13,7 +13,11 @@ install:
   - perl Configure.pl --gen-moar=HEAD --gen-nqp
   - nmake install
   - SET PATH=%APPVEYOR_BUILD_FOLDER%\..\rakudo\install\bin;%PATH%
+  - git clone --recursive git://github.com/tadzik/panda.git
+  - cd panda
+  - perl6 bootstrap.pl
   - cd %APPVEYOR_BUILD_FOLDER%
+  - panda installdeps .
 
 build: off
 
