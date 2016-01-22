@@ -1,0 +1,15 @@
+dist: trusty
+sudo: required
+
+language: perl6
+
+perl6:
+    - 2015.12
+    - latest
+
+install:
+    - sudo apt-get -qq update
+    - sudo apt-get install -y libmagickwand-dev
+    - rakudobrew build-panda
+
+script: panda-build && prove -e perl6 t

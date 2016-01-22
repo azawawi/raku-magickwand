@@ -1,0 +1,16 @@
+{
+  "name"          : "MagickWand",
+  "version"       : "0.0.1",
+  "perl"          : "v6",
+  "description"   : "MagickWand Bindings using NativeCall",
+  "build-depends" : [ ],
+  "depends"       : [ ],
+  "auth"          : "github:azawawi",
+  "authors"       : [ "Ahmad M. Zawawi" ],
+  "provides"      : {
+    "MagickWand"             : "lib/MagickWand.pm6",
+    "MagickWand::NativeCall" : "lib/MagickWand/NativeCall.pm6"
+  },
+  "resources"     : [ ],
+  "source-url"    : "git://github.com/azawawi/perl6-magickwand.git"
+}
