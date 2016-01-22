@@ -13,8 +13,11 @@ perl6:
 install:
   - echo $TRAVIS_OS_NAME
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get -qq update                ; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install -y libmagickwand4 ; fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install -y libmagickwand5 ; fi
   - if [ "$TRAVIS_OS_NAME" == "osx"   ]; then brew update                            ; fi
   - if [ "$TRAVIS_OS_NAME" == "osx"   ]; then brew install imagemagick               ; fi
+  - rakudobrew build panda
+  - panda installdeps .
 
 script: prove -v -e perl6 t/

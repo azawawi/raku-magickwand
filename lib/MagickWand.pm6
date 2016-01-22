@@ -56,7 +56,7 @@ method chop(Int $x, Int $y, Int $width, Int $height) returns Bool {
 method clone returns MagickWand {
   die "No wand handle defined!" unless $.handle.defined;
   my $cloned-wand = CloneMagickWand($.handle);
-  return MagickWand.new( wand => $cloned-wand );
+  return MagickWand.new( handle => $cloned-wand );
 }
 
 submethod append-wands(+@wands) returns MagickWand {
@@ -76,7 +76,7 @@ submethod append-wands(+@wands) returns MagickWand {
   # Cleanup
   DestroyMagickWand( $temp-wand );
 
-  return MagickWand.new( wand => $cloned-wand );
+  return MagickWand.new( handle => $cloned-wand );
 }
 
 method cleanup {
