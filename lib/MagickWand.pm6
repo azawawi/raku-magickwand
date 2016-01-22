@@ -38,6 +38,12 @@ method crop(Int $x, Int $y, Int $width, Int $height) returns Bool {
   return MagickCropImage($.wand, $width, $height, $x, $y) == MagickTrue;
 }
 
+method clone returns MagickWand {
+  die "No wand!" unless $.wand.defined;
+  my $cloned-wand = CloneMagickWand($.wand);
+  return MagickWand.new( wand => $cloned-wand );
+}
+
 method cleanup {
   DestroyMagickWand($.wand) if $.wand.defined;
 }

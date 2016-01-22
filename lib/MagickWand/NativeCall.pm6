@@ -20,6 +20,11 @@ sub NewMagickWand
   returns Pointer
   is native(LIB, v5) is export { * }
 
+# MagickWand *CloneMagickWand(const MagickWand *wand)
+sub CloneMagickWand(Pointer $wand)
+  returns Pointer
+  is native(LIB, v5) is export { * }
+
 # MagickWand *DestroyMagickWand(MagickWand *wand)
 sub DestroyMagickWand(Pointer $wand)
   returns Pointer
@@ -53,4 +58,21 @@ sub MagickSepiaToneImage(Pointer $wand, num64 $threshold)
 # MagickBooleanType MagickCropImage(MagickWand *wand, const size_t width,const size_t height,const ssize_t x,const ssize_t y)
 sub MagickCropImage(Pointer $wand, uint32 $width, uint32 $height, uint $x, uint $y)
   returns int32
+  is native(LIB, v5) is export { * }
+
+# MagickBooleanType MagickAddImage(MagickWand *wand, const MagickWand *add_wand)
+sub MagickAddImage(Pointer $wand, Pointer $add_wand)
+  returns int32
+  is native(LIB, v5) is export { * }
+
+# void MagickSetLastIterator(MagickWand *wand)
+sub MagickSetLastIterator(Pointer $wand)
+  is native(LIB, v5) is export { * }
+
+sub MagickAppendImages(Pointer $wand, uint32 $stack)
+  returns Pointer
+  is native(LIB, v5) is export { * }
+
+# void MagickSetFirstIterator(MagickWand *wand)
+sub MagickSetFirstIterator(Pointer $wand)
   is native(LIB, v5) is export { * }
