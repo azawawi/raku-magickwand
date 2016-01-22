@@ -1,9 +1,14 @@
 # MagickWand
-[![Build Status](https://travis-ci.org/azawawi/perl6-magickwand.svg?branch=master)](https://travis-ci.org/azawawi/perl6-magickwand)
-[![Build status](https://ci.appveyor.com/api/projects/status/github/azawawi/perl6-magickwand?svg=true)](https://ci.appveyor.com/project/azawawi/perl6-magickwand/branch/master)
 
 This provides a simple Perl 6 object-oriented NativeCall wrapper for the
 [ImageMagick's ImageWand](http://www.imagemagick.org/script/magick-wand.php) library.
+
+## Build Status
+
+| Operating System  |   Build Status  | CI Provider |
+| ----------------- | --------------- | ----------- |
+| Linux / Mac OS X  | [![Build Status](https://travis-ci.org/azawawi/perl6-magickwand.svg?branch=master)](https://travis-ci.org/azawawi/perl6-magickwand)  | Travis CI |
+| Windows 7 64-bit  | [![Build status](https://ci.appveyor.com/api/projects/status/github/azawawi/perl6-magickwand?svg=true)](https://ci.appveyor.com/project/azawawi/perl6-magickwand/branch/master)  | AppVeyor |
 
 ## Example
 
