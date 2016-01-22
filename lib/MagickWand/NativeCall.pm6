@@ -65,6 +65,11 @@ sub MagickCropImage(Pointer $wand, uint32 $width, uint32 $height, uint $x, uint 
   returns int32
   is native(LIB, v5) is export { * }
 
+# MagickBooleanType MagickChopImage(MagickWand *wand,const size_t width, const size_t height,const ssize_t x,const ssize_t y)
+sub MagickChopImage(Pointer $wand, uint32 $width, uint32 $height, uint $x, uint $y)
+  returns int32
+  is native(LIB, v5) is export { * }
+
 # MagickBooleanType MagickAddImage(MagickWand *wand, const MagickWand *add_wand)
 sub MagickAddImage(Pointer $wand, Pointer $add_wand)
   returns int32
