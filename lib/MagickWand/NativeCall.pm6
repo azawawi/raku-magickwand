@@ -12,7 +12,7 @@ sub MagickReadImage(Pointer $wand, Str $file-name)
   is native(LIB, v5) is export { * }
 
 # MagickWand *NewMagickWand(void)
-sub NewMagickWand()
+sub NewMagickWand
   returns Pointer
   is native(LIB, v5) is export { * }
 

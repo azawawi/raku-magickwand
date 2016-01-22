@@ -3,25 +3,27 @@
 use v6;
 
 use lib 'lib';
-use MagickWand::NativeCall;
+use MagickWand;
 
 # A new magic wand
-my $wand = NewMagickWand();
+my $wand = MagickWand.new;
 
 # Read an image
-MagickReadImage($wand, "examples/images/aero1.jpg");
+$wand.read-image("examples/images/aero1.jpg");
 
-say sprintf("Gamma (before) = %3.f", MagickGetImageGamma($wand));
+# Print out gamma value (before)
+say sprintf("Gamma (before) = %3.2f", $wand.get-image-gamma());
 
 # And do some magic on it
-MagickAutoGammaImage($wand);
-MagickAutoLevelImage($wand);
+$wand.auto-gamma;
+$wand.auto-level;
 #MagickSepiaToneImage($wand, 80);
 
-say sprintf("Gamma (after) = %3.f", MagickGetImageGamma($wand));
+# Print out gamma value (after)
+say sprintf("Gamma (before) = %3.2f", $wand.get-image-gamma());
 
 # And then write a new image
-MagickWriteImage($wand, "output.png");
+$wand.write-image("output.png");
 
-# Cleanup
-DestroyMagickWand($wand) if $wand.defined;
+# And cleanup...
+$wand.cleanup;
