@@ -29,7 +29,7 @@ $wand.cleanup;
 
 For more examples, please see the [examples](examples) folder.
 
-## MagickWand Library Installation
+## Prerequisites
 
 Please follow the instructions below based on your platform:
 
@@ -48,7 +48,7 @@ $ brew update
 $ brew install imagemagick
 ```
 
-## Windows
+### Windows
 
 -- TODO finish this
 A precompiled static windows DLL is already provided so it should work
