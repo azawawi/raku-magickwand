@@ -4,7 +4,6 @@ use v6;
 
 use lib 'lib';
 use MagickWand;
-use MagickWand::NativeCall;
 
 # A new magic wand
 my $original-wand = MagickWand.new;
