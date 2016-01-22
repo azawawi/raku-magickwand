@@ -14,7 +14,7 @@ sub library {
     return sprintf("lib%s.so.5", LIB);
   } elsif $*KERNEL.name eq 'darwin' {
     # TODO a more robust solution for homebrew-installed ImageMagick
-    return "libMagickWand-6.Q16.so";
+    return "libMagickWand-6.Q16.2.dylib";
   }
 
   # Fallback
