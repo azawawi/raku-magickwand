@@ -16,14 +16,16 @@ my $filtered-wand = $original-wand.clone;
 $filtered-wand.auto-gamma;
 $filtered-wand.auto-level;
 
-my $comparison-wand = MagickWand.append-wands( $original-wand, $filtered-wand );
+my $negated-wand = $original-wand.clone;
+$negated-wand.charcoal(20.0,1.0);
+
+my $comparison-wand = MagickWand.append-wands( $original-wand, $filtered-wand, $negated-wand );
 
 # And then write a new image
-$original-wand.write-image("output0.png");
-$filtered-wand.write-image("output1.png");
-$comparison-wand.write-image("output2.png");
+$comparison-wand.write-image("output.png");
 
 # And cleanup...
 $original-wand.cleanup;
 $filtered-wand.cleanup;
+$negated-wand.cleanup;
 $comparison-wand.cleanup;

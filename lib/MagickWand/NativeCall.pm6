@@ -45,6 +45,11 @@ sub MagickAutoLevelImage(Pointer $wand)
   returns int32
   is native(LIB, v5) is export { * }
 
+# MagickBooleanType MagickNegateImage(MagickWand *wand)
+sub MagickNegateImage(Pointer $wand)
+  returns int32
+  is native(LIB, v5) is export { * }
+
 # double MagickGetImageGamma(MagickWand *wand)
 sub MagickGetImageGamma(Pointer $wand)
   returns num64
@@ -75,4 +80,9 @@ sub MagickAppendImages(Pointer $wand, uint32 $stack)
 
 # void MagickSetFirstIterator(MagickWand *wand)
 sub MagickSetFirstIterator(Pointer $wand)
+  is native(LIB, v5) is export { * }
+
+# MagickBooleanType MagickCharcoalImage(MagickWand *wand, const double radius,const double sigma)
+sub MagickCharcoalImage(Pointer $wand, num64 $radius, num64 $sigma)
+  returns uint32
   is native(LIB, v5) is export { * }

@@ -28,6 +28,16 @@ method auto-level returns Bool {
   return MagickAutoLevelImage( $.wand ) == MagickTrue;
 }
 
+method negate returns Bool {
+  die "No wand!" unless $.wand.defined;
+  return MagickNegateImage( $.wand ) == MagickTrue;
+}
+
+method charcoal(Rat $radius, Rat $sigma) returns Bool {
+  die "No wand!" unless $.wand.defined;
+  return MagickCharcoalImage( $.wand, $radius.Num, $sigma.Num ) == MagickTrue;
+}
+
 method write-image(Str $file-name) returns Bool {
   die "No wand!" unless $.wand.defined;
   return MagickWriteImage( $.wand, $file-name ) == MagickTrue;
