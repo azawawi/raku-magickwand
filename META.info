@@ -4,7 +4,7 @@
   "perl"          : "v6",
   "description"   : "ImageMagick's MagickWand API Bindings for Perl6",
   "build-depends" : [ ],
-  "depends"       : [ 'LibraryCheck' ],
+  "depends"       : [ "LibraryCheck" ],
   "auth"          : "github:azawawi",
   "authors"       : [ "Ahmad M. Zawawi" ],
   "provides"      : {

@@ -50,14 +50,14 @@ on 32/64-bit windows operating systems.
 
 To install it using Panda (a module management tool bundled with Rakudo Star):
 
-    panda update
-    panda install MagickWand
+    $ panda update
+    $ panda install MagickWand
 
 ## Testing
 
 To run tests:
 
-    prove -ve "perl6 -Ilib"
+    $ prove -ve "perl6 -Ilib"
 
 ## Author
 
