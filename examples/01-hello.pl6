@@ -17,19 +17,12 @@ my $filtered-wand = $original-wand.clone;
 $filtered-wand.auto-gamma;
 $filtered-wand.auto-level;
 
-my $comparison-wand = MagickWand.new( wand => NewMagickWand );
-MagickSetLastIterator($comparison-wand.wand);
-MagickAddImage($comparison-wand.wand, $original-wand.wand);
-MagickSetLastIterator($comparison-wand.wand);
-MagickAddImage($comparison-wand.wand, $filtered-wand.wand);
+my $comparison-wand = MagickWand.append-wands( $original-wand, $filtered-wand );
 
 # And then write a new image
 $original-wand.write-image("output0.png");
 $filtered-wand.write-image("output1.png");
-
-MagickSetFirstIterator($comparison-wand.wand);
-my $clone = MagickAppendImages($comparison-wand.wand, MagickFalse);
-MagickWriteImage($clone, "output2.png");
+$comparison-wand.write-image("output2.png");
 
 # And cleanup...
 $original-wand.cleanup;

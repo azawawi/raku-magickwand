@@ -44,6 +44,26 @@ method clone returns MagickWand {
   return MagickWand.new( wand => $cloned-wand );
 }
 
+submethod append-wands(+@wands) returns MagickWand {
+  my $temp-wand = NewMagickWand;
+  MagickSetLastIterator($temp-wand);
+
+  # Add wands
+  for @wands -> $wand {
+    MagickAddImage($temp-wand, $wand.wand);
+    MagickSetLastIterator($temp-wand);
+  }
+
+  # Append them side-by-side horizontallly
+  MagickSetFirstIterator($temp-wand);
+  my $cloned-wand = MagickAppendImages($temp-wand, MagickFalse);
+
+  # Cleanup
+  DestroyMagickWand( $temp-wand );
+
+  return MagickWand.new( wand => $cloned-wand );
+}
+
 method cleanup {
   DestroyMagickWand($.wand) if $.wand.defined;
 }
