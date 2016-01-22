@@ -71,12 +71,12 @@ sub MagickSepiaToneImage(Pointer $wand, num64 $threshold)
   is native(&library) is export { * }
 
 # MagickBooleanType MagickCropImage(MagickWand *wand, const size_t width,const size_t height,const ssize_t x,const ssize_t y)
-sub MagickCropImage(Pointer $wand, uint32 $width, uint32 $height, uint $x, uint $y)
+sub MagickCropImage(Pointer $wand, uint32 $width, uint32 $height, uint32 $x, uint32 $y)
   returns int32
   is native(&library) is export { * }
 
 # MagickBooleanType MagickChopImage(MagickWand *wand,const size_t width, const size_t height,const ssize_t x,const ssize_t y)
-sub MagickChopImage(Pointer $wand, uint32 $width, uint32 $height, uint $x, uint $y)
+sub MagickChopImage(Pointer $wand, uint32 $width, uint32 $height, uint32 $x, uint32 $y)
   returns int32
   is native(&library) is export { * }
 
@@ -100,4 +100,17 @@ sub MagickSetFirstIterator(Pointer $wand)
 # MagickBooleanType MagickCharcoalImage(MagickWand *wand, const double radius,const double sigma)
 sub MagickCharcoalImage(Pointer $wand, num64 $radius, num64 $sigma)
   returns uint32
+  is native(&library) is export { * }
+
+#  DrawingWand *NewDrawingWand(void)
+sub NewDrawingWand
+  returns Pointer
+  is native(&library) is export { * }
+
+# void DrawLine(DrawingWand *wand,const double sx,const double sy, const double ex,const double ey)
+sub DrawLine(Pointer $wand, num64 $sx, num64 $sy, num64 $ex, num64 $ey)
+  is native(&library) is export { * }
+
+# MagickBooleanType MagickDrawImage(MagickWand *wand, const DrawingWand *drawing_wand)
+sub MagickDrawImage(Pointer $wand, Pointer $drawing_wand)
   is native(&library) is export { * }

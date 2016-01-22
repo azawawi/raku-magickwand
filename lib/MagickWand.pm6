@@ -6,7 +6,8 @@ use NativeCall;
 use MagickWand::NativeCall;
 
 # Wand native handle
-has Pointer $.handle is rw;
+has Pointer $.handle   is rw;
+has Pointer $.d_handle is rw;
 
 method read-image(Str $file-name) returns Bool {
   $.handle = NewMagickWand unless $.handle.defined;
@@ -57,6 +58,13 @@ method clone returns MagickWand {
   die "No wand handle defined!" unless $.handle.defined;
   my $cloned-wand = CloneMagickWand($.handle);
   return MagickWand.new( handle => $cloned-wand );
+}
+
+method draw-line(Rat $x1, Rat $y1, Rat $x2, Rat $y2) {
+  die "No wand handle defined!" unless $.handle.defined;
+  $.d_handle = NewDrawingWand unless $.d_handle.defined;
+  DrawLine( $.d_handle, $x1.Num, $y1.Num, $x2.Num, $y2.Num);
+  MagickDrawImage( $.handle, $.d_handle )
 }
 
 submethod append-wands(+@wands) returns MagickWand {

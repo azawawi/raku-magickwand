@@ -16,6 +16,8 @@ my $filtered = $original.clone;
 $filtered.auto-gamma;
 $filtered.auto-level;
 
+$filtered.draw-line(0.0, 0.0, 100.0, 100.0);
+
 my $charcoaled = $original.clone;
 $charcoaled.charcoal(20.0,1.0);
 
