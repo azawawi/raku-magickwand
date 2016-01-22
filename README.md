@@ -9,13 +9,22 @@ This provides a simple Perl 6 object-oriented NativeCall wrapper for the
 
 ```Perl6
 use v6;
-use MagickWand::NativeCall;
+use MagickWand;
 
-my $wand = NewMagickWand();
-MagickReadImage($wand, "input.jpg");
-MagickAutoGammaImage($wand);
-MagickWriteImage($wand, "output.png");
-DestroyMagickWand($wand) if $wand.defined;
+# A new magic wand
+my $wand = MagickWand.new;
+
+# Read an image
+$wand.read-image("examples/images/aero1.jpg");
+
+# Lighten dark areas
+$wand.auto-gamma;
+
+# And then write a new image
+$wand.write-image("output.png");
+
+# And cleanup...
+$wand.cleanup;
 ```
 
 For more examples, please see the [examples](examples) folder.
