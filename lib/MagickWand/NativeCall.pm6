@@ -12,7 +12,7 @@ sub library {
     return sprintf("lib%s.so.4", LIB);
   } elsif library-exists(LIB, v5) {
     return sprintf("lib%s.so.5", LIB);
-  } elsif $*KERNEL.name eq 'darwin' ) {
+  } elsif $*KERNEL.name eq 'darwin' {
     # TODO a more robust solution for homebrew-installed ImageMagick
     return "libMagickWand-6.Q16.so";
   }
