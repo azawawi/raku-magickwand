@@ -37,8 +37,7 @@ Please follow the instructions below based on your platform:
 
 - To install MagickWand development libraries, please run:
 ```
-    $ sudo apt-get install libmagickwand4   # OR
-    $ sudo apt-get install libmagickwand5
+    $ sudo apt-get install libmagickwand-dev
 ```
 
 ## Windows
