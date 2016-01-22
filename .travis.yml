@@ -16,6 +16,8 @@ install:
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install -y libmagickwand-dev ; fi
   - if [ "$TRAVIS_OS_NAME" == "osx"   ]; then brew update                               ; fi
   - if [ "$TRAVIS_OS_NAME" == "osx"   ]; then brew install imagemagick                  ; fi
+  - if [ "$TRAVIS_OS_NAME" == "osx"   ]; then ls /usr/local/lib/                        ; fi
+  - if [ "$TRAVIS_OS_NAME" == "osx"   ]; then ls /usr/lib/                              ; fi
   - rakudobrew build panda
   - panda installdeps .
 
