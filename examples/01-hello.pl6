@@ -6,26 +6,26 @@ use lib 'lib';
 use MagickWand;
 
 # A new magic wand
-my $original-wand = MagickWand.new;
+my $original = MagickWand.new;
 
 # Read an image
-$original-wand.read-image("examples/images/aero1.jpg");
+$original.read-image("examples/images/aero1.jpg");
 
 # And do some magic on it
-my $filtered-wand = $original-wand.clone;
-$filtered-wand.auto-gamma;
-$filtered-wand.auto-level;
+my $filtered = $original.clone;
+$filtered.auto-gamma;
+$filtered.auto-level;
 
-my $negated-wand = $original-wand.clone;
-$negated-wand.charcoal(20.0,1.0);
+my $charcoaled = $original.clone;
+$charcoaled.charcoal(20.0,1.0);
 
-my $comparison-wand = MagickWand.append-wands( $original-wand, $filtered-wand, $negated-wand );
+my $comparison = MagickWand.append-wands( $original, $filtered, $charcoaled );
 
 # And then write a new image
-$comparison-wand.write-image("output.png");
+$comparison.write-image("output.png");
 
 # And cleanup...
-$original-wand.cleanup;
-$filtered-wand.cleanup;
-$negated-wand.cleanup;
-$comparison-wand.cleanup;
+$original.cleanup;
+$filtered.cleanup;
+$charcoaled.cleanup;
+$comparison.cleanup;
