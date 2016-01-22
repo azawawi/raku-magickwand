@@ -1,7 +1,10 @@
-dist: trusty
 sudo: required
 
 language: perl6
+
+os:
+  - linux
+  - osx
 
 perl6:
     - 2015.12
@@ -10,6 +13,5 @@ perl6:
 install:
     - sudo apt-get -qq update
     - sudo apt-get install -y libmagickwand-dev
-    - rakudobrew build-panda
 
-script: panda-build && prove -e perl6 t
+script: prove -v -e perl6 t/
