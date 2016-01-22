@@ -11,9 +11,9 @@ perl6:
   - latest
 
 install:
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get -qq update               ; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install -y libmagickwand ; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]];   then brew update                           ; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]];   then brew install imagemagick              ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get -qq update                ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install -y libmagickwand5 ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]];   then brew update                            ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]];   then brew install imagemagick               ; fi
 
 script: prove -v -e perl6 t/
