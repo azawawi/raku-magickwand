@@ -35,9 +35,17 @@ Please follow the instructions below based on your platform:
 
 ### Linux (Debian)
 
-- To install MagickWand development libraries, please run:
+- To install ImageMagick libraries, please run:
 ```
     $ sudo apt-get install libmagickwand-dev
+```
+
+### MacOSX (Darwin)
+
+- To install ImageMagick libraries, please run:
+```
+$ brew update
+$ brew install imagemagick
 ```
 
 ## Windows
