@@ -31,3 +31,8 @@ sub MagickWriteImage(Pointer $wand, Str $file-name)
 sub MagickAutoGammaImage(Pointer $wand)
   returns Bool
   is native(LIB, v5) is export { * }
+
+# MagickBooleanType MagickAutoLevelImage(MagickWand *wand)
+sub MagickAutoLevelImage(Pointer $wand)
+  returns Bool
+  is native(LIB, v5) is export { * }

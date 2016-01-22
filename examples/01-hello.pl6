@@ -9,5 +9,6 @@ use MagickWand::NativeCall;
 my $wand = NewMagickWand();
 MagickReadImage($wand, "examples/images/aero1.jpg");
 MagickAutoGammaImage($wand);
+MagickAutoLevelImage($wand);
 MagickWriteImage($wand, "output.png");
 DestroyMagickWand($wand) if $wand.defined;
