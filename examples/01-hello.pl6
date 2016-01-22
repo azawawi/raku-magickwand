@@ -15,6 +15,9 @@ $wand.read-image("examples/images/aero1.jpg");
 $wand.auto-gamma;
 $wand.auto-level;
 
+# Do some cropping
+$wand.crop(50, 50, 250, 250);
+
 # And then write a new image
 $wand.write-image("output.png");
 

@@ -49,3 +49,8 @@ sub MagickGetImageGamma(Pointer $wand)
 sub MagickSepiaToneImage(Pointer $wand, num64 $threshold)
   returns int32
   is native(LIB, v5) is export { * }
+
+# MagickBooleanType MagickCropImage(MagickWand *wand, const size_t width,const size_t height,const ssize_t x,const ssize_t y)
+sub MagickCropImage(Pointer $wand, uint32 $width, uint32 $height, uint $x, uint $y)
+  returns int32
+  is native(LIB, v5) is export { * }

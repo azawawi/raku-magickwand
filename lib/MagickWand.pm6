@@ -29,8 +29,13 @@ method auto-level returns Bool {
 }
 
 method write-image(Str $file-name) returns Bool {
-  $.wand = NewMagickWand unless $.wand.defined;
+  die "No wand!" unless $.wand.defined;
   return MagickWriteImage( $.wand, $file-name ) == MagickTrue;
+}
+
+method crop(Int $x, Int $y, Int $width, Int $height) returns Bool {
+  die "No wand!" unless $.wand.defined;
+  return MagickCropImage($.wand, $width, $height, $x, $y) == MagickTrue;
 }
 
 method cleanup {
