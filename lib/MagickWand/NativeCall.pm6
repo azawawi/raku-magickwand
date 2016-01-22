@@ -3,16 +3,13 @@ use v6;
 unit module MagickWand::NativeCall;
 
 use NativeCall;
-use lib 'lib';
 
 constant LIB = 'MagickWand';
 
 # MagickBooleanType MagickReadImage(MagickWand *wand,const char *filename)
 sub MagickReadImage(Pointer $wand, Str $file-name)
   returns Bool
-  is native(LIB, v5)
-  is export 
-  { * }
+  is native(LIB, v5) is export { * }
 
 # MagickWand *NewMagickWand(void)
 sub NewMagickWand()
