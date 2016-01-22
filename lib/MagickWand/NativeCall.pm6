@@ -6,9 +6,13 @@ use NativeCall;
 
 constant LIB = 'MagickWand';
 
+
+constant MagickTrue   is export = 1;
+constant MagickFalse  is export = 0;
+
 # MagickBooleanType MagickReadImage(MagickWand *wand,const char *filename)
 sub MagickReadImage(Pointer $wand, Str $file-name)
-  returns bool
+  returns int32
   is native(LIB, v5) is export { * }
 
 # MagickWand *NewMagickWand(void)
@@ -23,17 +27,17 @@ sub DestroyMagickWand(Pointer $wand)
 
 # MagickBooleanType MagickWriteImage(MagickWand *wand, const char *filename)
 sub MagickWriteImage(Pointer $wand, Str $file-name)
-  returns bool
+  returns int32
   is native(LIB, v5) is export { * }
 
 # MagickBooleanType MagickAutoGammaImage(MagickWand *wand)
 sub MagickAutoGammaImage(Pointer $wand)
-  returns bool
+  returns int32
   is native(LIB, v5) is export { * }
 
 # MagickBooleanType MagickAutoLevelImage(MagickWand *wand)
 sub MagickAutoLevelImage(Pointer $wand)
-  returns bool
+  returns int32
   is native(LIB, v5) is export { * }
 
 # double MagickGetImageGamma(MagickWand *wand)
@@ -43,5 +47,5 @@ sub MagickGetImageGamma(Pointer $wand)
 
 # MagickBooleanType MagickSepiaToneImage(MagickWand *wand, const double threshold)
 sub MagickSepiaToneImage(Pointer $wand, num64 $threshold)
-  returns bool
+  returns int32
   is native(LIB, v5) is export { * }

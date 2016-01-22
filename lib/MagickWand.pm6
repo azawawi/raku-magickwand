@@ -10,7 +10,7 @@ has Pointer $.wand is rw;
 
 method read-image(Str $file-name) returns Bool {
   $.wand = NewMagickWand unless $.wand.defined;
-  return MagickReadImage( $.wand, $file-name );
+  return MagickReadImage( $.wand, $file-name ) == MagickTrue;
 }
 
 method get-image-gamma returns Num {
@@ -20,17 +20,17 @@ method get-image-gamma returns Num {
 
 method auto-gamma returns Bool {
   die "No wand!" unless $.wand.defined;
-    return MagickAutoGammaImage( $.wand );
+  return MagickAutoGammaImage( $.wand ) == MagickTrue;
 }
 
 method auto-level returns Bool {
   die "No wand!" unless $.wand.defined;
-    return MagickAutoLevelImage( $.wand );
+  return MagickAutoLevelImage( $.wand ) == MagickTrue;
 }
 
 method write-image(Str $file-name) returns Bool {
   $.wand = NewMagickWand unless $.wand.defined;
-  return MagickWriteImage( $.wand, $file-name );
+  return MagickWriteImage( $.wand, $file-name ) == MagickTrue;
 }
 
 method cleanup {
