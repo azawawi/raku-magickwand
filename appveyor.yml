@@ -6,6 +6,8 @@ install:
   - '"C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64'
   - choco install strawberryperl
   - SET PATH=C:\strawberry\c\bin;C:\strawberry\perl\site\bin;C:\strawberry\perl\bin;%PATH%
+  - appveyor DownloadFile http://www.imagemagick.org/download/binaries/ImageMagick-6.9.3-1-Q16-x64-static.exe
+  - ImageMagick-6.9.3-1-Q16-x64-static.exe /SILENT
   - git clone https://github.com/rakudo/rakudo.git %APPVEYOR_BUILD_FOLDER%\..\rakudo
   - cd %APPVEYOR_BUILD_FOLDER%\..\rakudo
   - perl Configure.pl --gen-moar=HEAD --gen-nqp
