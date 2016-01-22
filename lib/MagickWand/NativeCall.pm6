@@ -8,13 +8,17 @@ use LibraryCheck;
 constant LIB = 'MagickWand';
 
 sub library {
+  # On windows
+  return "CORE_RL_wand_.dll" if $*DISTRO.is-win;
+
+  # On MacOS X using howbrew
+  return "libMagickWand-6.Q16.2.dylib" if $*KERNEL.name eq 'darwin';
+
+  # Linux/UNIX
   if library-exists(LIB, v4) {
     return sprintf("lib%s.so.4", LIB);
   } elsif library-exists(LIB, v5) {
     return sprintf("lib%s.so.5", LIB);
-  } elsif $*KERNEL.name eq 'darwin' {
-    # TODO a more robust solution for homebrew-installed ImageMagick
-    return "libMagickWand-6.Q16.2.dylib";
   }
 
   # Fallback
