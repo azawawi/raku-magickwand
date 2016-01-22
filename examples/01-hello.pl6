@@ -11,9 +11,13 @@ my $wand = NewMagickWand();
 # Read an image
 MagickReadImage($wand, "examples/images/aero1.jpg");
 
+say sprintf("Gamma (before) = %3.f", MagickGetImageGamma($wand));
+
 # And do some magic on it
 MagickAutoGammaImage($wand);
 MagickAutoLevelImage($wand);
+
+say sprintf("Gamma (after) = %3.f", MagickGetImageGamma($wand));
 
 # And then write a new image
 MagickWriteImage($wand, "output.png");

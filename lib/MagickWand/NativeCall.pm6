@@ -36,3 +36,8 @@ sub MagickAutoGammaImage(Pointer $wand)
 sub MagickAutoLevelImage(Pointer $wand)
   returns Bool
   is native(LIB, v5) is export { * }
+
+# double MagickGetImageGamma(MagickWand *wand)
+sub MagickGetImageGamma(Pointer $wand)
+  returns Num
+  is native(LIB, v5) is export { * }
