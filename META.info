@@ -2,7 +2,7 @@
   "name"          : "MagickWand",
   "version"       : "0.0.1",
   "perl"          : "v6",
-  "description"   : "MagickWand Bindings using NativeCall",
+  "description"   : "ImageMagick's MagickWand API Bindings for Perl6",
   "build-depends" : [ ],
   "depends"       : [ ],
   "auth"          : "github:azawawi",
