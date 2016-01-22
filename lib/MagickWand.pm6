@@ -5,57 +5,57 @@ unit class MagickWand;
 use NativeCall;
 use MagickWand::NativeCall;
 
-# MagickWand's native pointer
-has Pointer $.wand is rw;
+# Wand native handle
+has Pointer $.handle is rw;
 
 method read-image(Str $file-name) returns Bool {
-  $.wand = NewMagickWand unless $.wand.defined;
-  return MagickReadImage( $.wand, $file-name ) == MagickTrue;
+  $.handle = NewMagickWand unless $.handle.defined;
+  return MagickReadImage( $.handle, $file-name ) == MagickTrue;
 }
 
 method get-image-gamma returns Num {
-  die "No wand!" unless $.wand.defined;
-  return MagickGetImageGamma( $.wand );
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickGetImageGamma( $.handle );
 }
 
 method auto-gamma returns Bool {
-  die "No wand!" unless $.wand.defined;
-  return MagickAutoGammaImage( $.wand ) == MagickTrue;
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickAutoGammaImage( $.handle ) == MagickTrue;
 }
 
 method auto-level returns Bool {
-  die "No wand!" unless $.wand.defined;
-  return MagickAutoLevelImage( $.wand ) == MagickTrue;
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickAutoLevelImage( $.handle ) == MagickTrue;
 }
 
 method negate returns Bool {
-  die "No wand!" unless $.wand.defined;
-  return MagickNegateImage( $.wand ) == MagickTrue;
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickNegateImage( $.handle ) == MagickTrue;
 }
 
 method charcoal(Rat $radius, Rat $sigma) returns Bool {
-  die "No wand!" unless $.wand.defined;
-  return MagickCharcoalImage( $.wand, $radius.Num, $sigma.Num ) == MagickTrue;
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickCharcoalImage( $.handle, $radius.Num, $sigma.Num ) == MagickTrue;
 }
 
 method write-image(Str $file-name) returns Bool {
-  die "No wand!" unless $.wand.defined;
-  return MagickWriteImage( $.wand, $file-name ) == MagickTrue;
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickWriteImage( $.handle, $file-name ) == MagickTrue;
 }
 
 method crop(Int $x, Int $y, Int $width, Int $height) returns Bool {
-  die "No wand!" unless $.wand.defined;
-  return MagickCropImage($.wand, $width, $height, $x, $y) == MagickTrue;
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickCropImage($.handle, $width, $height, $x, $y) == MagickTrue;
 }
 
 method chop(Int $x, Int $y, Int $width, Int $height) returns Bool {
-  die "No wand!" unless $.wand.defined;
-  return MagickChopImage($.wand, $width, $height, $x, $y) == MagickTrue;
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickChopImage($.handle, $width, $height, $x, $y) == MagickTrue;
 }
 
 method clone returns MagickWand {
-  die "No wand!" unless $.wand.defined;
-  my $cloned-wand = CloneMagickWand($.wand);
+  die "No wand handle defined!" unless $.handle.defined;
+  my $cloned-wand = CloneMagickWand($.handle);
   return MagickWand.new( wand => $cloned-wand );
 }
 
@@ -65,7 +65,7 @@ submethod append-wands(+@wands) returns MagickWand {
 
   # Add wands
   for @wands -> $wand {
-    MagickAddImage($temp-wand, $wand.wand);
+    MagickAddImage($temp-wand, $wand.handle);
     MagickSetLastIterator($temp-wand);
   }
 
@@ -80,5 +80,5 @@ submethod append-wands(+@wands) returns MagickWand {
 }
 
 method cleanup {
-  DestroyMagickWand($.wand) if $.wand.defined;
+  DestroyMagickWand($.handle) if $.handle.defined;
 }
