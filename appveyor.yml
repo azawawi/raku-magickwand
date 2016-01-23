@@ -11,7 +11,6 @@ install:
   - SET PATH=C:\strawberry\c\bin;C:\strawberry\perl\site\bin;C:\strawberry\perl\bin;%PATH%
   - git clone https://github.com/tadzik/rakudobrew %USERPROFILE%\rakudobrew
   - SET PATH=%USERPROFILE%\rakudobrew\bin;%PATH%
-  - rakudobrew init
   - rakudobrew build moar 2015.12
   - rakudobrew build panda
   - cd %APPVEYOR_BUILD_FOLDER%
