@@ -21,7 +21,7 @@ $filtered.draw-line(0.0, 0.0, 100.0, 100.0);
 my $charcoaled = $original.clone;
 $charcoaled.charcoal(20.0,1.0);
 
-my $comparison = MagickWand.append-wands( $original, $filtered, $charcoaled );
+my $comparison = MagickWand.append-wands( $original, $filtered );
 
 # And then write a new image
 $comparison.write-image("output.png");

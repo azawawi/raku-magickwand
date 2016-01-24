@@ -68,6 +68,8 @@ method draw-line(Rat $x1, Rat $y1, Rat $x2, Rat $y2) {
 }
 
 submethod append-wands(+@wands) returns MagickWand {
+  die "List must be defined with at least two elements" unless @wands.defined && @wands.elems >= 2;
+
   my $temp-wand = NewMagickWand;
   MagickSetLastIterator($temp-wand);
 
