@@ -7,7 +7,7 @@ install:
   - choco install strawberryperl
   - SET PATH=C:\strawberry\c\bin;C:\strawberry\perl\site\bin;C:\strawberry\perl\bin;%PATH%
   - appveyor DownloadFile http://www.imagemagick.org/download/binaries/ImageMagick-6.9.3-2-Q16-x64-dll.exe
-  - ImageMagick-6.9.3-1-Q16-x64-dll.exe /SILENT
+  - ImageMagick-6.9.3-2-Q16-x64-dll.exe /SILENT
   - SET PATH=C:\Program Files\ImageMagick-6.9.3-Q16;%PATH%
   - git clone https://github.com/tadzik/rakudobrew %USERPROFILE%\rakudobrew
   - SET PATH=%USERPROFILE%\rakudobrew\bin;%PATH%
