@@ -20,7 +20,7 @@ use MagickWand;
 my $wand = MagickWand.new;
 
 # Read an image
-$wand.read-image("examples/images/aero1.jpg");
+$wand.read("examples/images/aero1.jpg");
 
 # Lighten dark areas
 $wand.auto-gamma;

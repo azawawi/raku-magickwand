@@ -9,7 +9,7 @@ use MagickWand::NativeCall;
 has Pointer $.handle   is rw;
 has Pointer $.d_handle is rw;
 
-method read-image(Str $file-name) returns Bool {
+method read(Str $file-name) returns Bool {
   $.handle = NewMagickWand unless $.handle.defined;
   return MagickReadImage( $.handle, $file-name ) == MagickTrue;
 }
