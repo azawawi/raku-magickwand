@@ -42,7 +42,7 @@ Please follow the instructions below based on your platform:
 
 - To install ImageMagick libraries, please run:
 ```
-    $ sudo apt-get install libmagickwand-dev
+$ sudo apt-get install libmagickwand-dev
 ```
 
 ### MacOSX (Darwin)
@@ -68,14 +68,18 @@ Note: Please remember to enable "Add to PATH" option.
 
 To install it using Panda (a module management tool bundled with Rakudo Star):
 
-    $ panda update
-    $ panda install MagickWand
+```
+$ panda update
+$ panda install MagickWand
+```
 
 ## Testing
 
 To run tests:
 
-    $ prove -ve "perl6 -Ilib"
+```
+$ prove -ve "perl6 -Ilib"
+```
 
 ## Author
 
