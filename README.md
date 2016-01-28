@@ -33,6 +33,8 @@ $wand.cleanup;
 ```
 
 For more examples, please see the [examples](examples) folder.
+For examples of available image effects, please click
+[here](http://www.imagemagick.org/script/examples.php).
 
 ## Prerequisites
 
