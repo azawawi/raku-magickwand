@@ -57,10 +57,10 @@ $ brew install imagemagick
 
 Please download the appropriate ImageMagick DLL installer from [here](
 http://www.imagemagick.org/script/binary-releases.php#windows).
-- On 64-bit Windows, please download/install [`ImageMagick-6.9.3-1-Q16-x64-dll.exe`](
-http://www.imagemagick.org/download/binaries/ImageMagick-6.9.3-1-Q16-x64-dll.exe).
-- On 32-bit Windows, please download/install [`ImageMagick-6.9.3-1-Q16-x86-dll.exe.`](
-http://www.imagemagick.org/download/binaries/ImageMagick-6.9.3-1-Q16-x86-dll.exe)
+- On 64-bit Windows, please download/install [`ImageMagick-6.9.3-2-Q16-x64-dll.exe`](
+http://www.imagemagick.org/download/binaries/ImageMagick-6.9.3-2-Q16-x64-dll.exe).
+- On 32-bit Windows, please download/install [`ImageMagick-6.9.3-2-Q16-x86-dll.exe.`](
+http://www.imagemagick.org/download/binaries/ImageMagick-6.9.3-2-Q16-x86-dll.exe)
 
 Note: Please remember to enable "Add to PATH" option.
 
