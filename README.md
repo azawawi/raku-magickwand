@@ -1,7 +1,8 @@
 # MagickWand
 
-This provides a simple Perl 6 object-oriented NativeCall wrapper for the
-[ImageMagick's ImageWand](http://www.imagemagick.org/script/magick-wand.php) library.
+This provides a Perl 6 object-oriented [NativeCall](
+http://doc.perl6.org/language/nativecall)-based API for ImageMagick's
+[MagickWand C API](http://www.imagemagick.org/script/magick-wand.php).
 
 ## Build Status
 
