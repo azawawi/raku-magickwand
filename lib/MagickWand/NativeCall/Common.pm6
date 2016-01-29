@@ -87,3 +87,4 @@ class PointInfo is repr('CStruct') {
 #TODO IndexPacket
 #TODO MagickPixelPacket
 #TODO PixelPacket
+#TODO PixelIterator

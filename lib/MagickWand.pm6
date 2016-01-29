@@ -6,6 +6,7 @@ use NativeCall;
 use MagickWand::NativeCall;
 use MagickWand::NativeCall::DrawingWand;
 use MagickWand::NativeCall::Image;
+use MagickWand::NativeCall::PixelIterator;
 use MagickWand::NativeCall::PixelWand;
 use MagickWand::NativeCall::Wand;
 

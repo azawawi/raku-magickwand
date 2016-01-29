@@ -3,6 +3,9 @@ use v6;
 
 unit module MagickWand::NativeCall::PixelIterator;
 
+use NativeCall;
+use MagickWand::NativeCall::Common;
+
 =begin pod
 =head1 ClearPixelIterator
 =head2 C
@@ -12,7 +15,7 @@ unit module MagickWand::NativeCall::PixelIterator;
 ClearPixelIterator() clear resources associated with a PixelIterator.- iterator: the pixel iterator. 
 =end pod
 sub ClearPixelIterator(
-   PixelIterator * $iterator
+   Pointer $iterator
 )
 is native(&library)
 is export { * };
@@ -27,9 +30,9 @@ is export { * };
 ClonePixelIterator() makes an exact copy of the specified iterator.- iterator: the magick iterator. 
 =end pod
 sub ClonePixelIterator(
-   PixelIterator * $iterator
+   Pointer $iterator
 )
-returns PixelIterator *
+returns Pointer
 is native(&library)
 is export { * };
 
@@ -43,9 +46,9 @@ is export { * };
 DestroyPixelIterator() deallocates resources associated with a PixelIterator.- iterator: the pixel iterator. 
 =end pod
 sub DestroyPixelIterator(
-   PixelIterator * $iterator
+   Pointer $iterator
 )
-returns PixelIterator *
+returns Pointer
 is native(&library)
 is export { * };
 
@@ -59,7 +62,7 @@ is export { * };
 IsPixelIterator() returns MagickTrue if the iterator is verified as a pixel iterator.- iterator: the magick iterator. 
 =end pod
 sub IsPixelIterator(
-   PixelIterator * $iterator
+   Pointer $iterator
 )
 returns uint32 
 is native(&library)
@@ -75,9 +78,9 @@ is export { * };
 NewPixelIterator() returns a new pixel iterator.- wand: the magick wand. 
 =end pod
 sub NewPixelIterator(
-   MagickWandPointer $wand
+   Pointer $wand
 )
-returns PixelIterator *
+returns Pointer
 is native(&library)
 is export { * };
 
@@ -91,7 +94,7 @@ is export { * };
 PixelClearIteratorException() clear any exceptions associated with the iterator.- iterator: the pixel iterator. 
 =end pod
 sub PixelClearIteratorException(
-   PixelIterator * $iterator
+   Pointer $iterator
 )
 returns uint32 
 is native(&library)
@@ -108,13 +111,13 @@ is export { * };
 NewPixelRegionIterator() returns a new pixel iterator.- wand: the magick wand. - x,y,columns,rows:  These values define the perimeter of a region of pixels. 
 =end pod
 sub NewPixelRegionIterator(
-   MagickWandPointer $wand,
-   sint32 $x,
-   sint32 $y,
+   Pointer $wand,
+   uint32 $x,
+   uint32 $y,
    int32 $width,
    int32 $height
 )
-returns PixelIterator *
+returns Pointer
 is native(&library)
 is export { * };
 
@@ -129,10 +132,10 @@ is export { * };
 PixelGetCurrentIteratorRow() returns the current row as an array of pixel wands from the pixel iterator.- iterator: the pixel iterator. - number_wands: the number of pixel wands. 
 =end pod
 sub PixelGetCurrentIteratorRow(
-   PixelIterator * $iterator,
+   Pointer $iterator,
    Pointer[int32] $number_wands
 )
-returns PixelWandPointer*
+returns CArray[Pointer]
 is native(&library)
 is export { * };
 
@@ -147,8 +150,8 @@ is export { * };
 PixelGetIteratorException() returns the severity, reason, and description of any error that occurs when using other methods in this API.- iterator: the pixel iterator. - severity: the severity of the error is returned here. 
 =end pod
 sub PixelGetIteratorException(
-   PixelIterator * $iterator,
-   ExceptionType * $severity
+   Pointer $iterator,
+   Pointer $severity
 )
 returns Str
 is native(&library)
@@ -165,9 +168,9 @@ is export { * };
 PixelGetIteratorExceptionType() the exception type associated with the iterator.  If no exception has occurred, UndefinedExceptionType is returned.- iterator: the magick iterator. 
 =end pod
 sub PixelGetIteratorExceptionType(
-   PixelIterator * $iterator
+   Pointer $iterator
 )
-returns ExceptionType 
+returns Pointer 
 is native(&library)
 is export { * };
 
@@ -181,7 +184,7 @@ is export { * };
 PixelGetIteratorRow() returns the current pixel iterator row.- iterator: the pixel iterator. 
 =end pod
 sub PixelGetIteratorRow(
-   PixelIterator * $iterator
+   Pointer $iterator
 )
 returns uint32 
 is native(&library)
@@ -198,10 +201,10 @@ is export { * };
 PixelGetNextIteratorRow() returns the next row as an array of pixel wands from the pixel iterator.- iterator: the pixel iterator. - number_wands: the number of pixel wands. 
 =end pod
 sub PixelGetNextIteratorRow(
-   PixelIterator * $iterator,
+   Pointer $iterator,
    Pointer[int32] $number_wands
 )
-returns PixelWandPointer*
+returns CArray[Pointer]
 is native(&library)
 is export { * };
 
@@ -216,10 +219,10 @@ is export { * };
 PixelGetPreviousIteratorRow() returns the previous row as an array of pixel wands from the pixel iterator.- iterator: the pixel iterator. - number_wands: the number of pixel wands. 
 =end pod
 sub PixelGetPreviousIteratorRow(
-   PixelIterator * $iterator,
+   Pointer $iterator,
    Pointer[int32] $number_wands
 )
-returns PixelWandPointer*
+returns CArray[Pointer]
 is native(&library)
 is export { * };
 
@@ -233,7 +236,7 @@ is export { * };
 PixelResetIterator() resets the pixel iterator.  Use it in conjunction with PixelGetNextIteratorRow() to iterate over all the pixels in a pixel container.- iterator: the pixel iterator. 
 =end pod
 sub PixelResetIterator(
-   PixelIterator * $iterator
+   Pointer $iterator
 )
 is native(&library)
 is export { * };
@@ -248,7 +251,7 @@ is export { * };
 PixelSetFirstIteratorRow() sets the pixel iterator to the first pixel row.- iterator: the magick iterator. 
 =end pod
 sub PixelSetFirstIteratorRow(
-   PixelIterator * $iterator
+   Pointer $iterator
 )
 is native(&library)
 is export { * };
@@ -264,8 +267,8 @@ is export { * };
 PixelSetIteratorRow() set the pixel iterator row.- iterator: the pixel iterator. 
 =end pod
 sub PixelSetIteratorRow(
-   PixelIterator * $iterator,
-   sint32 $row
+   Pointer $iterator,
+   uint32 $row
 )
 returns uint32 
 is native(&library)
@@ -281,7 +284,7 @@ is export { * };
 PixelSetLastIteratorRow() sets the pixel iterator to the last pixel row.- iterator: the magick iterator. 
 =end pod
 sub PixelSetLastIteratorRow(
-   PixelIterator * $iterator
+   Pointer $iterator
 )
 is native(&library)
 is export { * };
@@ -296,7 +299,7 @@ is export { * };
 PixelSyncIterator() syncs the pixel iterator.- iterator: the pixel iterator. 
 =end pod
 sub PixelSyncIterator(
-   PixelIterator * $iterator
+   Pointer $iterator
 )
 returns uint32 
 is native(&library)
