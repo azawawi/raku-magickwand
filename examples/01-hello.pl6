@@ -29,7 +29,7 @@ $comparison.write("output.png");
 # And cleanup on exit
 LEAVE {
   $original.cleanup   if $original.defined;
-  $original.cleanup   if $filtered.defined;
+  $filtered.cleanup   if $filtered.defined;
   $charcoaled.cleanup if $charcoaled.defined;
   $comparison.cleanup if $comparison.defined;
 }
