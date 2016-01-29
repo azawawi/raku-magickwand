@@ -4,6 +4,7 @@ unit class MagickWand;
 
 use NativeCall;
 use MagickWand::NativeCall;
+use MagickWand::NativeCall::Image;
 
 # Wand native handle
 has Pointer $.handle   is rw;
