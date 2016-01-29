@@ -3,6 +3,9 @@ use v6;
 
 unit module MagickWand::NativeCall::WandView;
 
+use NativeCall;
+use MagickWand::NativeCall::Common;
+
 =begin pod
 =head1 CloneWandView
 =head2 C
@@ -12,9 +15,9 @@ unit module MagickWand::NativeCall::WandView;
 CloneWandView() makes a copy of the specified wand view.- wand_view: the wand view. 
 =end pod
 sub CloneWandView(
-   WandView * $wand_view
+   Pointer $wand_view
 )
-returns WandView *
+returns Pointer
 is native(&library)
 is export { * };
 
@@ -28,9 +31,9 @@ is export { * };
 DestroyWandView() deallocates memory associated with a wand view.- wand_view: the wand view. 
 =end pod
 sub DestroyWandView(
-   WandView * $wand_view
+   Pointer $wand_view
 )
-returns WandView *
+returns Pointer
 is native(&library)
 is export { * };
 
@@ -46,10 +49,10 @@ is export { * };
 DuplexTransferWandViewIterator() iterates over three wand views in parallel and calls your transfer method for each scanline of the view.  The source and duplex pixel extent is not confined to the image canvas-- that is you can include negative offsets or widths or heights that exceed the image dimension.  However, the destination wand view is confined to the image canvas-- that is no negative offsets or widths or heights that exceed the image dimension are permitted.The callback signature is:<pre class="text">MagickBooleanType DuplexTransferImageViewMethod(const WandView \*source,  const WandView \*duplex,WandView \*destination,const ssize_t y,  const int thread_id,void \*context)</pre>Use this pragma if the view is not single threaded:<pre class="text">    #pragma omp critical</pre>to define a section of code in your callback transfer method that must be executed by a single thread at a time.- source: the source wand view. - duplex: the duplex wand view. - destination: the destination wand view. - transfer: the transfer callback method. - context: the user defined context. 
 =end pod
 sub DuplexTransferWandViewIterator(
-   WandView * $source,
-   WandView * $duplex,
-   WandView * $destination,
-   DuplexTransferWandViewMethod $transfer,
+   Pointer $source,
+   Pointer $duplex,
+   Pointer $destination,
+   uint32 $transfer,
    Pointer[void] $context
 )
 returns uint32 
@@ -67,8 +70,8 @@ is export { * };
 GetWandViewException() returns the severity, reason, and description of any error that occurs when utilizing a wand view.- wand_view: the pixel wand_view. - severity: the severity of the error is returned here. 
 =end pod
 sub GetWandViewException(
-   WandView * $wand_view,
-   ExceptionType * $severity
+   Pointer $wand_view,
+   Pointer $severity
 )
 returns Str
 is native(&library)
@@ -84,9 +87,9 @@ is export { * };
 GetWandViewExtent() returns the wand view extent.- wand_view: the wand view. 
 =end pod
 sub GetWandViewExtent(
-   WandView * $wand_view
+   Pointer $wand_view
 )
-returns RectangleInfo 
+returns Pointer 
 is native(&library)
 is export { * };
 
@@ -101,8 +104,8 @@ is export { * };
 GetWandViewIterator() iterates over the wand view in parallel and calls your get method for each scanline of the view.  The pixel extent is not confined to the image canvas-- that is you can include negative offsets or widths or heights that exceed the image dimension.  Any updates to the pixels in your callback are ignored.The callback signature is:<pre class="text">MagickBooleanType GetImageViewMethod(const WandView \*source,  const ssize_t y,const int thread_id,void \*context)</pre>Use this pragma if the view is not single threaded:<pre class="text">    #pragma omp critical</pre>to define a section of code in your callback get method that must be executed by a single thread at a time.- source: the source wand view. - get: the get callback method. - context: the user defined context. 
 =end pod
 sub GetWandViewIterator(
-   WandView * $source,
-   GetWandViewMethod $get,
+   Pointer $source,
+   uint32 $get,
    Pointer[void] $context
 )
 returns uint32 
@@ -119,9 +122,9 @@ is export { * };
 GetWandViewPixels() returns the wand view pixel_wands.- wand_view: the wand view. 
 =end pod
 sub GetWandViewPixels(
-   WandView * $wand_view
+   Pointer $wand_view
 )
-returns PixelWandPointer
+returns Pointer
 is native(&library)
 is export { * };
 
@@ -135,9 +138,9 @@ is export { * };
 GetWandViewWand() returns the magick wand associated with the wand view.- wand_view: the wand view. 
 =end pod
 sub GetWandViewWand(
-   WandView * $wand_view
+   Pointer $wand_view
 )
-returns MagickWandPointer
+returns Pointer
 is native(&library)
 is export { * };
 
@@ -151,7 +154,7 @@ is export { * };
 IsWandView() returns MagickTrue if the the parameter is verified as a wand view object.- wand_view: the wand view. 
 =end pod
 sub IsWandView(
-   WandView * $wand_view
+   Pointer $wand_view
 )
 returns uint32 
 is native(&library)
@@ -167,9 +170,9 @@ is export { * };
 NewWandView() returns a wand view required for all other methods in the Wand View API.- wand: the wand. 
 =end pod
 sub NewWandView(
-   MagickWandPointer $wand
+   Pointer $wand
 )
-returns WandView *
+returns Pointer
 is native(&library)
 is export { * };
 
@@ -184,13 +187,13 @@ is export { * };
 NewWandViewExtent() returns a wand view required for all other methods in the Wand View API.- wand: the magick wand. - x,y,columns,rows:  These values define the perimeter of a extent of pixel_wands view. 
 =end pod
 sub NewWandViewExtent(
-   MagickWandPointer $wand,
-   sint32 $x,
-   sint32 $y,
+   Pointer $wand,
+   uint32 $x,
+   uint32 $y,
    int32 $width,
    int32 $height
 )
-returns WandView *
+returns Pointer
 is native(&library)
 is export { * };
 
@@ -204,7 +207,7 @@ is export { * };
 SetWandViewDescription() associates a description with an image view.- wand_view: the wand view. - description: the wand view description. 
 =end pod
 sub SetWandViewDescription(
-   WandView * $image_view,
+   Pointer $image_view,
    Str $description
 )
 is native(&library)
@@ -221,8 +224,8 @@ is export { * };
 SetWandViewIterator() iterates over the wand view in parallel and calls your set method for each scanline of the view.  The pixel extent is confined to the image canvas-- that is no negative offsets or widths or heights that exceed the image dimension.  The pixels are initiallly undefined and any settings you make in the callback method are automagically synced back to your image.The callback signature is:<pre class="text">MagickBooleanType SetImageViewMethod(ImageView \*destination,  const ssize_t y,const int thread_id,void \*context)</pre>Use this pragma if the view is not single threaded:<pre class="text">    #pragma omp critical</pre>to define a section of code in your callback set method that must be executed by a single thread at a time.- destination: the wand view. - set: the set callback method. - context: the user defined context. 
 =end pod
 sub SetWandViewIterator(
-   WandView * $destination,
-   SetWandViewMethod $set,
+   Pointer $destination,
+   uint32 $set,
    Pointer[void] $context
 )
 returns uint32 
@@ -240,7 +243,7 @@ is export { * };
 SetWandViewThreads() sets the number of threads in a thread team.- image_view: the image view. - number_threads: the number of threads in a thread team. 
 =end pod
 sub SetWandViewThreads(
-   WandView * $image_view,
+   Pointer $image_view,
    int32 $number_threads
 )
 is native(&library)
@@ -257,9 +260,9 @@ is export { * };
 TransferWandViewIterator() iterates over two wand views in parallel and calls your transfer method for each scanline of the view.  The source pixel extent is not confined to the image canvas-- that is you can include negative offsets or widths or heights that exceed the image dimension. However, the destination wand view is confined to the image canvas-- that is no negative offsets or widths or heights that exceed the image dimension are permitted.The callback signature is:<pre class="text">MagickBooleanType TransferImageViewMethod(const WandView \*source,  WandView \*destination,const ssize_t y,const int thread_id,  void \*context)</pre>Use this pragma if the view is not single threaded:<pre class="text">    #pragma omp critical</pre>to define a section of code in your callback transfer method that must be executed by a single thread at a time.- source: the source wand view. - destination: the destination wand view. - transfer: the transfer callback method. - context: the user defined context. 
 =end pod
 sub TransferWandViewIterator(
-   WandView * $source,
-   WandView * $destination,
-   TransferWandViewMethod $transfer,
+   Pointer $source,
+   Pointer $destination,
+   uint32 $transfer,
    Pointer[void] $context
 )
 returns uint32 
@@ -277,8 +280,8 @@ is export { * };
 UpdateWandViewIterator() iterates over the wand view in parallel and calls your update method for each scanline of the view.  The pixel extent is confined to the image canvas-- that is no negative offsets or widths or heights that exceed the image dimension are permitted.  Updates to pixels in your callback are automagically synced back to the image.The callback signature is:<pre class="text">MagickBooleanType UpdateImageViewMethod(WandView \*source,const ssize_t y,  const int thread_id,void \*context)</pre>Use this pragma if the view is not single threaded:<pre class="text">    #pragma omp critical</pre>to define a section of code in your callback update method that must be executed by a single thread at a time.- source: the source wand view. - update: the update callback method. - context: the user defined context. 
 =end pod
 sub UpdateWandViewIterator(
-   WandView * $source,
-   UpdateWandViewMethod $update,
+   Pointer $source,
+   uint32 $update,
    Pointer[void] $context
 )
 returns uint32 

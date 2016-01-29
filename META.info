@@ -16,7 +16,8 @@
     "MagickWand::NativeCall::PixelIterator"  : "lib/MagickWand/NativeCall/PixelIterator.pm6",
     "MagickWand::NativeCall::PixelWand"      : "lib/MagickWand/NativeCall/PixelWand.pm6",
     "MagickWand::NativeCall::Property"       : "lib/MagickWand/NativeCall/Property.pm6",
-    "MagickWand::NativeCall::Wand"           : "lib/MagickWand/NativeCall/Wand.pm6"
+    "MagickWand::NativeCall::Wand"           : "lib/MagickWand/NativeCall/Wand.pm6",
+    "MagickWand::NativeCall::WandView"       : "lib/MagickWand/NativeCall/WandView.pm6"
   },
   "resources"     : [ ],
   "source-url"    : "git://github.com/azawawi/perl6-magickwand.git"

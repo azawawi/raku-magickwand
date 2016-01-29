@@ -90,3 +90,9 @@ class PointInfo is repr('CStruct') {
 #TODO PixelIterator
 #TODO InterpolateMethodPixel
 #TODO ResourceType
+#TODO WandView
+#TODO GetWandViewMethod
+#TODO SetWandViewMethod
+#TODO TransferWandViewMethod
+#TODO UpdateWandViewMethod
+#TODO Duplexuint32

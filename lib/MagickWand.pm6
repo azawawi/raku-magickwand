@@ -10,6 +10,7 @@ use MagickWand::NativeCall::PixelIterator;
 use MagickWand::NativeCall::PixelWand;
 use MagickWand::NativeCall::Property;
 use MagickWand::NativeCall::Wand;
+use MagickWand::NativeCall::WandView;
 
 # Wand native handle
 has Pointer $.handle   is rw;
