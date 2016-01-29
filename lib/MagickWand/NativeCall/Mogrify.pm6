@@ -19,7 +19,7 @@ MagickCommandGenesis() applies image processing options to an image as prescribe
 sub MagickCommandGenesis(
    Pointer $image_info,
    uint32  $command,
-   int $argc,
+   uint32 $argc,
    CArray[Str] $argv,
    CArray[Str] $metadata,
    Pointer $exception
