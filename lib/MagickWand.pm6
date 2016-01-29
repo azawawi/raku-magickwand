@@ -8,6 +8,7 @@ use MagickWand::NativeCall::DrawingWand;
 use MagickWand::NativeCall::Image;
 use MagickWand::NativeCall::PixelIterator;
 use MagickWand::NativeCall::PixelWand;
+use MagickWand::NativeCall::Property;
 use MagickWand::NativeCall::Wand;
 
 # Wand native handle

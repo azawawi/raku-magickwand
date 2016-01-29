@@ -88,3 +88,5 @@ class PointInfo is repr('CStruct') {
 #TODO MagickPixelPacket
 #TODO PixelPacket
 #TODO PixelIterator
+#TODO InterpolateMethodPixel
+#TODO ResourceType
