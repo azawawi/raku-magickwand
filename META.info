@@ -8,8 +8,10 @@
   "auth"          : "github:azawawi",
   "authors"       : [ "Ahmad M. Zawawi" ],
   "provides"      : {
-    "MagickWand"             : "lib/MagickWand.pm6",
-    "MagickWand::NativeCall" : "lib/MagickWand/NativeCall.pm6"
+    "MagickWand"                     : "lib/MagickWand.pm6",
+    "MagickWand::NativeCall"         : "lib/MagickWand/NativeCall.pm6",
+    "MagickWand::NativeCall::Image"  : "lib/MagickWand/NativeCall/Image.pm6",
+    "MagickWand::NativeCall::Common" : "lib/MagickWand/NativeCall/Common.pm6"
   },
   "resources"     : [ ],
   "source-url"    : "git://github.com/azawawi/perl6-magickwand.git"
