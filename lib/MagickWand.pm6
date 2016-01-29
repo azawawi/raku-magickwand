@@ -4,6 +4,7 @@ unit class MagickWand;
 
 use NativeCall;
 use MagickWand::NativeCall;
+use MagickWand::NativeCall::DrawingWand;
 use MagickWand::NativeCall::Image;
 use MagickWand::NativeCall::Wand;
 

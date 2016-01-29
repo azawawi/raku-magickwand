@@ -1,7 +1,10 @@
 
 use v6;
 
-unit module MagickWand::NativeCall::Image;
+unit module MagickWand::NativeCall::DrawingWand;
+
+use NativeCall;
+use MagickWand::NativeCall::Common;
 
 =begin pod
 =head1 ClearDrawingWand
@@ -60,7 +63,7 @@ DrawAffine() adjusts the current affine transformation matrix with the specified
 =end pod
 sub DrawAffine(
    Pointer $wand,
-   AffineMatrix * $affine
+   Pointer $affine
 )
 is native(&library)
 is export { * };
@@ -77,9 +80,9 @@ DrawAnnotation() draws text on the image.- wand: the drawing wand. - x: x ordina
 =end pod
 sub DrawAnnotation(
    Pointer $wand,
-   double $x,
-   double $y,
-   unsigned Str $text
+   num64 $x,
+   num64 $y,
+   Str $text
 )
 is native(&library)
 is export { * };
@@ -96,12 +99,12 @@ DrawArc() draws an arc falling within a specified bounding rectangle on the imag
 =end pod
 sub DrawArc(
    Pointer $wand,
-   double $sx,
-   double $sy,
-   double $ex,
-   double $ey,
-   double $sd,
-   double $ed
+   num64 $sx,
+   num64 $sy,
+   num64 $ex,
+   num64 $ey,
+   num64 $sd,
+   num64 $ed
 )
 is native(&library)
 is export { * };
@@ -119,7 +122,7 @@ DrawBezier() draws a bezier curve through a set of points on the image.- wand: t
 sub DrawBezier(
    Pointer $wand,
    int32 $number_coordinates,
-   PointInfo * $coordinates
+   Pointer $coordinates
 )
 is native(&library)
 is export { * };
@@ -136,10 +139,10 @@ DrawCircle() draws a circle on the image.- wand: the drawing wand. - ox: origin 
 =end pod
 sub DrawCircle(
    Pointer $wand,
-   double $ox,
-   double $oy,
-   double $px,
-   double $py
+   num64 $ox,
+   num64 $oy,
+   num64 $px,
+   num64 $py
 )
 is native(&library)
 is export { * };
@@ -154,7 +157,7 @@ is export { * };
 DrawClearException() clear any exceptions associated with the wand.- wand: the drawing wand. 
 =end pod
 sub DrawClearException(
-   DrawWandPointer $wand
+   Pointer $wand
 )
 returns uint32 
 is native(&library)
@@ -174,12 +177,12 @@ DrawComposite() composites an image onto the current image, using the specified 
 =end pod
 sub DrawComposite(
    Pointer $wand,
-   CompositeOperator $compose,
-   double $x,
-   double $y,
-   double $width,
-   double $height,
-   MagickWandPointer $magick_wand
+   uint32 $compose,
+   num64 $x,
+   num64 $y,
+   num64 $width,
+   num64 $height,
+   Pointer $magick_wand
 )
 returns uint32 
 is native(&library)
@@ -197,9 +200,9 @@ DrawColor() draws color on image using the current fill color, starting at speci
 =end pod
 sub DrawColor(
    Pointer $wand,
-   double $x,
-   double $y,
-   PaintMethod $paint_method
+   num64 $x,
+   num64 $y,
+   uint32 $paint_method
 )
 is native(&library)
 is export { * };
@@ -232,12 +235,12 @@ DrawEllipse() draws an ellipse on the image.- wand: the drawing wand. - ox: orig
 =end pod
 sub DrawEllipse(
    Pointer $wand,
-   double $ox,
-   double $oy,
-   double $rx,
-   double $ry,
-   double $start,
-   double $end
+   num64 $ox,
+   num64 $oy,
+   num64 $rx,
+   num64 $ry,
+   num64 $start,
+   num64 $end
 )
 is native(&library)
 is export { * };
@@ -254,7 +257,7 @@ DrawGetBorderColor() returns the border color used for drawing bordered objects.
 =end pod
 sub DrawGetBorderColor(
    Pointer $wand,
-   PixelWandPointer $border_color
+   Pointer $border_color
 )
 is native(&library)
 is export { * };
@@ -287,7 +290,7 @@ DrawGetClipRule() returns the current polygon fill rule to be used by the clippi
 sub DrawGetClipRule(
    Pointer $wand
 )
-returns FillRule 
+returns uint32 
 is native(&library)
 is export { * };
 
@@ -303,7 +306,7 @@ DrawGetClipUnits() returns the interpretation of clip path units.- wand: the dra
 sub DrawGetClipUnits(
    Pointer $wand
 )
-returns ClipPathUnits 
+returns uint32 
 is native(&library)
 is export { * };
 
@@ -334,8 +337,8 @@ is export { * };
 DrawGetException() returns the severity, reason, and description of any error that occurs when using other methods in this API.- wand: the drawing wand. - severity: the severity of the error is returned here. 
 =end pod
 sub DrawGetException(
-   DrawWandPointer $wand,
-   ExceptionType * $severity
+   Pointer $wand,
+   Pointer $severity
 )
 returns Str
 is native(&library)
@@ -351,9 +354,9 @@ is export { * };
 DrawGetExceptionType() the exception type associated with the wand.  If no exception has occurred, UndefinedExceptionType is returned.- wand: the magick wand. 
 =end pod
 sub DrawGetExceptionType(
-   DrawWandPointer $wand
+   Pointer $wand
 )
-returns ExceptionType 
+returns Pointer
 is native(&library)
 is export { * };
 
@@ -369,7 +372,7 @@ DrawGetFillColor() returns the fill color used for drawing filled objects.- wand
 =end pod
 sub DrawGetFillColor(
    Pointer $wand,
-   PixelWandPointer $fill_color
+   Pointer $fill_color
 )
 is native(&library)
 is export { * };
@@ -402,7 +405,7 @@ DrawGetFillRule() returns the fill rule used while drawing polygons.- wand: the 
 sub DrawGetFillRule(
    Pointer $wand
 )
-returns FillRule 
+returns uint32 
 is native(&library)
 is export { * };
 
@@ -450,10 +453,10 @@ DrawGetFontResolution() gets the image X and Y resolution.- wand: the magick wan
 =end pod
 sub DrawGetFontResolution(
    Pointer $wand,
-   num64* $x,
-   num64* $y
+   CArray[num64] $x,
+   CArray[num64] $y
 )
-returns DrawBooleanType 
+returns uint32 
 is native(&library)
 is export { * };
 
@@ -485,7 +488,7 @@ DrawGetFontStretch() returns the font stretch used when annotating with text.- w
 sub DrawGetFontStretch(
    Pointer $wand
 )
-returns StretchType 
+returns uint32 
 is native(&library)
 is export { * };
 
@@ -501,7 +504,7 @@ DrawGetFontStyle() returns the font style used when annotating with text.- wand:
 sub DrawGetFontStyle(
    Pointer $wand
 )
-returns StyleType 
+returns uint32
 is native(&library)
 is export { * };
 
@@ -533,7 +536,7 @@ DrawGetGravity() returns the text placement gravity used when annotating with te
 sub DrawGetGravity(
    Pointer $wand
 )
-returns GravityType 
+returns uint32 
 is native(&library)
 is export { * };
 
@@ -581,7 +584,7 @@ DrawGetStrokeColor() returns the color used for stroking object outlines.- wand:
 =end pod
 sub DrawGetStrokeColor(
    Pointer $wand,
-   PixelWandPointer $stroke_color
+   Pointer $stroke_color
 )
 is native(&library)
 is export { * };
@@ -600,7 +603,7 @@ sub DrawGetStrokeDashArray(
    Pointer $wand,
    Pointer[int32] $number_elements
 )
-returns num64*
+returns CArray[num64]
 is native(&library)
 is export { * };
 
@@ -632,7 +635,7 @@ DrawGetStrokeLineCap() returns the shape to be used at the end of open subpaths 
 sub DrawGetStrokeLineCap(
    Pointer $wand
 )
-returns LineCap 
+returns uint32 
 is native(&library)
 is export { * };
 
@@ -648,7 +651,7 @@ DrawGetStrokeLineJoin() returns the shape to be used at the corners of paths (or
 sub DrawGetStrokeLineJoin(
    Pointer $wand
 )
-returns LineJoin 
+returns uint32 
 is native(&library)
 is export { * };
 
@@ -712,7 +715,7 @@ DrawGetTextAlignment() returns the alignment applied when annotating with text.-
 sub DrawGetTextAlignment(
    Pointer $wand
 )
-returns AlignType 
+returns uint32
 is native(&library)
 is export { * };
 
@@ -744,7 +747,7 @@ DrawGetTextDecoration() returns the decoration applied when annotating with text
 sub DrawGetTextDecoration(
    Pointer $wand
 )
-returns DecorationType 
+returns uint32 
 is native(&library)
 is export { * };
 
@@ -760,7 +763,7 @@ DrawGetTextDirection() returns the direction that will be used when annotating w
 sub DrawGetTextDirection(
    Pointer $wand
 )
-returns DirectionType 
+returns uint32
 is native(&library)
 is export { * };
 
@@ -805,7 +808,7 @@ is export { * };
 
 DrawGetTextInterlineSpacing() gets the spacing between lines in text.- wand: the drawing wand. 
 =end pod
-sub DrawGetTextInterwordSpacing(
+multi sub DrawGetTextInterwordSpacing(
    Pointer $wand
 )
 returns num64
@@ -821,7 +824,7 @@ is export { * };
 
 DrawGetTextInterwordSpacing() gets the spacing between words in text.- wand: the drawing wand. 
 =end pod
-sub DrawGetTextInterwordSpacing(
+multi sub DrawGetTextInterwordSpacing(
    Pointer $wand
 )
 returns num64
@@ -856,7 +859,7 @@ DrawGetTextUnderColor() returns the color of a background rectangle to place und
 =end pod
 sub DrawGetTextUnderColor(
    Pointer $wand,
-   PixelWandPointer $under_color
+   Pointer $under_color
 )
 is native(&library)
 is export { * };
@@ -873,10 +876,10 @@ DrawLine() draws a line on the image using the current stroke color, stroke opac
 =end pod
 sub DrawLine(
    Pointer $wand,
-   double $sx,
-   double $sy,
-   double $ex,
-   double $ey
+   num64 $sx,
+   num64 $sy,
+   num64 $ex,
+   num64 $ey
 )
 is native(&library)
 is export { * };
@@ -893,9 +896,9 @@ DrawMatte() paints on the image's opacity channel in order to set effected pixel
 =end pod
 sub DrawMatte(
    Pointer $wand,
-   double $x,
-   double $y,
-   PaintMethod $paint_method
+   num64 $x,
+   num64 $y,
+   uint32 $paint_method
 )
 is native(&library)
 is export { * };
@@ -928,12 +931,12 @@ DrawPathCurveToAbsolute() draws a cubic Bezier curve from the current point to (
 =end pod
 sub DrawPathCurveToAbsolute(
    Pointer $wand,
-   double $x1,
-   double $y1,
-   double $x2,
-   double $y2,
-   double $x,
-   double $y
+   num64 $x1,
+   num64 $y1,
+   num64 $x2,
+   num64 $y2,
+   num64 $x,
+   num64 $y
 )
 is native(&library)
 is export { * };
@@ -951,12 +954,12 @@ DrawPathCurveToRelative() draws a cubic Bezier curve from the current point to (
 =end pod
 sub DrawPathCurveToRelative(
    Pointer $wand,
-   double $x1,
-   double $y1,
-   double $x2,
-   double $y2,
-   double $x,
-   double $y
+   num64 $x1,
+   num64 $y1,
+   num64 $x2,
+   num64 $y2,
+   num64 $x,
+   num64 $y
 )
 is native(&library)
 is export { * };
@@ -973,10 +976,10 @@ DrawPathCurveToQuadraticBezierAbsolute() draws a quadratic Bezier curve from the
 =end pod
 sub DrawPathCurveToQuadraticBezierAbsolute(
    Pointer $wand,
-   double $x1,
-   double $y1,
-   double $x,
-   double $y
+   num64 $x1,
+   num64 $y1,
+   num64 $x,
+   num64 $y
 )
 is native(&library)
 is export { * };
@@ -993,10 +996,10 @@ DrawPathCurveToQuadraticBezierRelative() draws a quadratic Bezier curve from the
 =end pod
 sub DrawPathCurveToQuadraticBezierRelative(
    Pointer $wand,
-   double $x1,
-   double $y1,
-   double $x,
-   double $y
+   num64 $x1,
+   num64 $y1,
+   num64 $x,
+   num64 $y
 )
 is native(&library)
 is export { * };
@@ -1013,8 +1016,8 @@ DrawPathCurveToQuadraticBezierSmoothAbsolute() draws a quadratic Bezier curve (u
 =end pod
 sub DrawPathCurveToQuadraticBezierSmoothAbsolute(
    Pointer $wand,
-   double $x,
-   double $y
+   num64 $x,
+   num64 $y
 )
 is native(&library)
 is export { * };
@@ -1031,8 +1034,8 @@ DrawPathCurveToQuadraticBezierSmoothRelative() draws a quadratic Bezier curve (u
 =end pod
 sub DrawPathCurveToQuadraticBezierSmoothRelative(
    Pointer $wand,
-   double $x,
-   double $y
+   num64 $x,
+   num64 $y
 )
 is native(&library)
 is export { * };
@@ -1049,10 +1052,10 @@ DrawPathCurveToSmoothAbsolute() draws a cubic Bezier curve from the current poin
 =end pod
 sub DrawPathCurveToSmoothAbsolute(
    Pointer $wand,
-   double $x2,
-   double $y2,
-   double $x,
-   double $y
+   num64 $x2,
+   num64 $y2,
+   num64 $x,
+   num64 $y
 )
 is native(&library)
 is export { * };
@@ -1069,10 +1072,10 @@ DrawPathCurveToSmoothRelative() draws a cubic Bezier curve from the current poin
 =end pod
 sub DrawPathCurveToSmoothRelative(
    Pointer $wand,
-   double $x2,
-   double $y2,
-   double $x,
-   double $y
+   num64 $x2,
+   num64 $y2,
+   num64 $x,
+   num64 $y
 )
 is native(&library)
 is export { * };
@@ -1091,13 +1094,13 @@ DrawPathEllipticArcAbsolute() draws an elliptical arc from the current point to 
 =end pod
 sub DrawPathEllipticArcAbsolute(
    Pointer $wand,
-   double $rx,
-   double $ry,
-   double $x_axis_rotation,
+   num64 $rx,
+   num64 $ry,
+   num64 $x_axis_rotation,
    uint32 $large_arc_flag,
    uint32 $sweep_flag,
-   double $x,
-   double $y
+   num64 $x,
+   num64 $y
 )
 is native(&library)
 is export { * };
@@ -1116,13 +1119,13 @@ DrawPathEllipticArcRelative() draws an elliptical arc from the current point to 
 =end pod
 sub DrawPathEllipticArcRelative(
    Pointer $wand,
-   double $rx,
-   double $ry,
-   double $x_axis_rotation,
+   num64 $rx,
+   num64 $ry,
+   num64 $x_axis_rotation,
    uint32 $large_arc_flag,
    uint32 $sweep_flag,
-   double $x,
-   double $y
+   num64 $x,
+   num64 $y
 )
 is native(&library)
 is export { * };
@@ -1154,8 +1157,8 @@ DrawPathLineToAbsolute() draws a line path from the current point to the given c
 =end pod
 sub DrawPathLineToAbsolute(
    Pointer $wand,
-   double $x,
-   double $y
+   num64 $x,
+   num64 $y
 )
 is native(&library)
 is export { * };
@@ -1172,8 +1175,8 @@ DrawPathLineToRelative() draws a line path from the current point to the given c
 =end pod
 sub DrawPathLineToRelative(
    Pointer $wand,
-   double $x,
-   double $y
+   num64 $x,
+   num64 $y
 )
 is native(&library)
 is export { * };
@@ -1190,7 +1193,7 @@ DrawPathLineToHorizontalAbsolute() draws a horizontal line path from the current
 =end pod
 sub DrawPathLineToHorizontalAbsolute(
    Pointer $wand,
-   double $x
+   num64 $x
 )
 is native(&library)
 is export { * };
@@ -1207,7 +1210,7 @@ DrawPathLineToHorizontalRelative() draws a horizontal line path from the current
 =end pod
 sub DrawPathLineToHorizontalRelative(
    Pointer $wand,
-   double $x
+   num64 $x
 )
 is native(&library)
 is export { * };
@@ -1224,7 +1227,7 @@ DrawPathLineToVerticalAbsolute() draws a vertical line path from the current poi
 =end pod
 sub DrawPathLineToVerticalAbsolute(
    Pointer $wand,
-   double $y
+   num64 $y
 )
 is native(&library)
 is export { * };
@@ -1241,7 +1244,7 @@ DrawPathLineToVerticalRelative() draws a vertical line path from the current poi
 =end pod
 sub DrawPathLineToVerticalRelative(
    Pointer $wand,
-   double $y
+   num64 $y
 )
 is native(&library)
 is export { * };
@@ -1258,8 +1261,8 @@ DrawPathMoveToAbsolute() starts a new sub-path at the given coordinate using abs
 =end pod
 sub DrawPathMoveToAbsolute(
    Pointer $wand,
-   double $x,
-   double $y
+   num64 $x,
+   num64 $y
 )
 is native(&library)
 is export { * };
@@ -1276,8 +1279,8 @@ DrawPathMoveToRelative() starts a new sub-path at the given coordinate using rel
 =end pod
 sub DrawPathMoveToRelative(
    Pointer $wand,
-   double $x,
-   double $y
+   num64 $x,
+   num64 $y
 )
 is native(&library)
 is export { * };
@@ -1308,8 +1311,8 @@ DrawPoint() draws a point using the current fill color.- wand: the drawing wand.
 =end pod
 sub DrawPoint(
    Pointer $wand,
-   double $x,
-   double $y
+   num64 $x,
+   num64 $y
 )
 is native(&library)
 is export { * };
@@ -1327,7 +1330,7 @@ DrawPolygon() draws a polygon using the current stroke, stroke width, and fill c
 sub DrawPolygon(
    Pointer $wand,
    int32 $number_coordinates,
-   PointInfo * $coordinates
+   Pointer $coordinates
 )
 is native(&library)
 is export { * };
@@ -1345,7 +1348,7 @@ DrawPolyline() draws a polyline using the current stroke, stroke width, and fill
 sub DrawPolyline(
    Pointer $wand,
    int32 $number_coordinates,
-   PointInfo * $coordinates
+   Pointer $coordinates
 )
 is native(&library)
 is export { * };
@@ -1441,10 +1444,10 @@ DrawPushPattern() indicates that subsequent commands up to a DrawPopPattern() co
 sub DrawPushPattern(
    Pointer $wand,
    Str $pattern_id,
-   double $x,
-   double $y,
-   double $width,
-   double $height
+   num64 $x,
+   num64 $y,
+   num64 $width,
+   num64 $height
 )
 returns uint32 
 is native(&library)
@@ -1462,10 +1465,10 @@ DrawRectangle() draws a rectangle given two coordinates and using the current st
 =end pod
 sub DrawRectangle(
    Pointer $wand,
-   double $x1,
-   double $y1,
-   double $x2,
-   double $y2
+   num64 $x1,
+   num64 $y1,
+   num64 $x2,
+   num64 $y2
 )
 is native(&library)
 is export { * };
@@ -1496,7 +1499,7 @@ DrawRotate() applies the specified rotation to the current coordinate space.- wa
 =end pod
 sub DrawRotate(
    Pointer $wand,
-   double $degrees
+   num64 $degrees
 )
 is native(&library)
 is export { * };
@@ -1513,12 +1516,12 @@ DrawRoundRectangle() draws a rounted rectangle given two coordinates, x &amp; y 
 =end pod
 sub DrawRoundRectangle(
    Pointer $wand,
-   double $x1,
-   double $y1,
-   double $x2,
-   double $y2,
-   double $rx,
-   double $ry
+   num64 $x1,
+   num64 $y1,
+   num64 $x2,
+   num64 $y2,
+   num64 $rx,
+   num64 $ry
 )
 is native(&library)
 is export { * };
@@ -1534,8 +1537,8 @@ DrawScale() adjusts the scaling factor to apply in the horizontal and vertical d
 =end pod
 sub DrawScale(
    Pointer $wand,
-   double $x,
-   double $y
+   num64 $x,
+   num64 $y
 )
 is native(&library)
 is export { * };
@@ -1551,7 +1554,7 @@ DrawSetBorderColor() sets the border color to be used for drawing bordered objec
 =end pod
 sub DrawSetBorderColor(
    Pointer $wand,
-   PixelWandPointer $border_wand
+   Pointer $border_wand
 )
 is native(&library)
 is export { * };
@@ -1585,7 +1588,7 @@ DrawSetClipRule() set the polygon fill rule to be used by the clipping path.- wa
 =end pod
 sub DrawSetClipRule(
    Pointer $wand,
-   FillRule $fill_rule
+   uint32 $fill_rule
 )
 is native(&library)
 is export { * };
@@ -1602,7 +1605,7 @@ DrawSetClipUnits() sets the interpretation of clip path units.- wand: the drawin
 =end pod
 sub DrawSetClipUnits(
    Pointer $wand,
-   ClipPathUnits $clip_units
+   uint32 $clip_units
 )
 is native(&library)
 is export { * };
@@ -1636,7 +1639,7 @@ DrawSetFillColor() sets the fill color to be used for drawing filled objects.- w
 =end pod
 sub DrawSetFillColor(
    Pointer $wand,
-   PixelWandPointer $fill_wand
+   Pointer $fill_wand
 )
 is native(&library)
 is export { * };
@@ -1652,7 +1655,7 @@ DrawSetFillOpacity() sets the opacity to use when drawing using the fill color o
 =end pod
 sub DrawSetFillOpacity(
    Pointer $wand,
-   double $fill_opacity
+   num64 $fill_opacity
 )
 is native(&library)
 is export { * };
@@ -1669,8 +1672,8 @@ DrawSetFontResolution() sets the image resolution.- wand: the magick wand. - x_r
 =end pod
 sub DrawSetFontResolution(
    Pointer $wand,
-   double $x_resolution,
-   double $y_resolution
+   num64 $x_resolution,
+   num64 $y_resolution
 )
 returns uint32 
 is native(&library)
@@ -1687,7 +1690,7 @@ DrawSetOpacity() sets the opacity to use when drawing using the fill or stroke c
 =end pod
 sub DrawSetOpacity(
    Pointer $wand,
-   double $opacity
+   num64 $opacity
 )
 is native(&library)
 is export { * };
@@ -1721,7 +1724,7 @@ DrawSetFillRule() sets the fill rule to use while drawing polygons.- wand: the d
 =end pod
 sub DrawSetFillRule(
    Pointer $wand,
-   FillRule $fill_rule
+   uint32 $fill_rule
 )
 is native(&library)
 is export { * };
@@ -1772,7 +1775,7 @@ DrawSetFontSize() sets the font pointsize to use when annotating with text.- wan
 =end pod
 sub DrawSetFontSize(
    Pointer $wand,
-   double $pointsize
+   num64 $pointsize
 )
 is native(&library)
 is export { * };
@@ -1789,7 +1792,7 @@ DrawSetFontStretch() sets the font stretch to use when annotating with text. The
 =end pod
 sub DrawSetFontStretch(
    Pointer $wand,
-   StretchType $font_stretch
+   uint32 $font_stretch
 )
 is native(&library)
 is export { * };
@@ -1805,7 +1808,7 @@ DrawSetFontStyle() sets the font style to use when annotating with text. The Any
 =end pod
 sub DrawSetFontStyle(
    Pointer $wand,
-   StyleType $style
+   uint32 $style
 )
 is native(&library)
 is export { * };
@@ -1838,7 +1841,7 @@ DrawSetGravity() sets the text placement gravity to use when annotating with tex
 =end pod
 sub DrawSetGravity(
    Pointer $wand,
-   GravityType $gravity
+   uint32 $gravity
 )
 is native(&library)
 is export { * };
@@ -1855,7 +1858,7 @@ DrawSetStrokeColor() sets the color used for stroking object outlines.- wand: th
 =end pod
 sub DrawSetStrokeColor(
    Pointer $wand,
-   PixelWandPointer $stroke_wand
+   Pointer $stroke_wand
 )
 is native(&library)
 is export { * };
@@ -1908,7 +1911,7 @@ DrawSetStrokeDashArray() specifies the pattern of dashes and gaps used to stroke
 sub DrawSetStrokeDashArray(
    Pointer $wand,
    int32 $number_elements,
-   num64* $dasharray
+   CArray[num64] $dasharray
 )
 returns uint32 
 is native(&library)
@@ -1926,7 +1929,7 @@ DrawSetStrokeDashOffset() specifies the offset into the dash pattern to start th
 =end pod
 sub DrawSetStrokeDashOffset(
    Pointer $wand,
-   double $dash_offset
+   num64 $dash_offset
 )
 is native(&library)
 is export { * };
@@ -1943,7 +1946,7 @@ DrawSetStrokeLineCap() specifies the shape to be used at the end of open subpath
 =end pod
 sub DrawSetStrokeLineCap(
    Pointer $wand,
-   LineCap $linecap
+   uint32 $linecap
 )
 is native(&library)
 is export { * };
@@ -1960,7 +1963,7 @@ DrawSetStrokeLineJoin() specifies the shape to be used at the corners of paths (
 =end pod
 sub DrawSetStrokeLineJoin(
    Pointer $wand,
-   LineJoin $linejoin
+   uint32 $linejoin
 )
 is native(&library)
 is export { * };
@@ -1994,7 +1997,7 @@ DrawSetStrokeOpacity() specifies the opacity of stroked object outlines.- wand: 
 =end pod
 sub DrawSetStrokeOpacity(
    Pointer $wand,
-   double $stroke_opacity
+   num64 $stroke_opacity
 )
 is native(&library)
 is export { * };
@@ -2011,7 +2014,7 @@ DrawSetStrokeWidth() sets the width of the stroke used to draw object outlines.-
 =end pod
 sub DrawSetStrokeWidth(
    Pointer $wand,
-   double $stroke_width
+   num64 $stroke_width
 )
 is native(&library)
 is export { * };
@@ -2027,7 +2030,7 @@ DrawSetTextAlignment() specifies a text alignment to be applied when annotating 
 =end pod
 sub DrawSetTextAlignment(
    Pointer $wand,
-   AlignType $alignment
+   uint32 $alignment
 )
 is native(&library)
 is export { * };
@@ -2061,7 +2064,7 @@ DrawSetTextDecoration() specifies a decoration to be applied when annotating wit
 =end pod
 sub DrawSetTextDecoration(
    Pointer $wand,
-   DecorationType $decoration
+   uint32 $decoration
 )
 is native(&library)
 is export { * };
@@ -2078,7 +2081,7 @@ DrawSetTextDirection() specifies the direction to be used when annotating with t
 =end pod
 sub DrawSetTextDirection(
    Pointer $wand,
-   DirectionType $direction
+   uint32 $direction
 )
 is native(&library)
 is export { * };
@@ -2110,7 +2113,7 @@ DrawSetTextKerning() sets the spacing between characters in text.- wand: the dra
 =end pod
 sub DrawSetTextKerning(
    Pointer $wand,
-   double $kerning
+   num64 $kerning
 )
 is native(&library)
 is export { * };
@@ -2127,7 +2130,7 @@ DrawSetTextInterlineSpacing() sets the spacing between line in text.- wand: the 
 =end pod
 sub DrawSetTextInterlineSpacing(
    Pointer $wand,
-   double $interline_spacing
+   num64 $interline_spacing
 )
 is native(&library)
 is export { * };
@@ -2144,7 +2147,7 @@ DrawSetTextInterwordSpacing() sets the spacing between words in text.- wand: the
 =end pod
 sub DrawSetTextInterwordSpacing(
    Pointer $wand,
-   double $interword_spacing
+   num64 $interword_spacing
 )
 is native(&library)
 is export { * };
@@ -2161,7 +2164,7 @@ DrawSetTextUnderColor() specifies the color of a background rectangle to place u
 =end pod
 sub DrawSetTextUnderColor(
    Pointer $wand,
-   PixelWandPointer $under_wand
+   Pointer $under_wand
 )
 is native(&library)
 is export { * };
@@ -2195,7 +2198,7 @@ DrawSkewX() skews the current coordinate system in the horizontal direction.- wa
 =end pod
 sub DrawSkewX(
    Pointer $wand,
-   double $degrees
+   num64 $degrees
 )
 is native(&library)
 is export { * };
@@ -2211,7 +2214,7 @@ DrawSkewY() skews the current coordinate system in the vertical direction.- wand
 =end pod
 sub DrawSkewY(
    Pointer $wand,
-   double $degrees
+   num64 $degrees
 )
 is native(&library)
 is export { * };
@@ -2228,8 +2231,8 @@ DrawTranslate() applies a translation to the current coordinate system which mov
 =end pod
 sub DrawTranslate(
    Pointer $wand,
-   double $x,
-   double $y
+   num64 $x,
+   num64 $y
 )
 is native(&library)
 is export { * };
@@ -2246,10 +2249,10 @@ DrawSetViewbox() sets the overall canvas size to be recorded with the drawing ve
 =end pod
 sub DrawSetViewbox(
    Pointer $wand,
-   sint32 $x1,
-   sint32 $y1,
-   sint32 $x2,
-   sint32 $y2
+   uint32 $x1,
+   uint32 $y1,
+   uint32 $x2,
+   uint32 $y2
 )
 is native(&library)
 is export { * };
@@ -2279,9 +2282,7 @@ is export { * };
 
 NewDrawingWand() returns a drawing wand required for all other methods in the API.<h2><a href="http://www.imagemagick.org/api/MagickWand/drawing-wand_8c.html" id="PeekDrawingWand">PeekDrawingWand</a></h2>PeekDrawingWand() returns the current drawing wand.The format of the PeekDrawingWand method is:<pre class="text">DrawInfo \*PeekDrawingWand(const DrawingWand \*wand)</pre>- wand: the drawing wand. 
 =end pod
-sub NewDrawingWand(
-   v $oid
-)
+sub NewDrawingWand
 returns Pointer
 is native(&library)
 is export { * };

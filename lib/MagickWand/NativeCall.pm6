@@ -61,12 +61,3 @@ is export { * };
 sub NewMagickWand
   returns Pointer
   is native(&library) is export { * }
-
-#  DrawingWand *NewDrawingWand(void)
-sub NewDrawingWand
-  returns Pointer
-  is native(&library) is export { * }
-
-# void DrawLine(DrawingWand *wand,const double sx,const double sy, const double ex,const double ey)
-sub DrawLine(Pointer $wand, num64 $sx, num64 $sy, num64 $ex, num64 $ey)
-  is native(&library) is export { * }

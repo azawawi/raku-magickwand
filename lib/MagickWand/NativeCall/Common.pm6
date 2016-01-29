@@ -33,6 +33,10 @@ class RectangeInfo is repr('CStruct') {
   #TODO implement RectangeInfo
 }
 
+class PointInfo is repr('CStruct') {
+  #TODO implement PointInfo
+}
+
 #TODO ChannelFeatures
 #TODO ChannelStatistics
 #TODO enum ChannelType
@@ -67,3 +71,15 @@ class RectangeInfo is repr('CStruct') {
 #TODO VirtualPixelMethod 
 #TODO StatisticType
 #TODO ExceptionType
+#TODO AffineMatrix
+#TODO PaintMethod
+#TODO FillRule
+#TODO ClipPathUnits
+#TODO DrawBooleanType
+#TODO StretchType
+#TODO StyleType
+#TODO LineCap
+#TODO LineJoin
+#TODO AlignType
+#TODO DecorationType
+#TODO DirectionType
