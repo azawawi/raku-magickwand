@@ -31,28 +31,3 @@ enum ChannelType  is export (
   DefaultChannels   => ((AllChannels | SyncChannels) &~ OpacityChannel),
 );
 =end stash
-
-=begin stash
-
-=head1 MagickReadImageBlob
-
-    MagickBooleanType MagickReadImageBlob(
-      MagickWand *wand,
-      const void *blob,
-      const size_t length
-    )
-
-  MagickReadImageBlob() reads an image or image sequence from a blob.
-  - wand: the magick wand.
-  - blob: the blob.
-  - length: the blob length.
-
-sub MagickReadImageBlob(
-   MagickWandPointer $wand,
-   Pointer[z] $blob,
-   int32  $length
-)
-returns uint32
-is native(&library)
-is export { * };
-=end stash
