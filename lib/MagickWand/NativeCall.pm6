@@ -62,24 +62,6 @@ sub NewMagickWand
   returns Pointer
   is native(&library) is export { * }
 
-# MagickWand *CloneMagickWand(const MagickWand *wand)
-sub CloneMagickWand(Pointer $wand)
-  returns Pointer
-  is native(&library) is export { * }
-
-# MagickWand *DestroyMagickWand(MagickWand *wand)
-sub DestroyMagickWand(Pointer $wand)
-  returns Pointer
-  is native(&library) is export { * }
-
-# void MagickSetLastIterator(MagickWand *wand)
-sub MagickSetLastIterator(Pointer $wand)
-  is native(&library) is export { * }
-
-# void MagickSetFirstIterator(MagickWand *wand)
-sub MagickSetFirstIterator(Pointer $wand)
-  is native(&library) is export { * }
-
 #  DrawingWand *NewDrawingWand(void)
 sub NewDrawingWand
   returns Pointer

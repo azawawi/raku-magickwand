@@ -66,3 +66,4 @@ class RectangeInfo is repr('CStruct') {
 #TODO MagickProgressMonitor
 #TODO VirtualPixelMethod 
 #TODO StatisticType
+#TODO ExceptionType
