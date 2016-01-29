@@ -37,6 +37,9 @@ class PointInfo is repr('CStruct') {
   #TODO implement PointInfo
 }
 
+#TODO ImageInfo
+#TODO ExceptionInfo
+#TODO MagickCommand
 #TODO ChannelFeatures
 #TODO ChannelStatistics
 #TODO enum ChannelType
