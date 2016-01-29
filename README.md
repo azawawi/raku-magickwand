@@ -28,8 +28,10 @@ $wand.auto-gamma;
 # And then write a new image
 $wand.write-image("output.png");
 
-# And cleanup...
-$wand.cleanup;
+# And cleanup on exit
+LEAVE {
+  $o.cleanup if $o.defined;
+}
 ```
 
 For more examples, please see the [examples](examples) folder.

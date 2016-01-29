@@ -97,5 +97,8 @@ submethod append-wands(+@wands) returns MagickWand {
 }
 
 method cleanup {
-  DestroyMagickWand($.handle) if $.handle.defined;
+  if $.handle.defined {
+    DestroyMagickWand($.handle);
+    $.handle = Nil;
+  }
 }

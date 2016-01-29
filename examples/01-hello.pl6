@@ -26,8 +26,10 @@ my $comparison = MagickWand.append-wands( $original, $filtered, $charcoaled );
 # And then write a new image
 $comparison.write-image("output.png");
 
-# And cleanup...
-$original.cleanup;
-$filtered.cleanup;
-$charcoaled.cleanup;
-$comparison.cleanup;
+# And cleanup on exit
+LEAVE {
+  $original.cleanup   if $original.defined;
+  $original.cleanup   if $filtered.defined;
+  $charcoaled.cleanup if $charcoaled.defined;
+  $comparison.cleanup if $comparison.defined;
+}
