@@ -56,8 +56,3 @@ returns uint32
 is native(&library)
 is export { * };
 =end stash
-
-# MagickWand *NewMagickWand(void)
-sub NewMagickWand
-  returns Pointer
-  is native(&library) is export { * }
