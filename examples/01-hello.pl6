@@ -24,7 +24,7 @@ $charcoaled.charcoal(20.0,1.0);
 my $comparison = MagickWand.append-wands( $original, $filtered, $charcoaled );
 
 # And then write a new image
-$comparison.write-image("output.png");
+$comparison.write("output.png");
 
 # And cleanup on exit
 LEAVE {

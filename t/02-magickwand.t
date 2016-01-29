@@ -3,7 +3,7 @@ use v6;
 use Test;
 use lib 'lib';
 
-plan 4;
+plan 6;
 
 use MagickWand;
 
@@ -24,8 +24,13 @@ constant IMAGE-FILENAME = "t/images/aero1.jpg";
   ok $o.read(IMAGE-FILENAME), "read() works";
   ok !$o.read("not-found.jpg"), "read() fails gracefully for non-existant files";
 
+  my $temp-file-name = "temp.png";
+  ok $o.write($temp-file-name), "write() works";
+  ok $temp-file-name.IO ~~ :e, "write() output file exists";
+
   LEAVE {
     $o.cleanup if $o.defined;
+    $temp-file-name.IO.unlink;
   }
 }
 

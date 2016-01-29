@@ -26,7 +26,7 @@ $wand.read("examples/images/aero1.jpg");
 $wand.auto-gamma;
 
 # And then write a new image
-$wand.write-image("output.png");
+$wand.write("output.png");
 
 # And cleanup on exit
 LEAVE {

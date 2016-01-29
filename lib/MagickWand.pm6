@@ -46,7 +46,7 @@ method charcoal(Rat $radius, Rat $sigma) returns Bool {
   return MagickCharcoalImage( $.handle, $radius.Num, $sigma.Num ) == MagickTrue;
 }
 
-method write-image(Str $file-name) returns Bool {
+method write(Str $file-name) returns Bool {
   die "No wand handle defined!" unless $.handle.defined;
   return MagickWriteImage( $.handle, $file-name ) == MagickTrue;
 }
