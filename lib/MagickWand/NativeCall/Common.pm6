@@ -83,3 +83,7 @@ class PointInfo is repr('CStruct') {
 #TODO AlignType
 #TODO DecorationType
 #TODO DirectionType
+#TODO Quantum
+#TODO IndexPacket
+#TODO MagickPixelPacket
+#TODO PixelPacket

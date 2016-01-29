@@ -13,6 +13,7 @@
     "MagickWand::NativeCall::Common"       : "lib/MagickWand/NativeCall/Common.pm6",
     "MagickWand::NativeCall::DrawingWand"  : "lib/MagickWand/NativeCall/DrawingWand.pm6",
     "MagickWand::NativeCall::Image"        : "lib/MagickWand/NativeCall/Image.pm6",
+    "MagickWand::NativeCall::PixelWand"    : "lib/MagickWand/NativeCall/PixelWand.pm6"
     "MagickWand::NativeCall::Wand"         : "lib/MagickWand/NativeCall/Wand.pm6"
   },
   "resources"     : [ ],
