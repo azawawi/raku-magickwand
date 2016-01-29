@@ -14,6 +14,13 @@ method read(Str $file-name) returns Bool {
   return MagickReadImage( $.handle, $file-name ) == MagickTrue;
 }
 
+=begin stash
+method read-buffer(Buf :$buffer) returns Bool {
+  $.handle = NewMagickWand unless $.handle.defined;
+  return MagickReadImageBlob( $.handle, $blob ) == MagickTrue;
+}
+=end stash
+
 method get-image-gamma returns Num {
   die "No wand handle defined!" unless $.handle.defined;
   return MagickGetImageGamma( $.handle );
