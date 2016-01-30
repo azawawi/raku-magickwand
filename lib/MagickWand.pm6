@@ -328,6 +328,26 @@ method emboss(Real $radius, Real $sigma) returns Bool {
   return MagickEmbossImage( $.handle, $radius.Num, $sigma.Num ) == MagickTrue;
 }
 
+method equalize() {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickEqualizeImage( $.handle ) == MagickTrue;
+}
+
+method implode(Real $radius) returns Bool {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickImplodeImage( $.handle, $radius.Num ) == MagickTrue;
+}
+
+method flip() {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickFlipImage( $.handle ) == MagickTrue;
+}
+
+method flop() {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickFlopImage( $.handle ) == MagickTrue;
+}
+
 method cleanup {
   if $.handle.defined {
     DestroyMagickWand($.handle);

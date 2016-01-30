@@ -207,37 +207,39 @@ for CompositeOperator.enums -> $op
   @images.push($o);
 }
 
+{
+  say "Equalize...";
+  my $o = $original.clone;
+  $o.equalize;
+  $o.label("Equalize");
+  @images.push($o);
+}
+
+{
+  say "Explode (i.e. reverse implode)...";
+  my $o = $original.clone;
+  $o.implode(-1);
+  $o.label("Explode");
+  @images.push($o);
+}
+
+{
+  say "Flip...";
+  my $o = $original.clone;
+  $o.flip;
+  $o.label("Flip");
+  @images.push($o);
+}
+
+{
+  say "Flop...";
+  my $o = $original.clone;
+  $o.flop;
+  $o.label("Flop");
+  @images.push($o);
+}
+
 =begin TODO
-
-print "Emboss...\n";
-$example=$model->Clone();
-$example->Label('Emboss');
-$example->Emboss('0x1');
-
-
-print "Equalize...\n";
-$example=$model->Clone();
-$example->Label('Equalize');
-$example->Equalize();
-
-
-print "Implode...\n";
-$example=$model->Clone();
-$example->Label('Explode');
-$example->Implode(-1);
-
-
-print "Flip...\n";
-$example=$model->Clone();
-$example->Label('Flip');
-$example->Flip();
-
-
-print "Flop...\n";
-$example=$model->Clone();
-$example->Label('Flop');
-$example->Flop();
-
 
 print "Frame...\n";
 $example=$model->Clone();
