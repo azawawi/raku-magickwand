@@ -52,10 +52,16 @@ $ sudo apt-get install libmagickwand-dev
 
 ### MacOSX (Darwin)
 
-- To install ImageMagick libraries, please run:
+- To install ImageMagick libraries via [Homebrew](http://brew.sh/), please run:
 ```
 $ brew update
 $ brew install imagemagick
+```
+
+- To install ImageMagick libraries via [MacPorts](https://www.macports.org/),
+please run:
+```
+$ sudo port install ImageMagick
 ```
 
 ### Windows
