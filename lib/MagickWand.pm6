@@ -277,6 +277,11 @@ method convolve(@kernel) {
   return MagickConvolveImage( $.handle, $order, $kernel_carray );
 }
 
+method despeckle {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickDespeckleImage( $.handle );
+}
+
 method cleanup {
   if $.handle.defined {
     DestroyMagickWand($.handle);
