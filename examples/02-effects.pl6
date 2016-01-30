@@ -12,12 +12,15 @@ my @images;
 my $original = MagickWand.new;
 $original.read("examples/images/aero1.jpg");
 say $original.width, "x", $original.height;
+$original.label("Da Original");
 @images.push($original);
 
 # Read camelia image
 my $camelia  = MagickWand.new;
 $camelia.read("examples/images/camelia-logo.png");
 say $camelia.width, "x", $camelia.height;
+$camelia.label("I am Camelia");
+@images.push($camelia);
 
 {
   # And do some magic on it
