@@ -129,9 +129,24 @@ for CompositeOperator.enums -> $op
   @images.push($o);
 }
 
-my $comparison = MagickWand.append-wands( @images );
+{
+  say "Contrast";
+  my $o = $original.clone;
+  $o.contrast;
+  $o.label("Contrast");
+  @images.push($o);
+}
 
-# And then write a new image
+{
+  say "Contrast Stretch";
+  my $o = $original.clone;
+  $o.contrast-stretch(1.1, 1.1);
+  $o.label("Contrast Stretch");
+  @images.push($o);
+}
+
+# Side-by-side comparison of all images
+my $comparison = MagickWand.append-wands( @images );
 $comparison.write("output.png");
 
 # And cleanup on exit

@@ -843,7 +843,13 @@ is export { * };
     MagickBooleanType MagickContrastImage(MagickWand *wand,
       const MagickBooleanType sharpen)
 
-MagickContrastImage() enhances the intensity differences between the lighter and darker elements of the image.  Set sharpen to a value other than 0 to increase the image contrast otherwise the contrast is reduced.- wand: the magick wand. - sharpen: Increase or decrease image contrast. 
+MagickContrastImage() enhances the intensity differences between the lighter and
+darker elements of the image.  Set sharpen to a value other than 0 to increase
+the image contrast otherwise the contrast is reduced.
+
+- wand: the magick wand.
+- sharpen: Increase or decrease image contrast.
+
 =end pod
 sub MagickContrastImage(
    Pointer $wand,
@@ -863,7 +869,15 @@ is export { * };
       const ChannelType channel,const double black_point,
       const double white_point)
 
-MagickContrastStretchImage() enhances the contrast of a color image by adjusting the pixels color to span the entire range of colors available. You can also reduce the influence of a particular channel with a gamma value of 0.- wand: the magick wand. - channel: the image channel(s). - black_point: the black point. - white_point: the white point. 
+MagickContrastStretchImage() enhances the contrast of a color image by adjusting
+the pixels color to span the entire range of colors available. You can also
+reduce the influence of a particular channel with a gamma value of 0.
+
+- wand: the magick wand.
+- channel: the image channel(s).
+- black_point: the black point.
+- white_point: the white point.
+
 =end pod
 sub MagickContrastStretchImage(
    Pointer $wand,

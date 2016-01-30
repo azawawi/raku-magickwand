@@ -259,6 +259,16 @@ method composite(MagickWand $camelia, CompositeOperator $compose, Int $x, Int $y
   return MagickCompositeImage( $.handle, $camelia.handle, $compose.Int, $x, $y ) == MagickTrue;
 }
 
+method contrast(Int $sharpen = 0) {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickContrastImage( $.handle, $sharpen );
+}
+
+method contrast-stretch(Real $black_point, Real $white_point) {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickContrastStretchImage( $.handle, $black_point.Num, $white_point.Num );
+}
+
 method cleanup {
   if $.handle.defined {
     DestroyMagickWand($.handle);
