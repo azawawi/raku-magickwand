@@ -175,7 +175,13 @@ is export { * };
     MagickBooleanType MagickAddNoiseImageChannel(MagickWand *wand,
       const ChannelType channel,const uint32 noise_type)
 
-MagickAddNoiseImage() adds random noise to the image.- wand: the magick wand. - channel: the image channel(s). - noise_type:  The type of noise: Uniform, Gaussian, Multiplicative, Impulse, Laplacian, or Poisson. 
+MagickAddNoiseImage() adds random noise to the image.
+
+- wand: the magick wand.
+- channel: the image channel(s).
+- noise_type: The type of noise: Uniform, Gaussian, Multiplicative, Impulse,
+  Laplacian, or Poisson.
+
 =end pod
 sub MagickAddNoiseImage(
    Pointer $wand,

@@ -1,5 +1,8 @@
 use v6;
 
+enum NoiseType is export <UndefinedNoise UniformNoise GaussianNoise
+  MultiplicativeGaussianNoise ImpulseNoise LaplacianNoise PoissonNoise>;
+
 unit class MagickWand;
 
 use NativeCall;
@@ -127,6 +130,11 @@ method adaptive-sharpen(Rat $radius, Rat $sigma) {
 method adaptive-threshold(Int $width, Int $height, Int $offset) {
   die "No wand handle defined!" unless $.handle.defined;
   return MagickAdaptiveThresholdImage( $.handle, $width, $height, $offset ) == MagickTrue;
+}
+
+method add-noise(NoiseType $noise_type) {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickAddNoiseImage( $.handle, $noise_type.Int ) == MagickTrue;
 }
 
 method cleanup {

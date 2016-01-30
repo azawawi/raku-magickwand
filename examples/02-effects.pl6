@@ -43,6 +43,13 @@ $original.read("examples/images/aero1.jpg");
   @images.push($o);
 }
 
+{
+  my $o = $original.clone;
+  $o.add-noise(GaussianNoise);
+  $o.label("Add Noise");
+  @images.push($o);
+}
+
 my $comparison = MagickWand.append-wands( @images );
 
 # And then write a new image
