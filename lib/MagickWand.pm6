@@ -96,6 +96,13 @@ enum CompositeOperator is export <
   LightenIntensityCompositeOp
 >;
 
+enum MontageMode is export <
+  UndefinedMode,
+  FrameMode
+  UnframeMode
+  ConcatenateMode
+>;
+
 unit class MagickWand;
 
 use NativeCall;
@@ -346,6 +353,42 @@ method flip() {
 method flop() {
   die "No wand handle defined!" unless $.handle.defined;
   return MagickFlopImage( $.handle ) == MagickTrue;
+}
+
+submethod montage(
+   @wands,
+   Str $tile_geometry,
+   Str $thumbnail_geometry,
+   MontageMode $mode,
+   Str $frame
+) returns MagickWand
+{
+  my $temp-wand = NewMagickWand;
+  my $d_handle = NewDrawingWand;
+  MagickSetLastIterator($temp-wand);
+
+  # Add wands
+  for @wands -> $wand {
+    MagickAddImage($temp-wand, $wand.handle);
+    MagickSetLastIterator($temp-wand);
+  }
+
+  # Append them side-by-side horizontallly
+  MagickSetFirstIterator($temp-wand);
+  my $montaged-wand = MagickMontageImage(
+     $temp-wand,
+     $d_handle,
+     $tile_geometry,
+     $thumbnail_geometry,
+     $mode.Int,
+     $frame
+  );
+
+  # Cleanup
+  DestroyMagickWand( $temp-wand );
+  DestroyDrawingWand( $d_handle );
+
+  return MagickWand.new( handle => $montaged-wand );
 }
 
 method cleanup {

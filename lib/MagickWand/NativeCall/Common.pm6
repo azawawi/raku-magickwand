@@ -62,7 +62,6 @@ class PointInfo is repr('CStruct') {
 #TODO ImageType
 #TODO ResolutionType
 #TODO VirtualPixelMethod
-#TODO MontageMode
 #TODO PreviewType
 #TODO DitherMethod
 #TODO FilterTypes

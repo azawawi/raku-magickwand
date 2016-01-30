@@ -2785,7 +2785,20 @@ is export { * };
       const char *thumbnail_geometry,const MontageMode mode,
       const char *frame)
 
-MagickMontageImage() creates a composite image by combining several separate images. The images are tiled on the composite image with the name of the image optionally appearing just below the individual tile.- wand: the magick wand. - drawing_wand: the drawing wand.  The font name, size, and color are obtained from this wand. - tile_geometry: the number of tiles per row and page (e.g. 6x4+0+0). - thumbnail_geometry: Preferred image size and border size of each thumbnail (e.g. 120x120+4+3&gt;). - mode: Thumbnail framing mode: Frame, Unframe, or Concatenate. - frame: Surround the image with an ornamental border (e.g. 15x15+3+3). The frame color is that of the thumbnail's matte color. 
+MagickMontageImage() creates a composite image by combining several separate
+images. The images are tiled on the composite image with the name of the image
+optionally appearing just below the individual tile.
+
+- wand: the magick wand.
+- drawing_wand: the drawing wand.  The font name, size, and color are obtained
+from this wand.
+- tile_geometry: the number of tiles per row and page (e.g.6x4+0+0).
+- thumbnail_geometry: Preferred image size and border size of each
+thumbnail (e.g. 120x120+4+3>).
+- mode: Thumbnail framing mode: Frame, Unframe, or Concatenate.
+- frame: Surround the image with an ornamental border (e.g. 15x15+3+3). The
+frame color is that of the thumbnail's matte color.
+
 =end pod
 sub MagickMontageImage(
    Pointer $wand,

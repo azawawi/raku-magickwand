@@ -123,11 +123,10 @@ say $camelia.width, "x", $camelia.height;
 
 for CompositeOperator.enums -> $op
 {
-  say "Composite $op.key";
+  say "Composite {$op.key}";
   my $o = $original.clone;
   $o.composite($camelia, ::{$op.key}, 0, 15);
-  $o.annotate(0, 15, 0, $op.key);
-  $o.label("Composite");
+  $o.label($op.key);
   @images.push($o);
 }
 
@@ -493,10 +492,13 @@ $montage=$images->Montage(geometry=>'128x160+8+4>',gravity=>'Center',
 
 =end TODO
 
+my $montage = MagickWand.montage(@images, '5x+10+200', '128x160+8+4>', FrameMode, '15x15+3+3');
+$montage.write("tiled-output.png");
+
 # Side-by-side comparison of all images
 say "Generating side-by-side image(s) comparison...";
 my $comparison = MagickWand.append-wands( @images );
-$comparison.write("output.png");
+$comparison.write("side-by-side-output.png");
 
 # And cleanup on exit
 LEAVE {
