@@ -119,6 +119,16 @@ method adaptive-resize(Int $width, Int $height) {
   return MagickAdaptiveResizeImage( $.handle, $width, $height ) == MagickTrue;
 }
 
+method adaptive-sharpen(Rat $radius, Rat $sigma) {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickAdaptiveSharpenImage( $.handle, $radius.Num, $sigma.Num ) == MagickTrue;
+}
+
+method adaptive-threshold(Int $width, Int $height, Int $offset) {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickAdaptiveThresholdImage( $.handle, $width, $height, $offset ) == MagickTrue;
+}
+
 method cleanup {
   if $.handle.defined {
     DestroyMagickWand($.handle);

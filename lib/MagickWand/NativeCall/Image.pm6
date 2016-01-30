@@ -128,12 +128,21 @@ is export { * };
     MagickBooleanType MagickAdaptiveThresholdImage(MagickWand *wand,
       const size_t width,const size_t height,const ssize_t offset)
 
-MagickAdaptiveThresholdImage() selects an individual threshold for each pixel based on the range of intensity values in its local neighborhood.  This allows for thresholding of an image whose global intensity histogram doesn't contain distinctive peaks.- wand: the magick wand. - width: the width of the local neighborhood. - height: the height of the local neighborhood. - offset: the mean offset. 
+MagickAdaptiveThresholdImage() selects an individual threshold for each pixel
+based on the range of intensity values in its local neighborhood.  This allows
+for thresholding of an image whose global intensity histogram doesn't contain
+distinctive peaks.
+
+- wand: the magick wand.
+- width: the width of the local neighborhood.
+- height: the height of the local neighborhood.
+- offset: the mean offset.
+
 =end pod
 sub MagickAdaptiveThresholdImage(
    Pointer $wand,
-   int32 $width,
-   int32 $height,
+   uint32 $width,
+   uint32 $height,
    uint32 $offset
 )
 returns uint32 

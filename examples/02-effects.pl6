@@ -17,7 +17,7 @@ $original.read("examples/images/aero1.jpg");
 {
   # And do some magic on it
   my $o = $original.clone;
-  $o.adaptive-blur(5.0, 1.0);
+  $o.adaptive-blur(0.0, 1.0);
   $o.label("Adaptive Blur");
   @images.push($o);
 }
@@ -26,6 +26,20 @@ $original.read("examples/images/aero1.jpg");
   my $o = $original.clone;
   $o.adaptive-resize(320, 240);
   $o.label("Adaptive Resize");
+  @images.push($o);
+}
+
+{
+  my $o = $original.clone;
+  $o.adaptive-sharpen(0.0, 1.0);
+  $o.label("Adaptive Sharpen");
+  @images.push($o);
+}
+
+{
+  my $o = $original.clone;
+  $o.adaptive-threshold(5, 5, 5);
+  $o.label("Adaptive Threshold");
   @images.push($o);
 }
 
