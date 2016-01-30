@@ -225,7 +225,15 @@ is export { * };
       const DrawingWand *drawing_wand,const double x,const double y,
       const double angle,const char *text)
 
-MagickAnnotateImage() annotates an image with text.- wand: the magick wand. - drawing_wand: the draw wand. - x: x ordinate to left of text - y: y ordinate to text baseline - angle: rotate text relative to this angle. - text: text to draw 
+MagickAnnotateImage() annotates an image with text.
+
+- wand: the magick wand.
+- drawing_wand: the draw wand.
+- x: x ordinate to left of text
+- y: y ordinate to text baseline
+- angle: rotate text relative to this angle.
+- text: text to draw
+
 =end pod
 sub MagickAnnotateImage(
    Pointer $wand,

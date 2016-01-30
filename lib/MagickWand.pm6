@@ -137,9 +137,19 @@ method add-noise(NoiseType $noise_type) {
   return MagickAddNoiseImage( $.handle, $noise_type.Int ) == MagickTrue;
 }
 
+method annotate(Rat $x, Rat $y, Rat $angle, Str $text) {
+  die "No wand handle defined!" unless $.handle.defined;
+  $.d_handle = NewDrawingWand unless $.d_handle.defined;
+  MagickAnnotateImage( $.handle, $.d_handle, $x.Num, $y.Num, $angle.Num, $text ) == MagickTrue;
+}
+
 method cleanup {
   if $.handle.defined {
     DestroyMagickWand($.handle);
     $.handle = Nil;
+  }
+  if $.d_handle.defined {
+    DestroyDrawingWand($.d_handle);
+    $.d_handle = Nil;
   }
 }

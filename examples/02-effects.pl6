@@ -50,6 +50,13 @@ $original.read("examples/images/aero1.jpg");
   @images.push($o);
 }
 
+{
+  my $o = $original.clone;
+  $o.annotate(100.0, 100.0, 90.0, "Annotate");
+  $o.label("Annotate");
+  @images.push($o);
+}
+
 my $comparison = MagickWand.append-wands( @images );
 
 # And then write a new image
