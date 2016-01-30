@@ -57,6 +57,20 @@ $original.read("examples/images/aero1.jpg");
   @images.push($o);
 }
 
+{
+  my $o = $original.clone;
+  $o.auto-gamma;
+  $o.label("Auto Gamma");
+  @images.push($o);
+}
+
+{
+  my $o = $original.clone;
+  $o.auto-level;
+  $o.label("Auto Level");
+  @images.push($o);
+}
+
 my $comparison = MagickWand.append-wands( @images );
 
 # And then write a new image
