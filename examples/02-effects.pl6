@@ -119,10 +119,11 @@ $camelia.read("examples/images/camelia-logo.png");
   say "TODO ColorMatrix";
 }
 
+for CompositeOperator.enums -> $op
 {
-  say "Composite";
+  say "Composite $op";
   my $o = $original.clone;
-  $o.composite($camelia, OverCompositeOp, 0, 0);
+  $o.composite($camelia, CompositeOperator::{$op.key}, 0, 0);
   $o.label("Composite");
   @images.push($o);
 }
