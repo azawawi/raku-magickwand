@@ -1151,7 +1151,13 @@ is export { * };
 
     MagickBooleanType MagickEdgeImage(MagickWand *wand,const double radius)
 
-MagickEdgeImage() enhance edges within the image with a convolution filter of the given radius.  Use a radius of 0 and Edge() selects a suitable radius for you.- wand: the magick wand. - radius: the radius of the pixel neighborhood. 
+MagickEdgeImage() enhance edges within the image with a convolution filter of
+the given radius.  Use a radius of 0 and Edge() selects a suitable radius for
+you.
+
+- wand: the magick wand.
+- radius: the radius of the pixel neighborhood.
+
 =end pod
 sub MagickEdgeImage(
    Pointer $wand,
@@ -1168,7 +1174,16 @@ is export { * };
     MagickBooleanType MagickEmbossImage(MagickWand *wand,const double radius,
       const double sigma)
 
-MagickEmbossImage() returns a grayscale image with a three-dimensional effect.  We convolve the image with a Gaussian operator of the given radius and standard deviation (sigma).  For reasonable results, radius should be larger than sigma.  Use a radius of 0 and Emboss() selects a suitable radius for you.- wand: the magick wand. - radius: the radius of the Gaussian, in pixels, not counting the center pixel. - sigma: the standard deviation of the Gaussian, in pixels. 
+MagickEmbossImage() returns a grayscale image with a three-dimensional effect.
+We convolve the image with a Gaussian operator of the given radius and standard
+deviation (sigma).  For reasonable results, radius should be larger than sigma.
+Use a radius of 0 and Emboss() selects a suitable radius for you.
+
+- wand: the magick wand.
+- radius: the radius of the Gaussian, in pixels, not counting the
+center pixel.
+- sigma: the standard deviation of the Gaussian, in pixels.
+
 =end pod
 sub MagickEmbossImage(
    Pointer $wand,

@@ -146,7 +146,7 @@ method negate returns Bool {
   return MagickNegateImage( $.handle ) == MagickTrue;
 }
 
-method charcoal(Rat $radius, Rat $sigma) returns Bool {
+method charcoal(Real $radius, Real $sigma) returns Bool {
   die "No wand handle defined!" unless $.handle.defined;
   return MagickCharcoalImage( $.handle, $radius.Num, $sigma.Num ) == MagickTrue;
 }
@@ -172,7 +172,7 @@ method clone returns MagickWand {
   return MagickWand.new( handle => $cloned-wand );
 }
 
-method draw-line(Rat $x1, Rat $y1, Rat $x2, Rat $y2) {
+method draw-line(Real $x1, Real $y1, Real $x2, Real $y2) {
   die "No wand handle defined!" unless $.handle.defined;
   $.d_handle = NewDrawingWand unless $.d_handle.defined;
   DrawLine( $.d_handle, $x1.Num, $y1.Num, $x2.Num, $y2.Num);
@@ -206,7 +206,7 @@ method label(Str $label) {
   return MagickLabelImage( $.handle, $label ) == MagickTrue;
 }
 
-method adaptive-blur(Rat $radius, Rat $sigma) {
+method adaptive-blur(Real $radius, Real $sigma) {
   die "No wand handle defined!" unless $.handle.defined;
   return MagickAdaptiveBlurImage( $.handle, $radius.Num, $sigma.Num ) == MagickTrue;
 }
@@ -216,7 +216,7 @@ method adaptive-resize(Int $width, Int $height) {
   return MagickAdaptiveResizeImage( $.handle, $width, $height ) == MagickTrue;
 }
 
-method adaptive-sharpen(Rat $radius, Rat $sigma) {
+method adaptive-sharpen(Real $radius, Real $sigma) {
   die "No wand handle defined!" unless $.handle.defined;
   return MagickAdaptiveSharpenImage( $.handle, $radius.Num, $sigma.Num ) == MagickTrue;
 }
@@ -231,13 +231,13 @@ method add-noise(NoiseType $noise_type) {
   return MagickAddNoiseImage( $.handle, $noise_type.Int ) == MagickTrue;
 }
 
-method annotate(Rat $x, Rat $y, Rat $angle, Str $text) {
+method annotate(Real $x, Real $y, Real $angle, Str $text) {
   die "No wand handle defined!" unless $.handle.defined;
   $.d_handle = NewDrawingWand unless $.d_handle.defined;
   MagickAnnotateImage( $.handle, $.d_handle, $x.Num, $y.Num, $angle.Num, $text ) == MagickTrue;
 }
 
-method blur(Rat $radius, Rat $sigma) {
+method blur(Real $radius, Real $sigma) {
   die "No wand handle defined!" unless $.handle.defined;
   return MagickBlurImage( $.handle, $radius.Num, $sigma.Num ) == MagickTrue;
 }
@@ -316,6 +316,16 @@ method stroke(Str $color) {
 method stroke-width(Real $width) {
   $.d_handle = NewDrawingWand unless $.d_handle.defined;
   DrawSetStrokeWidth( $.d_handle, $width.Num );
+}
+
+method edge(Real $radius = 0) {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickEdgeImage( $.handle, $radius.Num ) == MagickTrue;
+}
+
+method emboss(Real $radius, Real $sigma) returns Bool {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickEmbossImage( $.handle, $radius.Num, $sigma.Num ) == MagickTrue;
 }
 
 method cleanup {

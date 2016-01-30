@@ -23,7 +23,7 @@ say $camelia.width, "x", $camelia.height;
   # And do some magic on it
   say "Adaptive Blur";
   my $o = $original.clone;
-  $o.adaptive-blur(0.0, 1.0);
+  $o.adaptive-blur(0, 1);
   $o.label("Adaptive Blur");
   @images.push($o);
 }
@@ -39,7 +39,7 @@ say $camelia.width, "x", $camelia.height;
 {
   say "Adaptive Sharpen";
   my $o = $original.clone;
-  $o.adaptive-sharpen(0.0, 1.0);
+  $o.adaptive-sharpen(0, 1);
   $o.label("Adaptive Sharpen");
   @images.push($o);
 }
@@ -63,7 +63,7 @@ say $camelia.width, "x", $camelia.height;
 {
   say "Annotate";
   my $o = $original.clone;
-  $o.annotate(100.0, 100.0, 90.0, "Annotate");
+  $o.annotate(100, 100, 90, "Annotate");
   $o.label("Annotate");
   @images.push($o);
 }
@@ -87,7 +87,7 @@ say $camelia.width, "x", $camelia.height;
 {
   say "Blur";
   my $o = $original.clone;
-  $o.blur(0.0, 1.0);
+  $o.blur(0, 1);
   $o.label("Blur");
   @images.push($o);
 }
@@ -111,7 +111,7 @@ say $camelia.width, "x", $camelia.height;
 {
   say "Charcoal";
   my $o = $original.clone;
-  $o.charcoal(20.0,1.0);
+  $o.charcoal(20,1);
   $o.label("Charcoal");
   @images.push($o);
 }
@@ -126,7 +126,7 @@ for CompositeOperator.enums -> $op
   say "Composite $op.key";
   my $o = $original.clone;
   $o.composite($camelia, ::{$op.key}, 0, 15);
-  $o.annotate(0.0, 15.0, 0.0, $op.key);
+  $o.annotate(0, 15, 0, $op.key);
   $o.label("Composite");
   @images.push($o);
 }
@@ -191,20 +191,23 @@ for CompositeOperator.enums -> $op
   @images.push($o);
 }
 
+{
+  say "Detect Edges...";
+  my $o = $original.clone;
+  $o.edge;
+  $o.label("Detect Edges");
+  @images.push($o);
+}
+
+{
+  say "Emboss...";
+  my $o = $original.clone;
+  $o.emboss(0, 1);
+  $o.label("Emboss");
+  @images.push($o);
+}
+
 =begin TODO
-
-print "Draw...\n";
-$example=$model->Clone();
-$example->Label('Draw');
-$example->Draw(fill=>'none',stroke=>'gold',primitive=>'circle',
-  points=>'60,90 60,120',strokewidth=>2);
-
-
-print "Detect Edges...\n";
-$example=$model->Clone();
-$example->Label('Detect Edges');
-$example->Edge();
-
 
 print "Emboss...\n";
 $example=$model->Clone();
