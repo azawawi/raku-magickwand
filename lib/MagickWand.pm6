@@ -282,6 +282,16 @@ method despeckle {
   return MagickDespeckleImage( $.handle );
 }
 
+method width {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickGetImageWidth($.handle);
+}
+
+method height {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickGetImageHeight($.handle);
+}
+
 method cleanup {
   if $.handle.defined {
     DestroyMagickWand($.handle);

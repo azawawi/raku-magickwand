@@ -8,14 +8,16 @@ use MagickWand;
 # Store images so we can montage them later
 my @images;
 
-my $original = MagickWand.new;
 # Read the original image
+my $original = MagickWand.new;
 $original.read("examples/images/aero1.jpg");
+say $original.width, "x", $original.height;
 @images.push($original);
 
 # Read camelia image
 my $camelia  = MagickWand.new;
 $camelia.read("examples/images/camelia-logo.png");
+say $camelia.width, "x", $camelia.height;
 
 {
   # And do some magic on it
