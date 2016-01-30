@@ -104,6 +104,21 @@ submethod append-wands(+@wands) returns MagickWand {
   return MagickWand.new( handle => $cloned-wand );
 }
 
+method label(Str $label) {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickLabelImage( $.handle, $label ) == MagickTrue;
+}
+
+method adaptive-blur(Rat $radius, Rat $sigma) {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickAdaptiveBlurImage( $.handle, $radius.Num, $sigma.Num ) == MagickTrue;
+}
+
+method adaptive-resize(Int $width, Int $height) {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickAdaptiveResizeImage( $.handle, $width, $height ) == MagickTrue;
+}
+
 method cleanup {
   if $.handle.defined {
     DestroyMagickWand($.handle);

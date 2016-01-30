@@ -64,19 +64,50 @@ is export { * };
 =begin pod
 =head1 MagickAdaptiveResizeImage
 
-    MagickBooleanType MagickAdaptiveSharpenImage(MagickWand *wand,
-      const double radius,const double sigma)
-    MagickBooleanType MagickAdaptiveSharpenImageChannel(MagickWand *wand,
-      const ChannelType channel,const double radius,const double sigma)
+    MagickBooleanType MagickAdaptiveResizeImage(MagickWand *wand, const size_t columns,const size_t rows)
 
-MagickAdaptiveResizeImage() adaptively resize image with data dependent triangulation.MagickBooleanType MagickAdaptiveResizeImage(MagickWand \*wand, const size_t columns,const size_t rows)- wand: the magick wand. - columns: the number of columns in the scaled image. - rows: the number of rows in the scaled image. <h2><a href="http://www.imagemagick.org/api/MagickWand/magick-image_8c.html" id="MagickAdaptiveSharpenImage">MagickAdaptiveSharpenImage</a></h2>MagickAdaptiveSharpenImage() adaptively sharpens the image by sharpening more intensely near image edges and less intensely far from edges. We sharpen the image with a Gaussian operator of the given radius and standard deviation (sigma).  For reasonable results, radius should be larger than sigma.  Use a radius of 0 and MagickAdaptiveSharpenImage() selects a suitable radius for you.- wand: the magick wand. - channel: the image channel(s). - radius: the radius of the Gaussian, in pixels, not counting the center pixel. - sigma: the standard deviation of the Gaussian, in pixels. 
+MagickAdaptiveResizeImage() adaptively resize image with data dependent triangulation.
+- wand: the magick wand.
+- columns: the number of columns in the scaled image.
+- rows: the number of rows in the scaled image.
+
+=end pod
+sub MagickAdaptiveResizeImage(
+   Pointer $wand,
+   uint32 $columns,
+   uint32 $rows
+)
+returns uint32
+is native(&library)
+is export { * };
+
+=begin pod
+=head1 MagickAdaptiveSharpenImage
+
+MagickBooleanType MagickAdaptiveSharpenImage(MagickWand *wand,
+  const double radius,const double sigma)
+MagickBooleanType MagickAdaptiveSharpenImageChannel(MagickWand *wand,
+  const ChannelType channel,const double radius,const double sigma)
+
+MagickAdaptiveSharpenImage() adaptively sharpens the image by sharpening more
+intensely near image edges and less intensely far from edges. We sharpen the
+image with a Gaussian operator of the given radius and standard deviation (sigma).
+For reasonable results, radius should be larger than sigma.
+Use a radius of 0 and MagickAdaptiveSharpenImage() selects a suitable radius
+for you.
+
+- wand: the magick wand.
+- channel: the image channel(s).
+- radius: the radius of the Gaussian, in pixels, not counting the center pixel.
+- sigma: the standard deviation of the Gaussian, in pixels.
+
 =end pod
 sub MagickAdaptiveSharpenImage(
    Pointer $wand,
    num64 $radius,
    num64 $sigma
 )
-returns uint32 
+returns uint32
 is native(&library)
 is export { * };
 
