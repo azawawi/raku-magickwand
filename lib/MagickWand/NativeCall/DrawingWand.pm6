@@ -1635,7 +1635,11 @@ is export { * };
 
     void DrawSetFillColor(DrawingWand *wand,const PixelWand *fill_wand)
 
-DrawSetFillColor() sets the fill color to be used for drawing filled objects.- wand: the drawing wand. - fill_wand: fill wand. 
+DrawSetFillColor() sets the fill color to be used for drawing filled objects.
+
+- wand: the drawing wand.
+- fill_wand: fill wand.
+
 =end pod
 sub DrawSetFillColor(
    Pointer $wand,
@@ -1854,7 +1858,11 @@ is export { * };
     void DrawSetStrokeColor(DrawingWand *wand,
       const PixelWand *stroke_wand)
 
-DrawSetStrokeColor() sets the color used for stroking object outlines.- wand: the drawing wand. - stroke_wand: stroke wand. 
+DrawSetStrokeColor() sets the color used for stroking object outlines.
+
+- wand: the drawing wand.
+- stroke_wand: stroke wand.
+
 =end pod
 sub DrawSetStrokeColor(
    Pointer $wand,

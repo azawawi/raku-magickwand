@@ -292,6 +292,32 @@ method height {
   return MagickGetImageHeight($.handle);
 }
 
+method circle(Real $ox, Real $oy, Real $px, Real $py) {
+  die "No wand handle defined!" unless $.handle.defined;
+  $.d_handle = NewDrawingWand unless $.d_handle.defined;
+  DrawCircle( $.d_handle, $ox.Num, $oy.Num, $px.Num, $py.Num);
+  MagickDrawImage( $.handle, $.d_handle )
+}
+
+method fill(Str $color) {
+  $.d_handle = NewDrawingWand unless $.d_handle.defined;
+  $.p_handle = NewPixelWand unless $.p_handle.defined;
+  die "Failed to set fill color " unless PixelSetColor( $.p_handle, $color);
+  DrawSetFillColor( $.d_handle, $.p_handle );
+}
+
+method stroke(Str $color) {
+  $.d_handle = NewDrawingWand unless $.d_handle.defined;
+  $.p_handle = NewPixelWand unless $.p_handle.defined;
+  die "Failed to set stroke color " unless PixelSetColor( $.p_handle, $color);
+  DrawSetStrokeColor( $.d_handle, $.p_handle );
+}
+
+method stroke-width(Real $width) {
+  $.d_handle = NewDrawingWand unless $.d_handle.defined;
+  DrawSetStrokeWidth( $.d_handle, $width.Num );
+}
+
 method cleanup {
   if $.handle.defined {
     DestroyMagickWand($.handle);

@@ -172,12 +172,26 @@ for CompositeOperator.enums -> $op
 }
 
 =begin TODO
+{
+  say "Distort";
+  my $o = $original.clone;
+  $example->Label('Distort');
+  $example->Distort(method=>'arc',points=>[60],'virtual-pixel'=>'white');
+}
+=end TODO
 
-print "Distort...\n";
-$example=$model->Clone();
-$example->Label('Distort');
-$example->Distort(method=>'arc',points=>[60],'virtual-pixel'=>'white');
+{
+  say "Circle";
+  my $o = $original.clone;
+  $o.fill( 'none' );
+  $o.stroke( 'gold' );
+  $o.stroke-width( 2 );
+  $o.circle( 60, 90, 60, 120 );
+  $o.label("Circle");
+  @images.push($o);
+}
 
+=begin TODO
 
 print "Draw...\n";
 $example=$model->Clone();
@@ -475,6 +489,7 @@ $montage=$images->Montage(geometry=>'128x160+8+4>',gravity=>'Center',
 =end TODO
 
 # Side-by-side comparison of all images
+say "Generating side-by-side image(s) comparison...";
 my $comparison = MagickWand.append-wands( @images );
 $comparison.write("output.png");
 
