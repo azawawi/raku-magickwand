@@ -45,7 +45,7 @@ $original.read("examples/images/aero1.jpg");
 
 {
   my $o = $original.clone;
-  $o.add-noise(GaussianNoise);
+  $o.add-noise(LaplacianNoise);
   $o.label("Add Noise");
   @images.push($o);
 }
