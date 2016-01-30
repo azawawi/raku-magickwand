@@ -5,14 +5,17 @@ use v6;
 use lib 'lib';
 use MagickWand;
 
+# Store images so we can montage them later
 my @images;
 
-# A new magic wand
 my $original = MagickWand.new;
-
-# Read an image
+# Read the original image
 $original.read("examples/images/aero1.jpg");
 @images.push($original);
+
+# Read camelia image
+my $camelia  = MagickWand.new;
+$camelia.read("examples/images/camelia-logo.png");
 
 {
   # And do some magic on it
@@ -108,6 +111,19 @@ $original.read("examples/images/aero1.jpg");
   my $o = $original.clone;
   $o.charcoal(20.0,1.0);
   $o.label("Charcoal");
+  @images.push($o);
+}
+
+{
+  #TODO ColorMatrix
+  say "TODO ColorMatrix";
+}
+
+{
+  say "Composite";
+  my $o = $original.clone;
+  $o.composite($camelia, OverCompositeOp, 0, 0);
+  $o.label("Composite");
   @images.push($o);
 }
 

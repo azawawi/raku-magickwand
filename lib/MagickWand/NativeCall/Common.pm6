@@ -42,10 +42,8 @@ class PointInfo is repr('CStruct') {
 #TODO MagickCommand
 #TODO ChannelFeatures
 #TODO ChannelStatistics
-#TODO enum ChannelType
 #TODO enum MetricType 
 #TODO enum ImageLayerMethod
-#TODO enum CompositeOperator
 #TODO enum GravityType
 #TODO enum StorageType
 #TODO enum DistortImageMethod

@@ -25,6 +25,77 @@ enum ChannelType is export (
   DefaultChannels   => 0x7fffff7
 );
 
+enum CompositeOperator is export <
+  UndefinedCompositeOp
+  NoCompositeOp
+  ModulusAddCompositeOp
+  AtopCompositeOp
+  BlendCompositeOp
+  BumpmapCompositeOp
+  ChangeMaskCompositeOp
+  ClearCompositeOp
+  ColorBurnCompositeOp
+  ColorDodgeCompositeOp
+  ColorizeCompositeOp
+  CopyBlackCompositeOp
+  CopyBlueCompositeOp
+  CopyCompositeOp
+  CopyCyanCompositeOp
+  CopyGreenCompositeOp
+  CopyMagentaCompositeOp
+  CopyOpacityCompositeOp
+  CopyRedCompositeOp
+  CopyYellowCompositeOp
+  DarkenCompositeOp
+  DstAtopCompositeOp
+  DstCompositeOp
+  DstInCompositeOp
+  DstOutCompositeOp
+  DstOverCompositeOp
+  DifferenceCompositeOp
+  DisplaceCompositeOp
+  DissolveCompositeOp
+  ExclusionCompositeOp
+  HardLightCompositeOp
+  HueCompositeOp
+  InCompositeOp
+  LightenCompositeOp
+  LinearLightCompositeOp
+  LuminizeCompositeOp
+  MinusDstCompositeOp
+  ModulateCompositeOp
+  MultiplyCompositeOp
+  OutCompositeOp
+  OverCompositeOp
+  OverlayCompositeOp
+  PlusCompositeOp
+  ReplaceCompositeOp
+  SaturateCompositeOp
+  ScreenCompositeOp
+  SoftLightCompositeOp
+  SrcAtopCompositeOp
+  SrcCompositeOp
+  SrcInCompositeOp
+  SrcOutCompositeOp
+  SrcOverCompositeOp
+  ModulusSubtractCompositeOp
+  ThresholdCompositeOp
+  XorCompositeOp
+  DivideDstCompositeOp
+  DistortCompositeOp
+  BlurCompositeOp
+  PegtopLightCompositeOp
+  VividLightCompositeOp
+  PinLightCompositeOp
+  LinearDodgeCompositeOp
+  LinearBurnCompositeOp
+  MathematicsCompositeOp
+  DivideSrcCompositeOp
+  MinusSrcCompositeOp
+  DarkenIntensityCompositeOp
+  LightenIntensityCompositeOp
+>;
+
 unit class MagickWand;
 
 use NativeCall;
@@ -181,6 +252,11 @@ method border(Str $border_color, Int $width, Int $height) {
 method channel(ChannelType $channel_type) {
   die "No wand handle defined!" unless $.handle.defined;
   return MagickSeparateImageChannel( $.handle, $channel_type.Int ) == MagickTrue;
+}
+
+method composite(MagickWand $camelia, CompositeOperator $compose, Int $x, Int $y) {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickCompositeImage( $.handle, $camelia.handle, $compose.Int, $x, $y ) == MagickTrue;
 }
 
 method cleanup {
