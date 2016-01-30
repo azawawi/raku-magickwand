@@ -274,7 +274,6 @@ method convolve(@kernel) {
   my $order = @kernel.elems.sqrt.Int;
   my $kernel_carray = CArray[num32].new;
   $kernel_carray[$_] = @kernel[$_].Num for ^@kernel.elems;
-  say $kernel_carray.perl;
   return MagickConvolveImage( $.handle, $order, $kernel_carray );
 }
 

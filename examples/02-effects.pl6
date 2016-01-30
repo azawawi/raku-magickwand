@@ -153,6 +153,14 @@ for CompositeOperator.enums -> $op
   @images.push($o);
 }
 
+{
+  say "Crop";
+  my $o = $original.clone;
+  $o.crop( 50, 50, 100, 100 );
+  $o.label("Crop");
+  @images.push($o);
+}
+
 # Side-by-side comparison of all images
 my $comparison = MagickWand.append-wands( @images );
 $comparison.write("output.png");
