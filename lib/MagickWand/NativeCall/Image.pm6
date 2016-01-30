@@ -3485,7 +3485,13 @@ is export { * };
     MagickBooleanType MagickSeparateImageChannel(MagickWand *wand,
       const ChannelType channel)
 
-MagickSeparateImageChannel() separates a channel from the image and returns a grayscale image.  A channel is a particular color component of each pixel in the image.- wand: the magick wand. - channel: the image channel(s). 
+MagickSeparateImageChannel() separates a channel from the image and returns a
+grayscale image.  A channel is a particular color component of each pixel in the
+image.
+
+- wand: the magick wand.
+- channel: the image channel(s).
+
 =end pod
 sub MagickSeparateImageChannel(
    Pointer $wand,

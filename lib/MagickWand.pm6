@@ -3,6 +3,28 @@ use v6;
 enum NoiseType is export <UndefinedNoise UniformNoise GaussianNoise
   MultiplicativeGaussianNoise ImpulseNoise LaplacianNoise PoissonNoise>;
 
+enum ChannelType is export (
+  UndefinedChannel  => 0,
+  RedChannel        => 0x1,
+  GrayChannel       => 0x1,
+  CyanChannel       => 0x1,
+  GreenChannel      => 0x2,
+  MagentaChannel    => 0x2,
+  BlueChannel       => 0x4,
+  YellowChannel     => 0x4,
+  AlphaChannel      => 0x8,
+  OpacityChannel    => 0x8,
+  BlackChannel      => 0x20,
+  IndexChannel      => 0x20,
+  CompositeChannels => 0x2F,
+  AllChannels       => 0x7ffffff,
+  TrueAlphaChannel  => 0x40,
+  RGBChannels       => 0x80,
+  GrayChannels      => 0x80,
+  SyncChannels      => 0x100,
+  DefaultChannels   => 0x7fffff7
+);
+
 unit class MagickWand;
 
 use NativeCall;
@@ -154,6 +176,11 @@ method border(Str $border_color, Int $width, Int $height) {
   $.p_handle = NewPixelWand unless $.p_handle.defined;
   return (PixelSetColor( $.p_handle, $border_color) == MagickTrue) &&
     (MagickBorderImage( $.handle, $.p_handle, $width, $height ) == MagickTrue);
+}
+
+method channel(ChannelType $channel_type) {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickSeparateImageChannel( $.handle, $channel_type.Int ) == MagickTrue;
 }
 
 method cleanup {

@@ -80,8 +80,22 @@ $original.read("examples/images/aero1.jpg");
 
 {
   my $o = $original.clone;
-  $o.border("black", 6, 6);
+  $o.border("gold", 6, 6);
   $o.label("Border");
+  @images.push($o);
+}
+
+{
+  my $o = $original.clone;
+  $o.channel(RedChannel);
+  $o.label("Channel");
+  @images.push($o);
+}
+
+{
+  my $o = $original.clone;
+  $o.charcoal(20.0,1.0);
+  $o.label("Charcoal");
   @images.push($o);
 }
 
