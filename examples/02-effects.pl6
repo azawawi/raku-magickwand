@@ -16,6 +16,7 @@ $original.read("examples/images/aero1.jpg");
 
 {
   # And do some magic on it
+  say "Adaptive Blur";
   my $o = $original.clone;
   $o.adaptive-blur(0.0, 1.0);
   $o.label("Adaptive Blur");
@@ -23,6 +24,7 @@ $original.read("examples/images/aero1.jpg");
 }
 
 {
+  say "Adaptive Resize";
   my $o = $original.clone;
   $o.adaptive-resize( 160, 120 );
   $o.label("Adaptive Resize");
@@ -30,6 +32,7 @@ $original.read("examples/images/aero1.jpg");
 }
 
 {
+  say "Adaptive Sharpen";
   my $o = $original.clone;
   $o.adaptive-sharpen(0.0, 1.0);
   $o.label("Adaptive Sharpen");
@@ -37,6 +40,7 @@ $original.read("examples/images/aero1.jpg");
 }
 
 {
+  say "Adaptive Threshold";
   my $o = $original.clone;
   $o.adaptive-threshold(5, 5, 5);
   $o.label("Adaptive Threshold");
@@ -44,6 +48,7 @@ $original.read("examples/images/aero1.jpg");
 }
 
 {
+  say "Add Noise";
   my $o = $original.clone;
   $o.add-noise(LaplacianNoise);
   $o.label("Add Noise");
@@ -51,6 +56,7 @@ $original.read("examples/images/aero1.jpg");
 }
 
 {
+  say "Annotate";
   my $o = $original.clone;
   $o.annotate(100.0, 100.0, 90.0, "Annotate");
   $o.label("Annotate");
@@ -58,6 +64,7 @@ $original.read("examples/images/aero1.jpg");
 }
 
 {
+  say "Auto Gamma";
   my $o = $original.clone;
   $o.auto-gamma;
   $o.label("Auto Gamma");
@@ -65,6 +72,7 @@ $original.read("examples/images/aero1.jpg");
 }
 
 {
+  say "Auto Level";
   my $o = $original.clone;
   $o.auto-level;
   $o.label("Auto Level");
@@ -72,6 +80,7 @@ $original.read("examples/images/aero1.jpg");
 }
 
 {
+  say "Blur";
   my $o = $original.clone;
   $o.blur(0.0, 1.0);
   $o.label("Blur");
@@ -79,6 +88,7 @@ $original.read("examples/images/aero1.jpg");
 }
 
 {
+  say "Border";
   my $o = $original.clone;
   $o.border("gold", 6, 6);
   $o.label("Border");
@@ -86,6 +96,7 @@ $original.read("examples/images/aero1.jpg");
 }
 
 {
+  say "Channel";
   my $o = $original.clone;
   $o.channel(RedChannel);
   $o.label("Channel");
@@ -93,6 +104,7 @@ $original.read("examples/images/aero1.jpg");
 }
 
 {
+  say "Charcoal";
   my $o = $original.clone;
   $o.charcoal(20.0,1.0);
   $o.label("Charcoal");
