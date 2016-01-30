@@ -908,12 +908,18 @@ is export { * };
       const ChannelType channel,const size_t order,
       const double *kernel)
 
-MagickConvolveImage() applies a custom convolution kernel to the image.- wand: the magick wand. - channel: the image channel(s). - order: the number of columns and rows in the filter kernel. - kernel: An array of doubles representing the convolution kernel. 
+MagickConvolveImage() applies a custom convolution kernel to the image.
+
+- wand: the magick wand.
+- channel: the image channel(s).
+- order: the number of columns and rows in the filter kernel.
+- kernel: An array of doubles representing the convolution kernel.
+
 =end pod
 sub MagickConvolveImage(
    Pointer $wand,
-   int32 $order,
-   CArray[num64] $kernel
+   uint32 $order,
+   CArray[num] $kernel
 )
 returns uint32 
 is native(&library)
@@ -922,8 +928,8 @@ is export { * };
 sub MagickConvolveImageChannel(
    Pointer $wand,
    uint32 $channel,
-   int32 $order,
-   CArray[num64] $kernel
+   uint32 $order,
+   CArray[num] $kernel
 )
 returns uint32
 is native(&library)

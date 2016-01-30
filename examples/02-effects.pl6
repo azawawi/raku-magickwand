@@ -145,6 +145,15 @@ for CompositeOperator.enums -> $op
   @images.push($o);
 }
 
+@images = ($original);
+{
+  say "Convolve";
+  my $o = $original.clone;
+  $o.convolve( 3, [1, 1, 1, 1, 4, 1, 1, 1, 1] );
+  $o.label("Convolve");
+  @images.push($o);
+}
+
 # Side-by-side comparison of all images
 my $comparison = MagickWand.append-wands( @images );
 $comparison.write("output.png");

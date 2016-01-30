@@ -269,6 +269,14 @@ method contrast-stretch(Real $black_point, Real $white_point) {
   return MagickContrastStretchImage( $.handle, $black_point.Num, $white_point.Num );
 }
 
+method convolve(Int $order, @kernel) {
+  die "No wand handle defined!" unless $.handle.defined;
+  my @kernel_carray = CArray[num].new;
+  @kernel_carray[$_] = @kernel[$_].Num for ^@kernel.elems;
+  say @kernel_carray.perl;
+  return MagickConvolveImage( $.handle, $order, Nil );
+}
+
 method cleanup {
   if $.handle.defined {
     DestroyMagickWand($.handle);
