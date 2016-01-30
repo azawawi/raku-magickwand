@@ -919,9 +919,9 @@ MagickConvolveImage() applies a custom convolution kernel to the image.
 sub MagickConvolveImage(
    Pointer $wand,
    uint32 $order,
-   CArray[num] $kernel
+   CArray[num64] $kernel
 )
-returns uint32 
+returns uint32
 is native(&library)
 is export { * };
 
@@ -929,7 +929,7 @@ sub MagickConvolveImageChannel(
    Pointer $wand,
    uint32 $channel,
    uint32 $order,
-   CArray[num] $kernel
+   CArray[num64] $kernel
 )
 returns uint32
 is native(&library)

@@ -121,7 +121,7 @@ $camelia.read("examples/images/camelia-logo.png");
 
 for CompositeOperator.enums -> $op
 {
-  say "Composite $op";
+  say "Composite $op.key";
   my $o = $original.clone;
   $o.composite($camelia, ::{$op.key}, 0, 15);
   $o.annotate(0.0, 15.0, 0.0, $op.key);
@@ -145,11 +145,10 @@ for CompositeOperator.enums -> $op
   @images.push($o);
 }
 
-@images = ($original);
 {
   say "Convolve";
   my $o = $original.clone;
-  $o.convolve( 3, [1, 1, 1, 1, 4, 1, 1, 1, 1] );
+  $o.convolve( [1, 1, 1, 1, 4, 1, 1, 1, 1] );
   $o.label("Convolve");
   @images.push($o);
 }
