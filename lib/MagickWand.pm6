@@ -16,9 +16,10 @@ use MagickWand::NativeCall::Property;
 use MagickWand::NativeCall::Wand;
 use MagickWand::NativeCall::WandView;
 
-# Wand native handle
+# Wand native handles
 has Pointer $.handle   is rw;
 has Pointer $.d_handle is rw;
+has Pointer $.p_handle is rw;
 
 method read(Str $file-name) returns Bool {
   $.handle = NewMagickWand unless $.handle.defined;
@@ -143,6 +144,18 @@ method annotate(Rat $x, Rat $y, Rat $angle, Str $text) {
   MagickAnnotateImage( $.handle, $.d_handle, $x.Num, $y.Num, $angle.Num, $text ) == MagickTrue;
 }
 
+method blur(Rat $radius, Rat $sigma) {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickBlurImage( $.handle, $radius.Num, $sigma.Num ) == MagickTrue;
+}
+
+method border(Str $border_color, Int $width, Int $height) {
+  die "No wand handle defined!" unless $.handle.defined;
+  $.p_handle = NewPixelWand unless $.p_handle.defined;
+  return (PixelSetColor( $.p_handle, $border_color) == MagickTrue) &&
+    (MagickBorderImage( $.handle, $.p_handle, $width, $height ) == MagickTrue);
+}
+
 method cleanup {
   if $.handle.defined {
     DestroyMagickWand($.handle);
@@ -151,5 +164,9 @@ method cleanup {
   if $.d_handle.defined {
     DestroyDrawingWand($.d_handle);
     $.d_handle = Nil;
+  }
+  if $.p_handle.defined {
+    DestroyPixelWand($.p_handle);
+    $.p_handle = Nil;
   }
 }

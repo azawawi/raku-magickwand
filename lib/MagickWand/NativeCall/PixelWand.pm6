@@ -686,7 +686,7 @@ sub PixelSetColor(
    Pointer $wand,
    Str $color
 )
-returns uint32 
+returns uint32
 is native(&library)
 is export { * };
 

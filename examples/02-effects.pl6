@@ -24,7 +24,7 @@ $original.read("examples/images/aero1.jpg");
 
 {
   my $o = $original.clone;
-  $o.adaptive-resize(320, 240);
+  $o.adaptive-resize( 160, 120 );
   $o.label("Adaptive Resize");
   @images.push($o);
 }
@@ -68,6 +68,20 @@ $original.read("examples/images/aero1.jpg");
   my $o = $original.clone;
   $o.auto-level;
   $o.label("Auto Level");
+  @images.push($o);
+}
+
+{
+  my $o = $original.clone;
+  $o.blur(0.0, 1.0);
+  $o.label("Blur");
+  @images.push($o);
+}
+
+{
+  my $o = $original.clone;
+  $o.border("black", 6, 6);
+  $o.label("Border");
   @images.push($o);
 }
 

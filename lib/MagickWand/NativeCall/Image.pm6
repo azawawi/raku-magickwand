@@ -418,7 +418,14 @@ is export { * };
       const PixelWand *bordercolor,const size_t width,
       const size_t height)
 
-MagickBorderImage() surrounds the image with a border of the color defined by the bordercolor pixel wand.- wand: the magick wand. - bordercolor: the border color pixel wand. - width: the border width. - height: the border height. 
+MagickBorderImage() surrounds the image with a border of the color defined by
+the bordercolor pixel wand.
+
+- wand: the magick wand.
+- bordercolor: the border color pixel wand.
+- width: the border width.
+- height: the border height.
+
 =end pod
 sub MagickBorderImage(
    Pointer $wand,
