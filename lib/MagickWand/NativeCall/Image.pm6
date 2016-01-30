@@ -3715,7 +3715,12 @@ is export { * };
     MagickBooleanType MagickSetImageCompose(MagickWand *wand,
       const CompositeOperator compose)
 
-MagickSetImageCompose() sets the image composite operator, useful for specifying how to composite the image thumbnail when using the MagickMontageImage() method.- wand: the magick wand. - compose: the image composite operator. 
+MagickSetImageCompose() sets the image composite operator, useful for specifying
+how to composite the image thumbnail when using the MagickMontageImage() method.
+
+- wand: the magick wand.
+- compose: the image composite operator.
+
 =end pod
 sub MagickSetImageCompose(
    Pointer $wand,
