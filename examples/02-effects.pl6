@@ -123,7 +123,8 @@ for CompositeOperator.enums -> $op
 {
   say "Composite $op";
   my $o = $original.clone;
-  $o.composite($camelia, CompositeOperator::{$op.key}, 0, 0);
+  $o.composite($camelia, ::{$op.key}, 0, 15);
+  $o.annotate(0.0, 15.0, 0.0, $op.key);
   $o.label("Composite");
   @images.push($o);
 }
