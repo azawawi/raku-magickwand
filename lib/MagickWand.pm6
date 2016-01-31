@@ -256,37 +256,37 @@ method border(Str $border_color, Int $width, Int $height) {
     (MagickBorderImage( $.handle, $.p_handle, $width, $height ) == MagickTrue);
 }
 
-method channel(ChannelType $channel_type) {
+method channel(ChannelType $channel_type) returns Bool {
   die "No wand handle defined!" unless $.handle.defined;
   return MagickSeparateImageChannel( $.handle, $channel_type.Int ) == MagickTrue;
 }
 
-method composite(MagickWand $camelia, CompositeOperator $compose, Int $x, Int $y) {
+method composite(MagickWand $camelia, CompositeOperator $compose, Int $x, Int $y) returns Bool {
   die "No wand handle defined!" unless $.handle.defined;
   return MagickCompositeImage( $.handle, $camelia.handle, $compose.Int, $x, $y ) == MagickTrue;
 }
 
-method contrast(Int $sharpen = 0) {
+method contrast(Int $sharpen = 0) returns Bool {
   die "No wand handle defined!" unless $.handle.defined;
-  return MagickContrastImage( $.handle, $sharpen );
+  return MagickContrastImage( $.handle, $sharpen ) == MagickTrue;
 }
 
-method contrast-stretch(Real $black_point, Real $white_point) {
+method contrast-stretch(Real $black_point, Real $white_point) returns Bool {
   die "No wand handle defined!" unless $.handle.defined;
-  return MagickContrastStretchImage( $.handle, $black_point.Num, $white_point.Num );
+  return MagickContrastStretchImage( $.handle, $black_point.Num, $white_point.Num ) == MagickTrue;
 }
 
-method convolve(@kernel) {
+method convolve(@kernel) returns Bool {
   die "No wand handle defined!" unless $.handle.defined;
   my $order = @kernel.elems.sqrt.Int;
   my $kernel_carray = CArray[num32].new;
   $kernel_carray[$_] = @kernel[$_].Num for ^@kernel.elems;
-  return MagickConvolveImage( $.handle, $order, $kernel_carray );
+  return MagickConvolveImage( $.handle, $order, $kernel_carray ) == MagickTrue;
 }
 
-method despeckle {
+method despeckle returns Bool {
   die "No wand handle defined!" unless $.handle.defined;
-  return MagickDespeckleImage( $.handle );
+  return MagickDespeckleImage( $.handle ) == MagickTrue;
 }
 
 method width {
@@ -325,7 +325,7 @@ method stroke-width(Real $width) {
   DrawSetStrokeWidth( $.d_handle, $width.Num );
 }
 
-method edge(Real $radius = 0) {
+method edge(Real $radius = 0) returns Bool {
   die "No wand handle defined!" unless $.handle.defined;
   return MagickEdgeImage( $.handle, $radius.Num ) == MagickTrue;
 }
@@ -335,7 +335,7 @@ method emboss(Real $radius, Real $sigma) returns Bool {
   return MagickEmbossImage( $.handle, $radius.Num, $sigma.Num ) == MagickTrue;
 }
 
-method equalize() {
+method equalize() returns Bool {
   die "No wand handle defined!" unless $.handle.defined;
   return MagickEqualizeImage( $.handle ) == MagickTrue;
 }
@@ -345,12 +345,12 @@ method implode(Real $radius) returns Bool {
   return MagickImplodeImage( $.handle, $radius.Num ) == MagickTrue;
 }
 
-method flip() {
+method flip() returns Bool {
   die "No wand handle defined!" unless $.handle.defined;
   return MagickFlipImage( $.handle ) == MagickTrue;
 }
 
-method flop() {
+method flop() returns Bool {
   die "No wand handle defined!" unless $.handle.defined;
   return MagickFlopImage( $.handle ) == MagickTrue;
 }
@@ -392,13 +392,29 @@ submethod montage(
 }
 
 method frame(
-  Str $matte_color, Int $width, Int $height, Int $inner_bevel, Int $outer_bevel)
+  Str $matte_color, Int $width, Int $height, Int $inner_bevel, Int $outer_bevel) returns Bool
 {
   die "No wand handle defined!" unless $.handle.defined;
   $.p_handle = NewPixelWand unless $.p_handle.defined;
   return (PixelSetColor( $.p_handle, $matte_color) == MagickTrue) &&
     (MagickFrameImage( $.handle, $.p_handle, $width, $height, $inner_bevel,
       $outer_bevel ) == MagickTrue);
+}
+
+method fx(Str $expression) returns MagickWand {
+  die "No wand handle defined!" unless $.handle.defined;
+  my $handle = MagickFxImage( $.handle, $expression );
+  return MagickWand.new( handle => $handle );
+}
+
+method gamma(Real $gamma) returns Bool {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickGammaImage( $.handle, $gamma.Num ) == MagickTrue;
+}
+
+method gaussian-blur(Real $radius, Real $sigma) returns Bool {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickGaussianBlurImage( $.handle, $radius.Num, $sigma.Num ) == MagickTrue;
 }
 
 method cleanup {

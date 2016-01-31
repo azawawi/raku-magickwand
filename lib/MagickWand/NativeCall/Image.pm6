@@ -1513,7 +1513,12 @@ is export { * };
     MagickWand *MagickFxImageChannel(MagickWand *wand,
       const ChannelType channel,const char *expression)
 
-MagickFxImage() evaluate expression for each pixel in the image.- wand: the magick wand. - channel: the image channel(s). - expression: the expression. 
+MagickFxImage() evaluate expression for each pixel in the image.
+
+- wand: the magick wand.
+- channel: the image channel(s).
+- expression: the expression.
+
 =end pod
 sub MagickFxImage(
    Pointer $wand,
@@ -1541,7 +1546,17 @@ is export { * };
     MagickBooleanType MagickGammaImageChannel(MagickWand *wand,
       const ChannelType channel,const double gamma)
 
-MagickGammaImage() gamma-corrects an image.  The same image viewed on different devices will have perceptual differences in the way the image's intensities are represented on the screen.  Specify individual gamma levels for the red, green, and blue channels, or adjust all three with the gamma parameter.  Values typically range from 0.8 to 2.3.You can also reduce the influence of a particular channel with a gamma value of 0.- wand: the magick wand. - channel: the channel. - level: Define the level of gamma correction. 
+MagickGammaImage() gamma-corrects an image.  The same image viewed on different
+devices will have perceptual differences in the way the image's intensities are
+represented on the screen.  Specify individual gamma levels for the red, green,
+and blue channels, or adjust all three with the gamma parameter.  Values
+typically range from 0.8 to 2.3.You can also reduce the influence of a
+particular channel with a gamma value of 0.
+
+- wand: the magick wand.
+- channel: the channel.
+- level: Define the level of gamma correction.
+
 =end pod
 sub MagickGammaImage(
    Pointer $wand,
@@ -1569,7 +1584,16 @@ is export { * };
     MagickBooleanType MagickGaussianBlurImageChannel(MagickWand *wand,
       const ChannelType channel,const double radius,const double sigma)
 
-MagickGaussianBlurImage() blurs an image.  We convolve the image with a Gaussian operator of the given radius and standard deviation (sigma). For reasonable results, the radius should be larger than sigma.  Use a radius of 0 and MagickGaussianBlurImage() selects a suitable radius for you.- wand: the magick wand. - channel: the image channel(s). - radius: the radius of the Gaussian, in pixels, not counting the center pixel. - sigma: the standard deviation of the Gaussian, in pixels. 
+MagickGaussianBlurImage() blurs an image.  We convolve the image with a Gaussian
+operator of the given radius and standard deviation (sigma). For reasonable
+results, the radius should be larger than sigma.  Use a radius of 0 and
+MagickGaussianBlurImage() selects a suitable radius for you.
+
+- wand: the magick wand.
+- channel: the image channel(s).
+- radius: the radius of the Gaussian, in pixels, not counting the center pixel.
+- sigma: the standard deviation of the Gaussian, in pixels.
+
 =end pod
 sub MagickGaussianBlurImage(
    Pointer $wand,

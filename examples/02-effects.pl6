@@ -249,24 +249,30 @@ for CompositeOperator.enums -> $op
   @images.push($o);
 }
 
+{
+  say "Fx...";
+  my $o = $original.fx("0.5*u");
+  $o.label("Fx");
+  @images.push($o);
+}
+
+{
+  say "Gamma...";
+  my $o = $original.clone;
+  $o.gamma(1.6);
+  $o.label("Gamma");
+  @images.push($o);
+}
+
+{
+  say "Gaussian Blur...";
+  my $o = $original.clone;
+  $o.gaussian-blur(0, 1.5);
+  $o.label("Gaussian Blur");
+  @images.push($o);
+}
+
 =begin TODO
-
-print "Fx...\n";
-$example=$model->Clone();
-$example->Label('Fx');
-push(@$images,$example->Fx(expression=>'0.5*u'));
-
-print "Gamma...\n";
-$example=$model->Clone();
-$example->Label('Gamma');
-$example->Gamma(1.6);
-
-
-print "Gaussian Blur...\n";
-$example=$model->Clone();
-$example->Label('Gaussian Blur');
-$example->GaussianBlur('0.0x1.5');
-
 
 print "Gradient...\n";
 $gradient=Image::Magick->new;
