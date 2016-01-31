@@ -208,9 +208,9 @@ method auto-level returns Bool {
   return MagickAutoLevelImage( $.handle ) == MagickTrue;
 }
 
-method negate returns Bool {
+method negate(Bool $gray) returns Bool {
   die "No wand handle defined!" unless $.handle.defined;
-  return MagickNegateImage( $.handle ) == MagickTrue;
+  return MagickNegateImage( $.handle, $gray.Int ) == MagickTrue;
 }
 
 method charcoal(Real $radius, Real $sigma) returns Bool {
@@ -518,6 +518,21 @@ method quantize(
   die "No wand handle defined!" unless $.handle.defined;
   return MagickQuantizeImage( $.handle, $number_colors, $colorspace.Int,
     $treedepth.Int, $dither.Int, $measure_error.Int) == MagickTrue;
+}
+
+method motion-blur(Real $radius, Real $angle, Real $sigma) returns Bool {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickMotionBlurImage( $.handle, $radius.Num, $angle.Num, $sigma.Num) == MagickTrue;
+}
+
+method normalize() returns Bool {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickNormalizeImage( $.handle ) == MagickTrue;
+}
+
+method oil-paint(Real $radius) returns Bool {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickOilPaintImage( $.handle, $radius.Num) == MagickTrue;
 }
 
 method cleanup {

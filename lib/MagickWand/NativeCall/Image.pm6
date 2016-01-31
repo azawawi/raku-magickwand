@@ -2945,7 +2945,18 @@ is export { * };
       const ChannelType channel,const double radius,const double sigma,
       const double angle)
 
-MagickMotionBlurImage() simulates motion blur.  We convolve the image with a Gaussian operator of the given radius and standard deviation (sigma). For reasonable results, radius should be larger than sigma.  Use a radius of 0 and MotionBlurImage() selects a suitable radius for you. Angle gives the angle of the blurring motion.- wand: the magick wand. - channel: the image channel(s). - radius: the radius of the Gaussian, in pixels, not counting the center pixel. - sigma: the standard deviation of the Gaussian, in pixels. - angle: Apply the effect along this angle. 
+MagickMotionBlurImage() simulates motion blur.  We convolve the image with a
+Gaussian operator of the given radius and standard deviation (sigma). For
+reasonable results, radius should be larger than sigma.  Use a radius of 0 and
+MotionBlurImage() selects a suitable radius for you. Angle gives the angle of
+the blurring motion.
+
+- wand: the magick wand.
+- channel: the image channel(s). 
+- radius: the radius of the Gaussian, in pixels, not counting the center pixel.
+ - sigma: the standard deviation of the Gaussian, in pixels.
+- angle: Apply the effect along this angle.
+
 =end pod
 sub MagickMotionBlurImage(
    Pointer $wand,
@@ -2977,7 +2988,14 @@ is export { * };
     MagickBooleanType MagickNegateImageChannel(MagickWand *wand,
       const ChannelType channel,const MagickBooleanType gray)
 
-MagickNegateImage() negates the colors in the reference image.  The Grayscale option means that only grayscale values within the image are negated.You can also reduce the influence of a particular channel with a gamma value of 0.- wand: the magick wand. - channel: the image channel(s). - gray: If MagickTrue, only negate grayscale pixels within the image. 
+MagickNegateImage() negates the colors in the reference image. The Grayscale
+option means that only grayscale values within the image are negated.You can
+also reduce the influence of a particular channel with a gamma value of 0.
+
+- wand: the magick wand.
+- channel: the image channel(s).
+- gray: If MagickTrue, only negate grayscale pixels within the image.
+
 =end pod
 sub MagickNegateImage(
    Pointer $wand,
@@ -3039,7 +3057,13 @@ is export { * };
     MagickBooleanType MagickNormalizeImageChannel(MagickWand *wand,
       const ChannelType channel)
 
-MagickNormalizeImage() enhances the contrast of a color image by adjusting the pixels color to span the entire range of colors availableYou can also reduce the influence of a particular channel with a gamma value of 0.- wand: the magick wand. - channel: the image channel(s). 
+MagickNormalizeImage() enhances the contrast of a color image by adjusting the
+pixels color to span the entire range of colors availableYou can also reduce the
+influence of a particular channel with a gamma value of 0.
+
+- wand: the magick wand.
+- channel: the image channel(s).
+
 =end pod
 sub MagickNormalizeImage(
    Pointer $wand
@@ -3063,7 +3087,13 @@ is export { * };
     MagickBooleanType MagickOilPaintImage(MagickWand *wand,
       const double radius)
 
-MagickOilPaintImage() applies a special effect filter that simulates an oil painting.  Each pixel is replaced by the most frequent color occurring in a circular region defined by radius.- wand: the magick wand. - radius: the radius of the circular neighborhood. 
+MagickOilPaintImage() applies a special effect filter that simulates an oil
+painting.  Each pixel is replaced by the most frequent color occurring in a
+circular region defined by radius.
+
+- wand: the magick wand.
+- radius: the radius of the circular neighborhood.
+
 =end pod
 sub MagickOilPaintImage(
    Pointer $wand,

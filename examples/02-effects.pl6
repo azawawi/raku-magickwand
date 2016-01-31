@@ -334,36 +334,47 @@ for CompositeOperator.enums -> $op
 }
 
 =begin TODO
-
+#TODO Implement Morphology
 print "Morphology...\n";
 $example=$model->Clone();
 $example->Label('Morphology');
 $example->Morphology(method=>'Dilate',kernel=>'Diamond',iterations=>3);
+=end TODO
 
+{
+  say "Motion Blur...";
+  my $o = $original.clone;
+  $o.motion-blur( 0, 13, 10);
+  #TODO $example->MotionBlur('0x13+10-10');
+  $o.label("Motion Blur");
+  @images.push($o);
+}
 
-print "Motion Blur...\n";
-$example=$model->Clone();
-$example->Label('Motion Blur');
-$example->MotionBlur('0x13+10-10');
+{
+  say "Negate...";
+  my $o = $original.clone;
+  $o.negate( False );
+  $o.label("Negate");
+  @images.push($o);
+}
 
+{
+  say "Normalize...";
+  my $o = $original.clone;
+  $o.normalize;
+  $o.label("Normalize");
+  @images.push($o);
+}
 
-print "Negate...\n";
-$example=$model->Clone();
-$example->Label('Negate');
-$example->Negate();
+{
+  say "Oil Paint...";
+  my $o = $original.clone;
+  $o.oil-paint(0);
+  $o.label("Oil Paint");
+  @images.push($o);
+}
 
-
-print "Normalize...\n";
-$example=$model->Clone();
-$example->Label('Normalize');
-$example->Normalize();
-
-
-print "Oil Paint...\n";
-$example=$model->Clone();
-$example->Label('Oil Paint');
-$example->OilPaint();
-
+=begin TODO
 
 print "Plasma...\n";
 $plasma=Image::Magick->new;
