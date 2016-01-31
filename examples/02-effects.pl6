@@ -130,7 +130,7 @@ for CompositeOperator.enums -> $op
   my $o = $original.clone;
   $o.composite($camelia, ::{$op.key}, 0, 15);
   $o.label($op.key);
-  @images.push($o);
+  #@images.push($o);
 }
 
 {
@@ -308,19 +308,24 @@ for CompositeOperator.enums -> $op
 }
 
 =begin TODO
+{
+  say "Median Filter...";
+  my $o = $original.clone;
+  $o.median-filter;
+  $o.label("Median Filter");
+  @images.push($o);
+}
+=end TODO
 
-print "Median Filter...\n";
-$example=$model->Clone();
-$example->Label('Median Filter');
-$example->MedianFilter();
+{
+  say "Modulate...";
+  my $o = $original.clone;
+  $o.modulate( 110, 110, 110 );
+  $o.label("Modulate");
+  @images.push($o);
+}
 
-
-print "Modulate...\n";
-$example=$model->Clone();
-$example->Label('Modulate');
-$example->Modulate(brightness=>110,saturation=>110,hue=>110);
-
-$example=$model->Clone();
+=begin TODO
 
 print "Monochrome...\n";
 $example=$model->Clone();
@@ -514,8 +519,10 @@ $montage=$images->Montage(geometry=>'128x160+8+4>',gravity=>'Center',
 
 say "Generating tiled image(s) comparison...";
 my $montage = MagickWand.montage(@images, '5x+10+200', '128x160+8+4>', FrameMode, '15x15+3+3');
+say "0";
 $montage.write("tiled-output.png");
 
+say "1";
 # Side-by-side comparison of all images
 say "Generating side-by-side image(s) comparison...";
 my $comparison = MagickWand.append-wands( @images );

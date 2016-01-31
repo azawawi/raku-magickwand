@@ -2826,7 +2826,18 @@ is export { * };
     MagickBooleanType MagickModulateImage(MagickWand *wand,
       const double brightness,const double saturation,const double hue)
 
-MagickModulateImage() lets you control the brightness, saturation, and hue of an image.  Hue is the percentage of absolute rotation from the current position.  For example 50 results in a counter-clockwise rotation of 90 degrees, 150 results in a clockwise rotation of 90 degrees, with 0 and 200 both resulting in a rotation of 180 degrees.To increase the color brightness by 20 and decrease the color saturation by 10 and leave the hue unchanged, use: 120,90,100.- wand: the magick wand. - brightness: the percent change in brighness. - saturation: the percent change in saturation. - hue: the percent change in hue. 
+MagickModulateImage() lets you control the brightness, saturation, and hue of an
+image.  Hue is the percentage of absolute rotation from the current position.
+For example 50 results in a counter-clockwise rotation of 90 degrees, 150
+results in a clockwise rotation of 90 degrees, with 0 and 200 both resulting in
+a rotation of 180 degrees.To increase the color brightness by 20 and decrease
+the color saturation by 10 and leave the hue unchanged, use: 120,90,100.- wand:
+the magick wand.
+
+- brightness: the percent change in brighness.
+- saturation: the percent change in saturation.
+- hue: the percent change in hue.
+
 =end pod
 sub MagickModulateImage(
    Pointer $wand,
@@ -4686,13 +4697,21 @@ is export { * };
       const ChannelType channel,const StatisticType type,const double width,
       const size_t height)
 
-MagickStatisticImage() replace each pixel with corresponding statistic from the neighborhood of the specified width and height.- wand: the magick wand. - channel: the image channel(s). - type: the statistic type (e.g. median, mode, etc.). - width: the width of the pixel neighborhood. - height: the height of the pixel neighborhood. 
+MagickStatisticImage() replace each pixel with corresponding statistic from
+the neighborhood of the specified width and height.
+
+- wand: the magick wand.
+- channel: the image channel(s).
+- type: the statistic type (e.g. median, mode, etc.).
+- width: the width of the pixel neighborhood.
+- height: the height of the pixel neighborhood.
+
 =end pod
 sub MagickStatisticImage(
    Pointer $wand,
    uint32 $type,
    num64 $width,
-   int32 $height
+   uint32 $height
 )
 returns uint32 
 is native(&library)

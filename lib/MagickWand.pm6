@@ -118,6 +118,18 @@ enum ImageType is export <
   PaletteBilevelMatteType
 >;
 
+enum StatisticType is export <
+  UndefinedStatistic
+  GradientStatistic
+  MaximumStatistic
+  MeanStatistic
+  MedianStatistic
+  MinimumStatistic
+  ModeStatistic
+  NonpeakStatistic
+  StandardDeviationStatistic
+>;
+
 unit class MagickWand;
 
 use NativeCall;
@@ -453,6 +465,21 @@ method level(Real $black_point, Real $gamma, Real $white_point) returns Bool {
   die "No wand handle defined!" unless $.handle.defined;
   return MagickLevelImage( $.handle, $black_point.Num, $gamma.Num,
     $white_point.Num ) == MagickTrue;
+}
+
+=begin TODO
+
+#TODO fix median-filter failures
+method median-filter() returns Bool {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickStatisticImage( $.handle, MedianStatistic.Int, 1.Num, 1 ) == MagickTrue;
+}
+
+=end TODO
+
+method modulate(Real $brightness, Real $saturation, Real $hue) returns Bool {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickModulateImage( $.handle, $brightness.Num, $saturation.Num, $hue.Num) == MagickTrue;
 }
 
 method cleanup {
