@@ -449,6 +449,12 @@ multi method type returns ImageType {
   return ImageType( MagickGetImageType( $.handle ) );
 }
 
+method level(Real $black_point, Real $gamma, Real $white_point) returns Bool {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickLevelImage( $.handle, $black_point.Num, $gamma.Num,
+    $white_point.Num ) == MagickTrue;
+}
+
 method cleanup {
   if $.handle.defined {
     DestroyMagickWand($.handle);

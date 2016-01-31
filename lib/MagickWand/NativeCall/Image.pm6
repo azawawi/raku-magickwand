@@ -314,7 +314,12 @@ is export { * };
     MagickBooleanType MagickAutoLevelImageChannel(MagickWand *wand,
       const ChannelType channel)
 
-MagickAutoLevelImage() adjusts the levels of a particular image channel by scaling the minimum and maximum values to the full quantum range.- wand: the magick wand. - channel: the image channel(s). 
+MagickAutoLevelImage() adjusts the levels of a particular image channel by
+scaling the minimum and maximum values to the full quantum range.
+
+- wand: the magick wand.
+- channel: the image channel(s).
+
 =end pod
 sub MagickAutoLevelImage(
    Pointer $wand
@@ -2713,7 +2718,20 @@ is export { * };
       const ChannelType channel,const double black_point,const double gamma,
       const double white_point)
 
-MagickLevelImage() adjusts the levels of an image by scaling the colors falling between specified white and black points to the full available quantum range. The parameters provided represent the black, mid, and white points. The black point specifies the darkest color in the image. Colors darker than the black point are set to zero. Mid point specifies a gamma correction to apply to the image.  White point specifies the lightest color in the image. Colors brighter than the white point are set to the maximum quantum value.- wand: the magick wand. - channel: Identify which channel to level: RedChannel, GreenChannel, - black_point: the black point. - gamma: the gamma. - white_point: the white point. 
+MagickLevelImage() adjusts the levels of an image by scaling the colors falling
+between specified white and black points to the full available quantum range.
+The parameters provided represent the black, mid, and white points. The black
+point specifies the darkest color in the image. Colors darker than the black
+point are set to zero. Mid point specifies a gamma correction to apply to the
+image.  White point specifies the lightest color in the image. Colors brighter
+than the white point are set to the maximum quantum value.
+
+- wand: the magick wand.
+- channel: Identify which channel to level: RedChannel, GreenChannel,
+- black_point: the black point.
+- gamma: the gamma.
+- white_point: the white point.
+
 =end pod
 sub MagickLevelImage(
    Pointer $wand,

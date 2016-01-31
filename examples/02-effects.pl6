@@ -298,13 +298,16 @@ for CompositeOperator.enums -> $op
   @images.push($o);
 }
 
+{
+  #TODO fix
+  say "Level...";
+  my $o = $original.clone;
+  $o.level(1.0, 1.0, 1.0);
+  $o.label("Level");
+  @images.push($o);
+}
+
 =begin TODO
-
-print "Level...\n";
-$example=$model->Clone();
-$example->Label('Level');
-$example->Level('20%');
-
 
 print "Median Filter...\n";
 $example=$model->Clone();
