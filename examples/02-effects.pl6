@@ -241,13 +241,15 @@ for CompositeOperator.enums -> $op
   @images.push($o);
 }
 
+{
+  say "Frame...";
+  my $o = $original.clone;
+  $o.frame("gold", 15, 15, 0, 0);
+  $o.label("Frame");
+  @images.push($o);
+}
+
 =begin TODO
-
-print "Frame...\n";
-$example=$model->Clone();
-$example->Label('Frame');
-$example->Frame('15x15+3+3');
-
 
 print "Fx...\n";
 $example=$model->Clone();
@@ -495,6 +497,7 @@ $montage=$images->Montage(geometry=>'128x160+8+4>',gravity=>'Center',
 
 =end TODO
 
+say "Generating tiled image(s) comparison...";
 my $montage = MagickWand.montage(@images, '5x+10+200', '128x160+8+4>', FrameMode, '15x15+3+3');
 $montage.write("tiled-output.png");
 

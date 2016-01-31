@@ -391,6 +391,16 @@ submethod montage(
   return MagickWand.new( handle => $montaged-wand );
 }
 
+method frame(
+  Str $matte_color, Int $width, Int $height, Int $inner_bevel, Int $outer_bevel)
+{
+  die "No wand handle defined!" unless $.handle.defined;
+  $.p_handle = NewPixelWand unless $.p_handle.defined;
+  return (PixelSetColor( $.p_handle, $matte_color) == MagickTrue) &&
+    (MagickFrameImage( $.handle, $.p_handle, $width, $height, $inner_bevel,
+      $outer_bevel ) == MagickTrue);
+}
+
 method cleanup {
   if $.handle.defined {
     DestroyMagickWand($.handle);

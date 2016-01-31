@@ -1446,7 +1446,18 @@ is export { * };
       const size_t height,const ssize_t inner_bevel,
       const ssize_t outer_bevel)
 
-MagickFrameImage() adds a simulated three-dimensional border around the image.  The width and height specify the border width of the vertical and horizontal sides of the frame.  The inner and outer bevels indicate the width of the inner and outer shadows of the frame.- wand: the magick wand. - matte_color: the frame color pixel wand. - width: the border width. - height: the border height. - inner_bevel: the inner bevel width. - outer_bevel: the outer bevel width. 
+MagickFrameImage() adds a simulated three-dimensional border around the image.
+The width and height specify the border width of the vertical and horizontal
+sides of the frame.  The inner and outer bevels indicate the width of the inner
+and outer shadows of the frame.
+
+- wand: the magick wand.
+- matte_color: the frame color pixel wand.
+- width: the border width.
+- height: the border height.
+- inner_bevel: the inner bevel width.
+- outer_bevel: the outer bevel width.
+
 =end pod
 sub MagickFrameImage(
    Pointer $wand,
