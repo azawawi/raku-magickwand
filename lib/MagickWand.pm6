@@ -136,6 +136,13 @@ has Pointer $.handle   is rw;
 has Pointer $.d_handle is rw;
 has Pointer $.p_handle is rw;
 
+method create(Int $width, Int $height, Str $background_color) {
+  $.handle = NewMagickWand unless $.handle.defined;
+  $.p_handle = NewPixelWand unless $.p_handle.defined;
+  return (PixelSetColor( $.p_handle, $background_color) == MagickTrue) &&
+    (MagickNewImage( $.handle, $width, $height, $.p_handle ) == MagickTrue)
+}
+
 method read(Str $file-name) returns Bool {
   $.handle = NewMagickWand unless $.handle.defined;
   return MagickReadImage( $.handle, $file-name ) == MagickTrue;
@@ -304,12 +311,12 @@ method despeckle returns Bool {
   return MagickDespeckleImage( $.handle ) == MagickTrue;
 }
 
-method width {
+multi method width returns Int {
   die "No wand handle defined!" unless $.handle.defined;
   return MagickGetImageWidth($.handle);
 }
 
-method height {
+method height returns Int {
   die "No wand handle defined!" unless $.handle.defined;
   return MagickGetImageHeight($.handle);
 }

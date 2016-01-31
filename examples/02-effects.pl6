@@ -273,6 +273,16 @@ for CompositeOperator.enums -> $op
 }
 
 {
+  #TODO fix gradient
+  say "Gradient...";
+  my $o = MagickWand.new;
+  say $o.create( 130, 194, "white" );
+  say $o.read( 'GRADIENT:#20a0ff-#ffff00' );
+  $o.label( "Gradient" );
+  @images.push($o);
+}
+
+{
   say sprintf("Grayscale from '%s'...", $original.type);
   my $o = $original.clone;
   $o.type(GrayscaleType);
@@ -280,27 +290,15 @@ for CompositeOperator.enums -> $op
   @images.push($o);
 }
 
+{
+  say "Implode...";
+  my $o = $original.clone;
+  $o.implode(0.5);
+  $o.label("Implode");
+  @images.push($o);
+}
+
 =begin TODO
-
-print "Gradient...\n";
-$gradient=Image::Magick->new;
-$gradient->Set(size=>'130x194');
-$x=$gradient->ReadImage('gradient:#20a0ff-#ffff00');
-warn "$x" if "$x";
-$gradient->Label('Gradient');
-push(@$images,$gradient);
-
-print "Grayscale...\n";
-$example=$model->Clone();
-$example->Label('Grayscale');
-$example->Set(type=>'grayscale');
-
-
-print "Implode...\n";
-$example=$model->Clone();
-$example->Label('Implode');
-$example->Implode(0.5);
-
 
 print "Level...\n";
 $example=$model->Clone();

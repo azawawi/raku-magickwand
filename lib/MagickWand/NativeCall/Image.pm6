@@ -2160,7 +2160,10 @@ is export { * };
 
     size_t MagickGetImageHeight(MagickWand *wand)
 
-MagickGetImageHeight() returns the image height.- wand: the magick wand. 
+MagickGetImageHeight() returns the image height.
+
+- wand: the magick wand.
+
 =end pod
 sub MagickGetImageHeight(
    Pointer $wand
@@ -3326,7 +3329,17 @@ is export { * };
 
     MagickBooleanType MagickReadImage(MagickWand *wand,const char *filename)
 
-MagickReadImage() reads an image or image sequence.  The images are inserted at the current image pointer position.   Use MagickSetFirstIterator(), MagickSetLastIterator, or MagickSetIteratorIndex() to specify the current image pointer position at the beginning of the image list, the end, or anywhere in-between respectively.- wand: the magick wand. - filename: the image filename. 
+MagickReadImage() reads an image or image sequence.
+
+The images are inserted at the current image pointer position.
+
+Use MagickSetFirstIterator(), MagickSetLastIterator, or MagickSetIteratorIndex()
+to specify the current image pointer position at the beginning of the image
+list, the end, or anywhere in-between respectively.
+
+- wand: the magick wand.
+- filename: the image filename.
+
 =end pod
 sub MagickReadImage(
    Pointer $wand,
