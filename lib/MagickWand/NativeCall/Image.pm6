@@ -2442,7 +2442,13 @@ is export { * };
 
     ImageType MagickGetImageType(MagickWand *wand)
 
-MagickGetImageType() gets the potential image type:Bilevel        Grayscale       GrayscaleMatte Palette        PaletteMatte    TrueColor TrueColorMatte ColorSeparation ColorSeparationMatteTo ensure the image type matches its potential, use MagickSetImageType():<pre class="text">    (void) MagickSetImageType(wand,MagickGetImageType(wand));</pre>- wand: the magick wand. 
+MagickGetImageType() gets the potential image type: Bilevel, Grayscale
+GrayscaleMatte, Palette, PaletteMatte, TrueColor, TrueColorMatte
+ColorSeparation and ColorSeparationMatte
+
+To ensure the image type matches its potential, use MagickSetImageType()
+
+- wand: the magick wand.  
 =end pod
 sub MagickGetImageType(
    Pointer $wand
@@ -4288,7 +4294,14 @@ is export { * };
     MagickBooleanType MagickSetImageType(MagickWand *wand,
       const ImageType image_type)
 
-MagickSetImageType() sets the image type.- wand: the magick wand. - image_type: the image type:   UndefinedType, BilevelType, GrayscaleType, GrayscaleMatteType, PaletteType, PaletteMatteType, TrueColorType, TrueColorMatteType, ColorSeparationType, ColorSeparationMatteType, or OptimizeType. 
+MagickSetImageType() sets the image type.
+
+- wand: the magick wand.
+- image_type: the image type:   UndefinedType,
+- BilevelType, GrayscaleType, GrayscaleMatteType, PaletteType, PaletteMatteType,
+- TrueColorType, TrueColorMatteType, ColorSeparationType,
+- ColorSeparationMatteType, or OptimizeType.
+
 =end pod
 sub MagickSetImageType(
    Pointer $wand,

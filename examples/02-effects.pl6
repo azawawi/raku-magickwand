@@ -272,6 +272,14 @@ for CompositeOperator.enums -> $op
   @images.push($o);
 }
 
+{
+  say sprintf("Grayscale from '%s'...", $original.type);
+  my $o = $original.clone;
+  $o.type(GrayscaleType);
+  $o.label("Grayscale");
+  @images.push($o);
+}
+
 =begin TODO
 
 print "Gradient...\n";

@@ -103,6 +103,21 @@ enum MontageMode is export <
   ConcatenateMode
 >;
 
+enum ImageType is export <
+  UndefinedType
+  BilevelType
+  GrayscaleType
+  GrayscaleMatteType
+  PaletteType
+  PaletteMatteType
+  TrueColorType
+  TrueColorMatteType
+  ColorSeparationType
+  ColorSeparationMatteType
+  OptimizeType
+  PaletteBilevelMatteType
+>;
+
 unit class MagickWand;
 
 use NativeCall;
@@ -415,6 +430,16 @@ method gamma(Real $gamma) returns Bool {
 method gaussian-blur(Real $radius, Real $sigma) returns Bool {
   die "No wand handle defined!" unless $.handle.defined;
   return MagickGaussianBlurImage( $.handle, $radius.Num, $sigma.Num ) == MagickTrue;
+}
+
+multi method type(ImageType $image_type) {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickSetImageType( $.handle, $image_type.Int );
+}
+
+multi method type returns ImageType {
+  die "No wand handle defined!" unless $.handle.defined;
+  return ImageType( MagickGetImageType( $.handle ) );
 }
 
 method cleanup {
