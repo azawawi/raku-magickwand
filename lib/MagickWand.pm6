@@ -535,6 +535,12 @@ method oil-paint(Real $radius) returns Bool {
   return MagickOilPaintImage( $.handle, $radius.Num) == MagickTrue;
 }
 
+method polaroid(Real $angle) returns Bool {
+  die "No wand handle defined!" unless $.handle.defined;
+  $.d_handle = NewDrawingWand unless $.d_handle.defined;
+  return MagickPolaroidImage( $.handle, $.d_handle, $angle.Num) == MagickTrue;
+}
+
 method cleanup {
   if $.handle.defined {
     DestroyMagickWand($.handle);

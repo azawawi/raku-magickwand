@@ -375,7 +375,7 @@ $example->Morphology(method=>'Dilate',kernel=>'Diamond',iterations=>3);
 }
 
 =begin TODO
-
+#TODO plasma
 print "Plasma...\n";
 $plasma=Image::Magick->new;
 $plasma->Set(size=>'130x194');
@@ -383,12 +383,18 @@ $x=$plasma->ReadImage('plasma:fractal');
 warn "$x" if "$x";
 $plasma->Label('Plasma');
 push(@$images,$plasma);
+=end TODO
 
-print "Polaroid...\n";
-$example=$model->Clone();
-$example->Label('Polaroid');
-$example->Polaroid(caption=>'Magick',rotate=>-5.0,gravity=>'center');
+{
+  say "Polaroid...";
+  my $o = $original.clone;
+  $o.polaroid(-5.0);
+  #TODO $example->Polaroid(caption=>'Magick',rotate=>-5.0,gravity=>'center');
+  $o.label("Polaroid");
+  @images.push($o);
+}
 
+=begin TODO
 
 print "Quantize...\n";
 $example=$model->Clone();
