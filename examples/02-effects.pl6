@@ -325,13 +325,15 @@ for CompositeOperator.enums -> $op
   @images.push($o);
 }
 
+{
+  say "Monochrome (Quantize)...";
+  my $o = $original.clone;
+  $o.quantize(2, GRAYColorspace, 0, True, False);
+  $o.label("Monochrome (Quantize)");
+  @images.push($o);
+}
+
 =begin TODO
-
-print "Monochrome...\n";
-$example=$model->Clone();
-$example->Label('Monochrome');
-$example->Quantize(colorspace=>'gray',colors=>2,dither=>'false');
-
 
 print "Morphology...\n";
 $example=$model->Clone();
@@ -519,10 +521,8 @@ $montage=$images->Montage(geometry=>'128x160+8+4>',gravity=>'Center',
 
 say "Generating tiled image(s) comparison...";
 my $montage = MagickWand.montage(@images, '5x+10+200', '128x160+8+4>', FrameMode, '15x15+3+3');
-say "0";
 $montage.write("tiled-output.png");
 
-say "1";
 # Side-by-side comparison of all images
 say "Generating side-by-side image(s) comparison...";
 my $comparison = MagickWand.append-wands( @images );

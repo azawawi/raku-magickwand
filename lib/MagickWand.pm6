@@ -130,6 +130,32 @@ enum StatisticType is export <
   StandardDeviationStatistic
 >;
 
+enum ColorspaceType is export <
+  UndefinedColorspace
+  RGBColorspace
+  GRAYColorspace
+  TransparentColorspace
+  OHTAColorspace
+  LabColorspace
+  XYZColorspace
+  YCbCrColorspace
+  YCCColorspace
+  YIQColorspace
+  YPbPrColorspace
+  YUVColorspace
+  CMYKColorspace
+  sRGBColorspace
+  HSBColorspace
+  HSLColorspace
+  HWBColorspace
+  Rec601LumaColorspace
+  Rec601YCbCrColorspace
+  Rec709LumaColorspace
+  Rec709YCbCrColorspace
+  LogColorspace
+  CMYColorspace
+>;
+
 unit class MagickWand;
 
 use NativeCall;
@@ -480,6 +506,18 @@ method median-filter() returns Bool {
 method modulate(Real $brightness, Real $saturation, Real $hue) returns Bool {
   die "No wand handle defined!" unless $.handle.defined;
   return MagickModulateImage( $.handle, $brightness.Num, $saturation.Num, $hue.Num) == MagickTrue;
+}
+
+method quantize(
+  Int $number_colors,
+  ColorspaceType $colorspace,
+  Int $treedepth,
+  Bool $dither,
+  Bool $measure_error) returns Bool
+{
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickQuantizeImage( $.handle, $number_colors, $colorspace.Int,
+    $treedepth.Int, $dither.Int, $measure_error.Int) == MagickTrue;
 }
 
 method cleanup {

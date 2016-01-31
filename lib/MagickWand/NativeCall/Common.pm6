@@ -50,7 +50,6 @@ class PointInfo is repr('CStruct') {
 #TODO enum MagickEvaluateOperator
 #TODO enum MagickFunction
 #TODO enum SparseColorMethod
-#TODO enum ColorspaceType
 #TODO enum CompressionType
 #TODO enum DisposeType
 #TODO enum EndianType
@@ -69,7 +68,6 @@ class PointInfo is repr('CStruct') {
 #TODO OrientationType
 #TODO MagickProgressMonitor
 #TODO VirtualPixelMethod 
-#TODO StatisticType
 #TODO ExceptionType
 #TODO AffineMatrix
 #TODO PaintMethod

@@ -3263,7 +3263,31 @@ is export { * };
       const size_t treedepth,const MagickBooleanType dither,
       const MagickBooleanType measure_error)
 
-MagickQuantizeImage() analyzes the colors within a reference image and chooses a fixed number of colors to represent the image.  The goal of the algorithm is to minimize the color difference between the input and output image while minimizing the processing time.- wand: the magick wand. - number_colors: the number of colors. - colorspace: Perform color reduction in this colorspace, typically RGBColorspace. - treedepth: Normally, this integer value is zero or one.  A zero or one tells Quantize to choose a optimal tree depth of Log4(number_colors).      A tree of this depth generally allows the best representation of the reference image with the least amount of memory and the fastest computational speed.  In some cases, such as an image with low color dispersion (a few number of colors), a value other than Log4(number_colors) is required.  To expand the color tree completely, use a value of 8. - dither: A value other than zero distributes the difference between an original image and the corresponding color reduced image to neighboring pixels along a Hilbert curve. - measure_error: A value other than zero measures the difference between the original and quantized images.  This difference is the total quantization error.  The error is computed by summing over all pixels in an image the distance squared in RGB space between each reference pixel value and its quantized value. 
+MagickQuantizeImage() analyzes the colors within a reference image and chooses a
+fixed number of colors to represent the image.  The goal of the algorithm is to
+minimize the color difference between the input and output image while
+minimizing the processing time.
+
+- wand: the magick wand.
+- number_colors: the number of colors.
+- colorspace: Perform color reduction in this colorspace, typically
+RGBColorspace.
+- treedepth: Normally, this integer value is zero or one.  A zero or one tells
+Quantize to choose a optimal tree depth of Log4(number_colors). A tree of this
+depth generally allows the best representation of the reference image with the
+least amount of memory and the fastest computational speed.  In some cases, such
+as an image with low color dispersion (a few number of colors), a value other
+than Log4(number_colors) is required.  To expand the color tree completely, use
+a value of 8.
+- dither: A value other than zero distributes the difference between an original
+image and the corresponding color reduced image to neighboring pixels along a
+Hilbert curve.
+- measure_error: A value other than zero measures the difference between
+the original and quantized images.  This difference is the total quantization
+error.  The error is computed by summing over all pixels in an image the
+distance squared in RGB space between each reference pixel value and its
+quantized value.
+
 =end pod
 sub MagickQuantizeImage(
    Pointer $wand,
