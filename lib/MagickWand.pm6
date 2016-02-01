@@ -703,6 +703,18 @@ method sharpen(Real $radius, Real $sigma) {
   return MagickSharpenImage( $.handle, $radius.Num, $sigma.Num ) == MagickTrue;
 }
 
+method shave(Int $width, Int $height) returns Bool {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickShaveImage( $.handle, $width, $height) == MagickTrue;
+}
+
+method shear(Real $x_shear, Real $y_shear, Str $background = "white") returns Bool {
+  die "No wand handle defined!" unless $.handle.defined;
+  $.p_handle = NewPixelWand unless $.p_handle.defined;
+  return (PixelSetColor( $.p_handle, $background) == MagickTrue) &&
+    (MagickShearImage( $.handle, $.p_handle, $x_shear.Num, $y_shear.Num) == MagickTrue);
+}
+
 method cleanup {
   if $.handle.defined {
     DestroyMagickWand($.handle);

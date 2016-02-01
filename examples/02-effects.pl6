@@ -511,19 +511,23 @@ $example->Label('Segment');
   @images.push($o);
 }
 
+{
+  say "Shave...";
+  my $o = $original.clone;
+  $o.shave(10, 10);
+  $o.label("Shave");
+  @images.push($o);
+}
+
+{
+  say "Shear...";
+  my $o = $original.clone;
+  $o.shear(-20, 20);
+  $o.label("Shear");
+  @images.push($o);
+}
+
 =begin TODO
-
-print "Shave...\n";
-$example=$model->Clone();
-$example->Label('Shave');
-$example->Shave('10x10');
-
-
-print "Shear...\n";
-$example=$model->Clone();
-$example->Label('Shear');
-$example->Shear('-20x20');
-
 
 print "Sketch...\n";
 $example=$model->Clone();

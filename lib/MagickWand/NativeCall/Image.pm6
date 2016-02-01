@@ -4610,7 +4610,13 @@ is export { * };
     MagickBooleanType MagickShaveImage(MagickWand *wand,
       const size_t columns,const size_t rows)
 
-MagickShaveImage() shaves pixels from the image edges.  It allocates the memory necessary for the new Image structure and returns a pointer to the new image.- wand: the magick wand. - columns: the number of columns in the scaled image. - rows: the number of rows in the scaled image. 
+MagickShaveImage() shaves pixels from the image edges.  It allocates the memory
+necessary for the new Image structure and returns a pointer to the new image.
+
+- wand: the magick wand.
+- columns: the number of columns in the scaled image.
+- rows: the number of rows in the scaled image.
+
 =end pod
 sub MagickShaveImage(
    Pointer $wand,
