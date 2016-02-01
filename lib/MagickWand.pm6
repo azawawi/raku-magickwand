@@ -279,9 +279,22 @@ method adaptive-blur(Real $radius, Real $sigma) {
   return MagickAdaptiveBlurImage( $.handle, $radius.Num, $sigma.Num ) == MagickTrue;
 }
 
-method adaptive-resize(Int $width, Int $height) {
+multi method adaptive-resize(Int $width, Int $height) {
   die "No wand handle defined!" unless $.handle.defined;
   return MagickAdaptiveResizeImage( $.handle, $width, $height ) == MagickTrue;
+}
+
+=begin pod
+
+=head1 adaptive-resize
+
+This is a helper method for C<adaptive-resize>
+
+  adaptive-resize(0.5);    # Resize to 50% of original size
+
+=end pod
+multi method adaptive-resize(Rat $percent) {
+  return self.adaptive-resize( Int(self.width * $percent), Int(self.height * $percent) );
 }
 
 method adaptive-sharpen(Real $radius, Real $sigma) {

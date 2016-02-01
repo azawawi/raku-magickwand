@@ -23,6 +23,7 @@ $original.label("Model");
 my $camelia  = MagickWand.new;
 $camelia.read("examples/images/camelia-logo.png");
 say $camelia.width, "x", $camelia.height;
+$camelia.adaptive-resize( 0.25 );
 $camelia.label("I am Camelia");
 @images.push($camelia);
 
