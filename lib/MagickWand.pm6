@@ -1,197 +1,48 @@
 use v6;
 
-enum NoiseType is export <UndefinedNoise UniformNoise GaussianNoise
-  MultiplicativeGaussianNoise ImpulseNoise LaplacianNoise PoissonNoise>;
+=begin pod
 
-enum ChannelType is export (
-  UndefinedChannel  => 0,
-  RedChannel        => 0x1,
-  GrayChannel       => 0x1,
-  CyanChannel       => 0x1,
-  GreenChannel      => 0x2,
-  MagentaChannel    => 0x2,
-  BlueChannel       => 0x4,
-  YellowChannel     => 0x4,
-  AlphaChannel      => 0x8,
-  OpacityChannel    => 0x8,
-  BlackChannel      => 0x20,
-  IndexChannel      => 0x20,
-  CompositeChannels => 0x2F,
-  AllChannels       => 0x7ffffff,
-  TrueAlphaChannel  => 0x40,
-  RGBChannels       => 0x80,
-  GrayChannels      => 0x80,
-  SyncChannels      => 0x100,
-  DefaultChannels   => 0x7fffff7
-);
+=head1 NAME
 
-enum CompositeOperator is export <
-  UndefinedCompositeOp
-  NoCompositeOp
-  ModulusAddCompositeOp
-  AtopCompositeOp
-  BlendCompositeOp
-  BumpmapCompositeOp
-  ChangeMaskCompositeOp
-  ClearCompositeOp
-  ColorBurnCompositeOp
-  ColorDodgeCompositeOp
-  ColorizeCompositeOp
-  CopyBlackCompositeOp
-  CopyBlueCompositeOp
-  CopyCompositeOp
-  CopyCyanCompositeOp
-  CopyGreenCompositeOp
-  CopyMagentaCompositeOp
-  CopyOpacityCompositeOp
-  CopyRedCompositeOp
-  CopyYellowCompositeOp
-  DarkenCompositeOp
-  DstAtopCompositeOp
-  DstCompositeOp
-  DstInCompositeOp
-  DstOutCompositeOp
-  DstOverCompositeOp
-  DifferenceCompositeOp
-  DisplaceCompositeOp
-  DissolveCompositeOp
-  ExclusionCompositeOp
-  HardLightCompositeOp
-  HueCompositeOp
-  InCompositeOp
-  LightenCompositeOp
-  LinearLightCompositeOp
-  LuminizeCompositeOp
-  MinusDstCompositeOp
-  ModulateCompositeOp
-  MultiplyCompositeOp
-  OutCompositeOp
-  OverCompositeOp
-  OverlayCompositeOp
-  PlusCompositeOp
-  ReplaceCompositeOp
-  SaturateCompositeOp
-  ScreenCompositeOp
-  SoftLightCompositeOp
-  SrcAtopCompositeOp
-  SrcCompositeOp
-  SrcInCompositeOp
-  SrcOutCompositeOp
-  SrcOverCompositeOp
-  ModulusSubtractCompositeOp
-  ThresholdCompositeOp
-  XorCompositeOp
-  DivideDstCompositeOp
-  DistortCompositeOp
-  BlurCompositeOp
-  PegtopLightCompositeOp
-  VividLightCompositeOp
-  PinLightCompositeOp
-  LinearDodgeCompositeOp
-  LinearBurnCompositeOp
-  MathematicsCompositeOp
-  DivideSrcCompositeOp
-  MinusSrcCompositeOp
-  DarkenIntensityCompositeOp
-  LightenIntensityCompositeOp
->;
+MagicWand - ImageMagick's MagickWand API Bindings for Perl6
 
-enum MontageMode is export <
-  UndefinedMode,
-  FrameMode
-  UnframeMode
-  ConcatenateMode
->;
+=head1 SYNOPSIS
 
-enum ImageType is export <
-  UndefinedType
-  BilevelType
-  GrayscaleType
-  GrayscaleMatteType
-  PaletteType
-  PaletteMatteType
-  TrueColorType
-  TrueColorMatteType
-  ColorSeparationType
-  ColorSeparationMatteType
-  OptimizeType
-  PaletteBilevelMatteType
->;
+=begin code
 
-enum StatisticType is export <
-  UndefinedStatistic
-  GradientStatistic
-  MaximumStatistic
-  MeanStatistic
-  MedianStatistic
-  MinimumStatistic
-  ModeStatistic
-  NonpeakStatistic
-  StandardDeviationStatistic
->;
+use v6;
+use MagickWand;
 
-enum ColorspaceType is export <
-  UndefinedColorspace
-  RGBColorspace
-  GRAYColorspace
-  TransparentColorspace
-  OHTAColorspace
-  LabColorspace
-  XYZColorspace
-  YCbCrColorspace
-  YCCColorspace
-  YIQColorspace
-  YPbPrColorspace
-  YUVColorspace
-  CMYKColorspace
-  sRGBColorspace
-  HSBColorspace
-  HSLColorspace
-  HWBColorspace
-  Rec601LumaColorspace
-  Rec601YCbCrColorspace
-  Rec709LumaColorspace
-  Rec709YCbCrColorspace
-  LogColorspace
-  CMYColorspace
->;
+# A new magic wand
+my $wand = MagickWand.new;
 
-enum FilterTypes <
-  UndefinedFilter
-  PointFilter
-  BoxFilter
-  TriangleFilter
-  HermiteFilter
-  HanningFilter
-  HammingFilter
-  BlackmanFilter
-  GaussianFilter
-  QuadraticFilter
-  CubicFilter
-  CatromFilter
-  MitchellFilter
-  JincFilter
-  SincFilter
-  SincFastFilter
-  KaiserFilter
-  WelshFilter
-  ParzenFilter
-  BohmanFilter
-  BartlettFilter
-  LagrangeFilter
-  LanczosFilter
-  LanczosSharpFilter
-  Lanczos2Filter
-  Lanczos2SharpFilter
-  RobidouxFilter
-  RobidouxSharpFilter
-  CosineFilter
-  SplineFilter
-  SentinelFilter
->;
+# Read an image
+$wand.read("examples/images/aero1.jpg");
+
+# Lighten dark areas
+$wand.auto-gamma;
+
+# And then write a new image
+$wand.write("output.png");
+
+# And cleanup on exit
+LEAVE {
+  $wand.cleanup if $wand.defined;
+}
+
+=end code
+
+=head1 DESCRIPTION
+
+This provides a Perl 6 object-oriented [NativeCall](
+http://doc.perl6.org/language/nativecall)-based API for ImageMagick's
+[MagickWand C API](http://www.imagemagick.org/script/magick-wand.php).
+
+=end pod
 
 unit class MagickWand;
 
+# Packages
 use NativeCall;
 use MagickWand::NativeCall;
 use MagickWand::NativeCall::DrawingWand;
@@ -203,6 +54,7 @@ use MagickWand::NativeCall::Property;
 use MagickWand::NativeCall::Wand;
 use MagickWand::NativeCall::WandView;
 use MagickWand::NativeCall::Deprecated;
+use MagickWand::Enums;
 
 # Wand native handles
 has Pointer $.handle   is rw;
@@ -221,12 +73,7 @@ method read(Str $file-name) returns Bool {
   return MagickReadImage( $.handle, $file-name ) == MagickTrue;
 }
 
-=begin stash
-method read-buffer(Buf :$buffer) returns Bool {
-  $.handle = NewMagickWand unless $.handle.defined;
-  return MagickReadImageBlob( $.handle, $blob ) == MagickTrue;
-}
-=end stash
+#TODO  method read-buffer(Buf :$buffer) returns Bool # uses MagickReadImageBlob
 
 method get-image-gamma returns Num {
   die "No wand handle defined!" unless $.handle.defined;
@@ -320,9 +167,9 @@ multi method adaptive-resize(Int $width, Int $height) {
 
 =begin pod
 
-=head1 adaptive-resize
+=head2 adaptive-resize
 
-This is a helper method for C<adaptive-resize>
+This is a helper method for C<adaptive-resize>. For example
 
   adaptive-resize(0.5);    # Resize to 50% of original size
 
@@ -633,8 +480,7 @@ method reduce-noise(Real $radius = 0) returns Bool {
 
 =begin pod
 
-=head1 resize
-
+=head2 resize
 
     $wand.resize(320, 240);     # Scale to 320x240
 
@@ -764,6 +610,13 @@ method wave(Real $amplitude, Real $wave_length) returns Bool {
   return MagickWaveImage( $.handle, $amplitude.Num, $wave_length.Num) == MagickTrue;
 }
 
+=begin pod
+
+=head3 cleanup
+
+TODO cleanup description
+
+=end pod
 method cleanup {
   if $.handle.defined {
     DestroyMagickWand($.handle);

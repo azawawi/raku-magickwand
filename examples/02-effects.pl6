@@ -4,6 +4,7 @@ use v6;
 
 use lib 'lib';
 use MagickWand;
+use MagickWand::Enums;
 
 # Store images so we can montage them later
 my @images;
