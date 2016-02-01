@@ -8,11 +8,15 @@ use MagickWand;
 # Store images so we can montage them later
 my @images;
 
+say sprintf("ImageMagick API version   is %x, %s", MagickWand.version<number>,
+  MagickWand.version<string>);
+say sprintf("ImageMagick API copyright is %s", MagickWand.copyright);
+
 # Read the original image
 my $original = MagickWand.new;
 $original.read("examples/images/model.gif");
 say $original.width, "x", $original.height;
-$original.label("Da Original");
+$original.label("Model");
 @images.push($original);
 
 # Read camelia image

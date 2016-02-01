@@ -138,6 +138,7 @@ is export { * };
     const char *MagickGetCopyright(void)
 
 MagickGetCopyright() returns the ImageMagick API copyright as a string constant.
+
 =end pod
 sub MagickGetCopyright()
 returns Str
@@ -612,10 +613,12 @@ is export { * };
 
     const char *MagickGetVersion(size_t *version)
 
-MagickGetVersion() returns the ImageMagick API version as a string constant and as a number.
+MagickGetVersion() returns the ImageMagick API version as a string constant and
+as a number.
+
 =end pod
 sub MagickGetVersion(
-   Pointer[int32] $version
+   CArray[int32] $version
 )
 returns Str
 is native(&library)

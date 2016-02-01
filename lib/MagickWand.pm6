@@ -561,9 +561,17 @@ method radial-blur(Real $angle) returns Bool {
   }
 }
 
-method version returns Str {
-  my $version;
-  return MagickGetVersion($version);
+submethod version returns Hash {
+  my $number     = CArray[int32].new(1);
+  my Str $string = MagickGetVersion($number);
+  return %(
+    "number" => $number[0],
+    "string" => $string,
+  );
+}
+
+submethod copyright {
+  return MagickGetCopyright;
 }
 
 method cleanup {
