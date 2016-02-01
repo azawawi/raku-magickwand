@@ -586,14 +586,17 @@ $example->Label('Segment');
   @images.push($o);
 }
 
+{
+  say "Wave...";
+  my $o = $original.clone;
+  $o.wave(25, 150);
+  #TODO $example->Wave('25x150');
+  $o.label("Wave");
+  @images.push($o);
+}
+
 =begin TODO
 
-print "Wave...\n";
-$example=$model->Clone();
-$example->Label('Wave');
-$example->Wave('25x150');
-
-print "Montage...\n";
 $montage=$images->Montage(geometry=>'128x160+8+4>',gravity=>'Center',
   tile=>'5x+10+200',compose=>'over',background=>'#ffffff',
   font=>'Generic.ttf',pointsize=>18,fill=>'#600',stroke=>'none',

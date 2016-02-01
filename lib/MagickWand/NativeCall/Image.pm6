@@ -5260,7 +5260,14 @@ is export { * };
     MagickBooleanType MagickWaveImage(MagickWand *wand,const double amplitude,
       const double wave_length)
 
-MagickWaveImage()  creates a "ripple" effect in the image by shifting the pixels vertically along a sine wave whose amplitude and wavelength is specified by the given parameters.- wand: the magick wand. - amplitude, wave_length:  Define the amplitude and wave length of the sine wave. 
+MagickWaveImage()  creates a "ripple" effect in the image by shifting the pixels
+vertically along a sine wave whose amplitude and wavelength is specified by the
+given parameters.
+
+- wand: the magick wand.
+- amplitude, wave_length:  Define the amplitude and wave length of the sine
+  wave.
+
 =end pod
 sub MagickWaveImage(
    Pointer $wand,

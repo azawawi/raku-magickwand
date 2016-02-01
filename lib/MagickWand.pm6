@@ -759,6 +759,11 @@ method vignette(Real $black_point, Real $white_point, Int $x = 0, Int $y = 0) re
   return MagickVignetteImage( $.handle, $black_point.Num, $white_point.Num, $x, $y) == MagickTrue;
 }
 
+method wave(Real $amplitude, Real $wave_length) returns Bool {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickWaveImage( $.handle, $amplitude.Num, $wave_length.Num) == MagickTrue;
+}
+
 method cleanup {
   if $.handle.defined {
     DestroyMagickWand($.handle);
