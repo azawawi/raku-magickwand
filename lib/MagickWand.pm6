@@ -168,6 +168,7 @@ use MagickWand::NativeCall::PixelWand;
 use MagickWand::NativeCall::Property;
 use MagickWand::NativeCall::Wand;
 use MagickWand::NativeCall::WandView;
+use MagickWand::NativeCall::Deprecated;
 
 # Wand native handles
 has Pointer $.handle   is rw;
@@ -544,6 +545,25 @@ method polaroid(Real $angle) returns Bool {
 method encipher(Str $passphrase) {
   die "No wand handle defined!" unless $.handle.defined;
   return MagickEncipherImage( $.handle, $passphrase) == MagickTrue;
+}
+
+method radial-blur(Real $angle) returns Bool {
+  die "No wand handle defined!" unless $.handle.defined;
+  try {
+    return MagickRotationalBlurImage( $.handle, $angle.Num) == MagickTrue;
+    CATCH {
+      default {
+        # Deprecated alternative
+        warn "Using deprecated alternative: MagickRadialBlurImage, Error: $_";
+        return MagickRadialBlurImage( $.handle, $angle.Num) == MagickTrue;
+      }
+    }
+  }
+}
+
+method version returns Str {
+  my $version;
+  return MagickGetVersion($version);
 }
 
 method cleanup {

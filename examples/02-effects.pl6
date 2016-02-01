@@ -412,14 +412,19 @@ push(@$images,$plasma);
 print "Quantize...\n";
 $example=$model->Clone();
 $example->Label('Quantize');
-$example->Quantize();
+#TODO  $example->Quantize();
 
+=end TODO
 
-print "Radial Blur...\n";
-$example=$model->Clone();
-$example->Label('Radial Blur');
-$example->RadialBlur(10);
+{
+  say "Radial (Rotational) Blur...";
+  my $o = $original.clone;
+  $o.radial-blur(10);
+  $o.label("Radial Blur");
+  @images.push($o);
+}
 
+=begin TODO
 
 print "Raise...\n";
 $example=$model->Clone();

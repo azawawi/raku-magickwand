@@ -3591,7 +3591,12 @@ is export { * };
     MagickBooleanType MagickRotationalBlurImageChannel(MagickWand *wand,
       const ChannelType channel,const double angle)
 
-MagickRotationalBlurImage() rotational blurs an image.- wand: the magick wand. - channel: the image channel(s). - angle: the angle of the blur in degrees. 
+MagickRotationalBlurImage() rotational blurs an image.
+
+- wand: the magick wand.
+- channel: the image channel(s).
+- angle: the angle of the blur in degrees.
+
 =end pod
 sub MagickRotationalBlurImage(
    Pointer $wand,
