@@ -122,6 +122,7 @@ $camelia.label("I am Camelia");
 {
   #TODO ColorMatrix
   say "TODO ColorMatrix";
+  #$example->ColorMatrix([1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1]);
 }
 
 for CompositeOperator.enums -> $op
@@ -145,6 +146,7 @@ for CompositeOperator.enums -> $op
   say "Contrast Stretch";
   my $o = $original.clone;
   $o.contrast-stretch(1.1, 1.1);
+  #TODO $example->ContrastStretch('5%');
   $o.label("Contrast Stretch");
   @images.push($o);
 }
@@ -161,6 +163,8 @@ for CompositeOperator.enums -> $op
   say "Crop";
   my $o = $original.clone;
   $o.crop( 50, 50, 100, 100 );
+  #TODO $example->Crop(geometry=>'80x80+25+50');
+  #TODO $example->Set(page=>'0x0+0+0');
   $o.label("Crop");
   @images.push($o);
 }
@@ -197,6 +201,7 @@ for CompositeOperator.enums -> $op
   say "Detect Edges...";
   my $o = $original.clone;
   $o.edge;
+  #TODO $example->Clamp();
   $o.label("Detect Edges");
   @images.push($o);
 }
@@ -206,6 +211,14 @@ for CompositeOperator.enums -> $op
   my $o = $original.clone;
   $o.emboss(0, 1);
   $o.label("Emboss");
+  @images.push($o);
+}
+
+{
+  say "Encipher...";
+  my $o = $original.clone;
+  $o.label("Encipher");
+  $o.encipher("Magick");
   @images.push($o);
 }
 
@@ -244,7 +257,7 @@ for CompositeOperator.enums -> $op
 {
   say "Frame...";
   my $o = $original.clone;
-  $o.frame("gold", 15, 15, 0, 0);
+  $o.frame("gold", 15, 15, 3, 3);
   $o.label("Frame");
   @images.push($o);
 }

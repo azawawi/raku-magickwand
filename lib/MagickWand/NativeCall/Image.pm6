@@ -1206,7 +1206,11 @@ is export { * };
     MagickBooleanType MagickEncipherImage(MagickWand *wand,
       const char *passphrase)
 
-MagickEncipherImage() converts plaint pixels to cipher pixels.- wand: the magick wand. - passphrase: the passphrase. 
+MagickEncipherImage() converts plaint pixels to cipher pixels.
+
+- wand: the magick wand.
+- passphrase: the passphrase.
+
 =end pod
 sub MagickEncipherImage(
    Pointer $wand,

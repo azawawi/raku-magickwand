@@ -541,6 +541,11 @@ method polaroid(Real $angle) returns Bool {
   return MagickPolaroidImage( $.handle, $.d_handle, $angle.Num) == MagickTrue;
 }
 
+method encipher(Str $passphrase) {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickEncipherImage( $.handle, $passphrase) == MagickTrue;
+}
+
 method cleanup {
   if $.handle.defined {
     DestroyMagickWand($.handle);
