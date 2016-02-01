@@ -31,7 +31,7 @@ $wand.write("output.png");
 
 # And cleanup on exit
 LEAVE {
-  $o.cleanup if $o.defined;
+  $wand.cleanup if $wand.defined;
 }
 ```
 
