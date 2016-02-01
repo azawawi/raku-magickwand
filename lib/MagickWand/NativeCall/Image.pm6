@@ -4524,7 +4524,15 @@ is export { * };
       const MagickBooleanType gray,const double azimuth,
       const double elevation)
 
-MagickShadeImage() shines a distant light on an image to create a three-dimensional effect. You control the positioning of the light with azimuth and elevation; azimuth is measured in degrees off the x axis and elevation is measured in pixels above the Z axis.- wand: the magick wand. - gray: A value other than zero shades the intensity of each pixel. - azimuth, elevation:  Define the light source direction. 
+MagickShadeImage() shines a distant light on an image to create a
+three-dimensional effect. You control the positioning of the light with azimuth
+and elevation; azimuth is measured in degrees off the x axis and elevation is
+measured in pixels above the Z axis.
+
+- wand: the magick wand.
+- gray: A value other than zero shades the intensity of each pixel.
+- azimuth, elevation: Define the light source direction. 
+
 =end pod
 sub MagickShadeImage(
    Pointer $wand,

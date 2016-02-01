@@ -491,14 +491,19 @@ $example->Label('Quantize');
 print "Segment...\n";
 $example=$model->Clone();
 $example->Label('Segment');
-$example->Segment();
+#TODO $example->Segment();
 
+=end TODO
 
-print "Shade...\n";
-$example=$model->Clone();
-$example->Label('Shade');
-$example->Shade(geometry=>'30x30',gray=>'true');
+{
+  say "Shade...";
+  my $o = $original.clone;
+  $o.shade(True, 30, 30);
+  $o.label("Shade");
+  @images.push($o);
+}
 
+=begin TODO
 
 print "Sharpen...\n";
 $example=$model->Clone();

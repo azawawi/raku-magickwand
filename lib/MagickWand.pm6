@@ -693,6 +693,11 @@ multi method scale(Real $percent) returns Bool {
   return self.scale( Int(self.width * $percent), Int(self.height * $percent)) == MagickTrue;
 }
 
+multi method shade(Bool $gray, Real $azimuth, Real $elevation) returns Bool {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickShadeImage( $.handle, $gray, $azimuth.Num, $elevation.Num) == MagickTrue;
+}
+
 method cleanup {
   if $.handle.defined {
     DestroyMagickWand($.handle);
