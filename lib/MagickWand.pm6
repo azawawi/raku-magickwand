@@ -156,6 +156,40 @@ enum ColorspaceType is export <
   CMYColorspace
 >;
 
+enum FilterTypes <
+  UndefinedFilter
+  PointFilter
+  BoxFilter
+  TriangleFilter
+  HermiteFilter
+  HanningFilter
+  HammingFilter
+  BlackmanFilter
+  GaussianFilter
+  QuadraticFilter
+  CubicFilter
+  CatromFilter
+  MitchellFilter
+  JincFilter
+  SincFilter
+  SincFastFilter
+  KaiserFilter
+  WelshFilter
+  ParzenFilter
+  BohmanFilter
+  BartlettFilter
+  LagrangeFilter
+  LanczosFilter
+  LanczosSharpFilter
+  Lanczos2Filter
+  Lanczos2SharpFilter
+  RobidouxFilter
+  RobidouxSharpFilter
+  CosineFilter
+  SplineFilter
+  SentinelFilter
+>;
+
 unit class MagickWand;
 
 use NativeCall;
@@ -293,7 +327,7 @@ This is a helper method for C<adaptive-resize>
   adaptive-resize(0.5);    # Resize to 50% of original size
 
 =end pod
-multi method adaptive-resize(Rat $percent) {
+multi method adaptive-resize(Real $percent) {
   return self.adaptive-resize( Int(self.width * $percent), Int(self.height * $percent) );
 }
 
@@ -595,6 +629,38 @@ method raise(Int $width, Int $height, Int $x, Int $y, Int $raise) returns Bool {
 method reduce-noise(Real $radius = 0) returns Bool {
   die "No wand handle defined!" unless $.handle.defined;
   return MagickReduceNoiseImage( $.handle, $radius.Num) == MagickTrue;
+}
+
+=begin pod
+
+=head1 resize
+
+
+    $wand.resize(320, 240);     # Scale to 320x240
+
+Scales an image to the desired percentage of the current dimensions with one of
+these filters: Bessel, Blackman, Box, Catrom, CubicGaussian, Hanning, Hermite, 
+Lanczos, Mitchell, PointQuandratic, Sinc, Triangle
+
+=end pod
+multi method resize(Int $columns, Int $rows, FilterTypes $filter = UndefinedFilter, Real $blur = 0) returns Bool {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickResizeImage( $.handle, $columns, $rows, $filter, $blur.Num) == MagickTrue;
+}
+
+=begin pod
+
+=head1 resize
+
+    $wand.resize(0.6);     # 60% of original dimensions
+
+Scales an image to the desired percentage of the current dimensions with one of
+these filters: Bessel, Blackman, Box, Catrom, CubicGaussian, Hanning, Hermite, 
+Lanczos, Mitchell, PointQuandratic, Sinc, Triangle
+
+=end pod
+multi method resize(Real $percent, FilterTypes $filter = UndefinedFilter, Real $blur = 0) returns Bool {
+  return self.resize( Int(self.width * $percent), Int(self.height * $percent), $filter, $blur.Num) == MagickTrue;
 }
 
 method cleanup {

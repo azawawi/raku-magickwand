@@ -446,13 +446,15 @@ $example->Label('Quantize');
   @images.push($o);
 }
 
+{
+  say "Resize (i.e. Scale)...";
+  my $o = $original.clone;
+  $o.resize(0.6);
+  $o.label("Resize");
+  @images.push($o);
+}
+
 =begin TODO
-
-print "Resize...\n";
-$example=$model->Clone();
-$example->Label('Resize');
-$example->Resize('60%');
-
 
 print "Roll...\n";
 $example=$model->Clone();

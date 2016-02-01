@@ -3544,7 +3544,20 @@ is export { * };
       const size_t columns,const size_t rows,
       const FilterTypes filter,const double blur)
 
-MagickResizeImage() scales an image to the desired dimensions with one of these filters:<pre class="text">    Bessel   Blackman   Box    Catrom   CubicGaussian    Hanning  Hermite    Lanczos    Mitchell PointQuandratic    Sinc     Triangle</pre>Most of the filters are FIR (finite impulse response), however, Bessel, Gaussian, and Sinc are IIR (infinite impulse response).  Bessel and Sinc are windowed (brought down to zero) with the Blackman filter.- wand: the magick wand. - columns: the number of columns in the scaled image. - rows: the number of rows in the scaled image. - filter: Image filter to use. - blur: the blur factor where &gt; 1 is blurry, &lt; 1 is sharp. 
+MagickResizeImage() scales an image to the desired dimensions with one of these
+filters: Bessel, Blackman, Box, Catrom, CubicGaussian, Hanning, Hermite,Lanczos,
+Mitchell, PointQuandratic, Sinc, Triangle
+
+Most of the filters are FIR (finite impulse response), however, Bessel,
+Gaussian, and Sinc are IIR (infinite impulse response).  Bessel and Sinc are
+windowed (brought down to zero) with the Blackman filter.
+
+- wand: the magick wand.
+- columns: the number of columns in the scaled image.
+- rows: the number of rows in the scaled image.
+- filter: Image filter to use.
+- blur: the blur factor where > 1 is blurry, < 1 is sharp.
+
 =end pod
 sub MagickResizeImage(
    Pointer $wand,
