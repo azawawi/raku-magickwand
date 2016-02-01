@@ -587,6 +587,16 @@ submethod copyright {
   return MagickGetCopyright;
 }
 
+method raise(Int $width, Int $height, Int $x, Int $y, Int $raise) returns Bool {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickRaiseImage( $.handle, $width, $height, $x, $y, $raise) == MagickTrue;
+}
+
+method reduce-noise(Real $radius = 0) returns Bool {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickReduceNoiseImage( $.handle, $radius.Num) == MagickTrue;
+}
+
 method cleanup {
   if $.handle.defined {
     DestroyMagickWand($.handle);

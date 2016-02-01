@@ -429,19 +429,24 @@ $example->Label('Quantize');
   @images.push($o);
 }
 
+{
+  say "Raise...";
+  my $o = $original.clone;
+  $o.raise(10,10, 0, 0, 5);
+  #TODO $example->Raise('10x10');
+  $o.label("Raise");
+  @images.push($o);
+}
+
+{
+  say "Reduce Noise...";
+  my $o = $original.clone;
+  $o.reduce-noise;
+  $o.label("Reduce Noise");
+  @images.push($o);
+}
+
 =begin TODO
-
-print "Raise...\n";
-$example=$model->Clone();
-$example->Label('Raise');
-$example->Raise('10x10');
-
-
-print "Reduce Noise...\n";
-$example=$model->Clone();
-$example->Label('Reduce Noise');
-$example->ReduceNoise();
-
 
 print "Resize...\n";
 $example=$model->Clone();

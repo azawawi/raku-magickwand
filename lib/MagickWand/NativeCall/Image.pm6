@@ -64,9 +64,12 @@ is export { * };
 =begin pod
 =head1 MagickAdaptiveResizeImage
 
-    MagickBooleanType MagickAdaptiveResizeImage(MagickWand *wand, const size_t columns,const size_t rows)
+    MagickBooleanType MagickAdaptiveResizeImage(MagickWand *wand,
+      const size_t columns,const size_t rows)
 
-MagickAdaptiveResizeImage() adaptively resize image with data dependent triangulation.
+MagickAdaptiveResizeImage() adaptively resize image with data dependent
+triangulation.
+
 - wand: the magick wand.
 - columns: the number of columns in the scaled image.
 - rows: the number of rows in the scaled image.
@@ -3366,7 +3369,15 @@ is export { * };
       const size_t width,const size_t height,const ssize_t x,
       const ssize_t y,const MagickBooleanType raise)
 
-MagickRaiseImage() creates a simulated three-dimensional button-like effect by lightening and darkening the edges of the image.  Members width and height of raise_info define the width of the vertical and horizontal edge of the effect.- wand: the magick wand. - width,height,x,y:  Define the dimensions of the area to raise. - raise: A value other than zero creates a 3-D raise effect, otherwise it has a lowered effect. 
+MagickRaiseImage() creates a simulated three-dimensional button-like effect by
+lightening and darkening the edges of the image.  Members width and height of
+raise_info define the width of the vertical and horizontal edge of the effect.
+
+- wand: the magick wand.
+- width,height,x,y:  Define the dimensions of the area to raise.
+- raise: A value other than zero creates a 3-D raise effect, otherwise it has a
+lowered effect.
+
 =end pod
 sub MagickRaiseImage(
    Pointer $wand,

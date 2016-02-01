@@ -715,7 +715,11 @@ is export { * };
     MagickBooleanType MagickReduceNoiseImage(MagickWand *wand,
       const double radius)
 
-MagickReduceNoiseImage() smooths the contours of an image while still preserving edge information.  The algorithm works by replacing each pixel with its neighbor closest in value.  A neighbor is defined by radius.  Use a radius of 0 and ReduceNoise() selects a suitable radius for you.
+MagickReduceNoiseImage() smooths the contours of an image while still preserving
+edge information.  The algorithm works by replacing each pixel with its neighbor
+closest in value.  A neighbor is defined by radius.  Use a radius of 0 and
+ReduceNoise() selects a suitable radius for you.
+
 =end pod
 sub MagickReduceNoiseImage(
    Pointer $wand,
