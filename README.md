@@ -68,7 +68,7 @@ $ sudo port install ImageMagick
 
 For 64-bit Windows, please install the [`64-bit`](
 http://www.imagemagick.org/download/binaries/ImageMagick-6.9.3-2-Q16-x64-dll.exe)
-DLL installer. Otherwise, please install the [`32-bit`](
+DLL installer. Otherwise, use the [`32-bit`](
 http://www.imagemagick.org/download/binaries/ImageMagick-6.9.3-2-Q16-x86-dll.exe)
 version.
 
