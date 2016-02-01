@@ -135,7 +135,7 @@ for CompositeOperator.enums -> $op
   my $o = $original.clone;
   $o.composite($camelia, ::{$op.key}, 0, 15);
   $o.label($op.key);
-  #@images.push($o);
+  @images.push($o);
 }
 
 {
