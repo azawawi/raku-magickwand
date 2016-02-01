@@ -5190,7 +5190,19 @@ is export { * };
       const ChannelType channel,const double radius,const double sigma,
       const double amount,const double threshold)
 
-MagickUnsharpMaskImage() sharpens an image.  We convolve the image with a Gaussian operator of the given radius and standard deviation (sigma). For reasonable results, radius should be larger than sigma.  Use a radius of 0 and UnsharpMaskImage() selects a suitable radius for you.- wand: the magick wand. - channel: the image channel(s). - radius: the radius of the Gaussian, in pixels, not counting the center pixel. - sigma: the standard deviation of the Gaussian, in pixels. - amount: the percentage of the difference between the original and the blur image that is added back into the original. - threshold: the threshold in pixels needed to apply the diffence amount. 
+MagickUnsharpMaskImage() sharpens an image.  We convolve the image with a
+Gaussian operator of the given radius and standard deviation (sigma). For
+reasonable results, radius should be larger than sigma.  Use a radius of 0 and
+UnsharpMaskImage() selects a suitable radius for you.
+
+- wand: the magick wand.
+- channel: the image channel(s).
+- radius: the radius of the Gaussian in pixels not counting the center pixel.
+- sigma: the standard deviation of the Gaussian in pixels.
+- amount: the percentage of the difference between the original and the blur
+  image that is added back into the original.
+- threshold: the threshold in pixels needed to apply the diffence amount.
+
 =end pod
 sub MagickUnsharpMaskImage(
    Pointer $wand,
@@ -5223,7 +5235,12 @@ is export { * };
       const double black_point,const double white_point,const ssize_t x,
       const ssize_t y)
 
-MagickVignetteImage() softens the edges of the image in vignette style.- wand: the magick wand. - black_point: the black point. - white_point: the white point. - x, y:  Define the x and y ellipse offset. 
+MagickVignetteImage() softens the edges of the image in vignette style.
+- wand: the magick wand.
+- black_point: the black point.
+- white_point: the white point.
+- x, y:  Define the x and y ellipse offset.
+
 =end pod
 sub MagickVignetteImage(
    Pointer $wand,

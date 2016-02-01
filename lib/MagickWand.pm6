@@ -749,6 +749,16 @@ method swirl(Real $degrees) returns Bool {
   return MagickSwirlImage( $.handle, $degrees.Num) == MagickTrue;
 }
 
+method unsharpen-mask(Real $radius, Real $sigma, Real $amount = 0 , Real $threshold = 0) returns Bool {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickUnsharpMaskImage( $.handle, $radius.Num, $sigma.Num, $amount.Num, $threshold.Num) == MagickTrue;
+}
+
+method vignette(Real $black_point, Real $white_point, Int $x = 0, Int $y = 0) returns Bool {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickVignetteImage( $.handle, $black_point.Num, $white_point.Num, $x, $y) == MagickTrue;
+}
+
 method cleanup {
   if $.handle.defined {
     DestroyMagickWand($.handle);

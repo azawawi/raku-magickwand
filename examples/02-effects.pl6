@@ -569,19 +569,24 @@ $example->Label('Segment');
   @images.push($o);
 }
 
+{
+  say "Unsharp Mask...";
+  my $o = $original.clone;
+  $o.unsharpen-mask(0, 1);
+  #TODO $example->UnsharpMask('0.0x1.0');
+  $o.label("Unsharp Mask");
+  @images.push($o);
+}
+
+{
+  say "Vignette...";
+  my $o = $original.clone;
+  $o.vignette(0, 20);
+  $o.label("Vignette");
+  @images.push($o);
+}
+
 =begin TODO
-
-print "Unsharp Mask...\n";
-$example=$model->Clone();
-$example->Label('Unsharp Mask');
-$example->UnsharpMask('0.0x1.0');
-
-
-print "Vignette...\n";
-$example=$model->Clone();
-$example->Label('Vignette');
-$example->Vignette('0x20');
-
 
 print "Wave...\n";
 $example=$model->Clone();
