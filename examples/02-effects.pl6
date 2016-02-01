@@ -503,13 +503,15 @@ $example->Label('Segment');
   @images.push($o);
 }
 
+{
+  say "Sharpen...";
+  my $o = $original.clone;
+  $o.sharpen(0, 1);
+  $o.label("Sharpen");
+  @images.push($o);
+}
+
 =begin TODO
-
-print "Sharpen...\n";
-$example=$model->Clone();
-$example->Label('Sharpen');
-$example->Sharpen('0.0x1.0');
-
 
 print "Shave...\n";
 $example=$model->Clone();

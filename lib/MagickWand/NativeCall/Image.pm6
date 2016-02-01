@@ -4573,7 +4573,16 @@ is export { * };
     MagickBooleanType MagickSharpenImageChannel(MagickWand *wand,
       const ChannelType channel,const double radius,const double sigma)
 
-MagickSharpenImage() sharpens an image.  We convolve the image with a Gaussian operator of the given radius and standard deviation (sigma). For reasonable results, the radius should be larger than sigma.  Use a radius of 0 and MagickSharpenImage() selects a suitable radius for you.- wand: the magick wand. - channel: the image channel(s). - radius: the radius of the Gaussian, in pixels, not counting the center pixel. - sigma: the standard deviation of the Gaussian, in pixels. 
+MagickSharpenImage() sharpens an image.  We convolve the image with a Gaussian
+operator of the given radius and standard deviation (sigma). For reasonable
+results, the radius should be larger than sigma.  Use a radius of 0 and
+MagickSharpenImage() selects a suitable radius for you.
+
+- wand: the magick wand.
+- channel: the image channel(s).
+- radius: the radius of the Gaussian, in pixels, not counting the center pixel.
+- sigma: the standard deviation of the Gaussian in pixels.
+
 =end pod
 sub MagickSharpenImage(
    Pointer $wand,

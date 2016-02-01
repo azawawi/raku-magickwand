@@ -698,6 +698,11 @@ multi method shade(Bool $gray, Real $azimuth, Real $elevation) returns Bool {
   return MagickShadeImage( $.handle, $gray, $azimuth.Num, $elevation.Num) == MagickTrue;
 }
 
+method sharpen(Real $radius, Real $sigma) {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickSharpenImage( $.handle, $radius.Num, $sigma.Num ) == MagickTrue;
+}
+
 method cleanup {
   if $.handle.defined {
     DestroyMagickWand($.handle);
