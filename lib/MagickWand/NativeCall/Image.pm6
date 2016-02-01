@@ -1939,7 +1939,10 @@ is export { * };
 
     ColorspaceType MagickGetImageColorspace(MagickWand *wand)
 
-MagickGetImageColorspace() gets the image colorspace.- wand: the magick wand. 
+MagickGetImageColorspace() gets the image colorspace.
+
+- wand: the magick wand.
+
 =end pod
 sub MagickGetImageColorspace(
    Pointer $wand
@@ -3940,7 +3943,15 @@ is export { * };
     MagickBooleanType MagickSetImageColorspace(MagickWand *wand,
       const ColorspaceType colorspace)
 
-MagickSetImageColorspace() sets the image colorspace.- wand: the magick wand. - colorspace: the image colorspace:   UndefinedColorspace, RGBColorspace, GRAYColorspace, TransparentColorspace, OHTAColorspace, XYZColorspace, YCbCrColorspace, YCCColorspace, YIQColorspace, YPbPrColorspace, YPbPrColorspace, YUVColorspace, CMYKColorspace, sRGBColorspace, HSLColorspace, or HWBColorspace. 
+MagickSetImageColorspace() sets the image colorspace.
+
+- wand: the magick wand.
+- colorspace: the image colorspace:   UndefinedColorspace, RGBColorspace,
+  GRAYColorspace, TransparentColorspace, OHTAColorspace, XYZColorspace,
+  YCbCrColorspace, YCCColorspace, YIQColorspace, YPbPrColorspace,
+  YPbPrColorspace, YUVColorspace, CMYKColorspace, sRGBColorspace, HSLColorspace,
+  or HWBColorspace.
+
 =end pod
 sub MagickSetImageColorspace(
    Pointer $wand,
@@ -5034,7 +5045,16 @@ is export { * };
     MagickBooleanType MagickTransformImageColorspace(MagickWand *wand,
       const ColorspaceType colorspace)
 
-MagickTransformImageColorspace() transform the image colorspace, setting the images colorspace while transforming the images data to that colorspace.- wand: the magick wand. - colorspace: the image colorspace:   UndefinedColorspace, sRGBColorspace, RGBColorspace, GRAYColorspace, OHTAColorspace, XYZColorspace, YCbCrColorspace, YCCColorspace, YIQColorspace, YPbPrColorspace, YPbPrColorspace, YUVColorspace, CMYKColorspace, HSLColorspace, HWBColorspace. 
+MagickTransformImageColorspace() transform the image colorspace,  setting
+theimages colorspace while transforming the images data to that colorspace.
+
+- wand: the magick wand.
+- colorspace: the image colorspace:
+  UndefinedColorspace, sRGBColorspace, RGBColorspace, GRAYColorspace,
+  OHTAColorspace, XYZColorspace, YCbCrColorspace, YCCColorspace, YIQColorspace,
+  YPbPrColorspace, YPbPrColorspace, YUVColorspace, CMYKColorspace, HSLColorspace,
+  HWBColorspace.
+
 =end pod
 sub MagickTransformImageColorspace(
    Pointer $wand,

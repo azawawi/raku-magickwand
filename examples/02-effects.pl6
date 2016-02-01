@@ -530,6 +530,7 @@ $example->Label('Segment');
 {
   say "Sketch...";
   my $o = $original.clone;
+  $o.colorspace(GRAYColorspace);
   $o.sketch(0, 20, 120);
   $o.label("Sketch");
   @images.push($o);

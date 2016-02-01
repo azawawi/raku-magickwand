@@ -717,11 +717,11 @@ method shear(Real $x_shear, Real $y_shear, Str $background = "white") returns Bo
 
 multi method colorspace(ColorspaceType $colorspace) returns Bool {
   die "No wand handle defined!" unless $.handle.defined;
-  return MagickSetColorspace( $.handle, $colorspace.Int) == MagickTrue;
+  return MagickTransformImageColorspace( $.handle, $colorspace.Int) == MagickTrue;
 }
 
 multi method colorspace returns ColorspaceType {
-  return ColorspaceType( MagickGetColorspace( $.handle ) );
+  return ColorspaceType( MagickGetImageColorspace( $.handle ) );
 }
 
 method sketch(Real $radius, Real $sigma, Real $angle) returns Bool {
