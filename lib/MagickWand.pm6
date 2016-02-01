@@ -729,6 +729,11 @@ method sketch(Real $radius, Real $sigma, Real $angle) returns Bool {
   return MagickSketchImage( $.handle, $radius.Num, $sigma.Num, $angle.Num) == MagickTrue;
 }
 
+multi method sigmoidal-contrast(Bool $sharpen, Real $alpha, Real $beta) returns Bool {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickSigmoidalContrastImage( $.handle, $sharpen.Int, $alpha.Num, $beta.Num) == MagickTrue;
+}
+
 method cleanup {
   if $.handle.defined {
     DestroyMagickWand($.handle);

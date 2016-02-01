@@ -4667,7 +4667,21 @@ is export { * };
       const ChannelType channel,const MagickBooleanType sharpen,
       const double alpha,const double beta)
 
-MagickSigmoidalContrastImage() adjusts the contrast of an image with a non-linear sigmoidal contrast algorithm.  Increase the contrast of the image using a sigmoidal transfer function without saturating highlights or shadows.  Contrast indicates how much to increase the contrast (0 is none; 3 is typical; 20 is pushing it); mid-point indicates where midtones fall in the resultant image (0 is white; 50 is middle-gray; 100 is black).  Set sharpen to MagickTrue to increase the image contrast otherwise the contrast is reduced.- wand: the magick wand. - channel: Identify which channel to level: RedChannel, GreenChannel, - sharpen: Increase or decrease image contrast. - alpha: strength of the contrast, the larger the number the more 'threshold-like' it becomes. - beta: midpoint of the function as a color value 0 to QuantumRange. 
+MagickSigmoidalContrastImage() adjusts the contrast of an image with a
+non-linear sigmoidal contrast algorithm.  Increase the contrast of the image
+using a sigmoidal transfer function without saturating highlights or shadows.
+Contrast indicates how much to increase the contrast (0 is none; 3 is typical;
+20 is pushing it); mid-point indicates where midtones fall in the resultant
+image (0 is white; 50 is middle-gray; 100 is black).  Set sharpen to MagickTrue
+to increase the image contrast otherwise the contrast is reduced.
+
+- wand: the magick wand.
+- channel: Identify which channel to level: RedChannel, GreenChannel,
+- sharpen: Increase or decrease image contrast. 
+- alpha: strength of the contrast, the larger the number the more
+  'threshold-like' it becomes.
+- beta: midpoint of the function as a color value 0 to QuantumRange.
+
 =end pod
 sub MagickSigmoidalContrastImage(
    Pointer $wand,

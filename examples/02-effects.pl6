@@ -536,13 +536,16 @@ $example->Label('Segment');
   @images.push($o);
 }
 
+{
+  say "Sigmoidal Contrast...";
+  my $o = $original.clone;
+  $o.sigmoidal-contrast(False, 5, 3);
+  #TODO $example->SigmoidalContrast("3x50%");
+  $o.label("Sigmoidal Contrast");
+  @images.push($o);
+}
+
 =begin TODO
-
-print "Sigmoidal Contrast...\n";
-$example=$model->Clone();
-$example->Label('Sigmoidal Contrast');
-$example->SigmoidalContrast("3x50%");
-
 
 print "Spread...\n";
 $example=$model->Clone();
