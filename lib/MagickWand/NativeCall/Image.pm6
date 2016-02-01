@@ -3577,7 +3577,12 @@ is export { * };
     MagickBooleanType MagickRollImage(MagickWand *wand,const ssize_t x,
       const size_t y)
 
-MagickRollImage() offsets an image as defined by x and y.- wand: the magick wand. - x: the x offset. - y: the y offset. 
+MagickRollImage() offsets an image as defined by x and y.
+
+- wand: the magick wand.
+- x: the x offset.
+- y: the y offset.
+
 =end pod
 sub MagickRollImage(
    Pointer $wand,
@@ -3595,7 +3600,14 @@ is export { * };
     MagickBooleanType MagickRotateImage(MagickWand *wand,
       const PixelWand *background,const double degrees)
 
-MagickRotateImage() rotates an image the specified number of degrees. Empty triangles left over from rotating the image are filled with the background color.- wand: the magick wand. - background: the background pixel wand. - degrees: the number of degrees to rotate the image. 
+MagickRotateImage() rotates an image the specified number of degrees. Empty
+triangles left over from rotating the image are filled with the background
+color.
+
+- wand: the magick wand.
+- background: the background pixel wand.
+- degrees: the number of degrees to rotate the image.
+
 =end pod
 sub MagickRotateImage(
    Pointer $wand,
@@ -3646,7 +3658,14 @@ is export { * };
     MagickBooleanType MagickSampleImage(MagickWand *wand,
       const size_t columns,const size_t rows)
 
-MagickSampleImage() scales an image to the desired dimensions with pixel sampling.  Unlike other scaling methods, this method does not introduce any additional color into the scaled image.- wand: the magick wand. - columns: the number of columns in the scaled image. - rows: the number of rows in the scaled image. 
+MagickSampleImage() scales an image to the desired dimensions with pixel
+sampling.  Unlike other scaling methods, this method does not introduce any
+additional color into the scaled image.
+
+- wand: the magick wand.
+- columns: the number of columns in the scaled image.
+- rows: the number of rows in the scaled image.
+
 =end pod
 sub MagickSampleImage(
    Pointer $wand,
@@ -3664,7 +3683,12 @@ is export { * };
     MagickBooleanType MagickScaleImage(MagickWand *wand,
       const size_t columns,const size_t rows)
 
-MagickScaleImage() scales the size of an image to the given dimensions.- wand: the magick wand. - columns: the number of columns in the scaled image. - rows: the number of rows in the scaled image. 
+MagickScaleImage() scales the size of an image to the given dimensions.
+
+- wand: the magick wand.
+- columns: the number of columns in the scaled image.
+- rows: the number of rows in the scaled image.
+
 =end pod
 sub MagickScaleImage(
    Pointer $wand,

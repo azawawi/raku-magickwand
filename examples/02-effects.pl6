@@ -454,31 +454,39 @@ $example->Label('Quantize');
   @images.push($o);
 }
 
+{
+  say "Roll...";
+  my $o = $original.clone;
+  $o.roll(20, 10);
+  $o.label("Roll");
+  @images.push($o);
+}
+
+{
+  say "Rotate...";
+  my $o = $original.clone;
+  $o.rotate(45);
+  $o.label("Rotate");
+  @images.push($o);
+}
+
+{
+  say "Sample...";
+  my $o = $original.clone;
+  $o.sample(0.6);
+  $o.label("Sample");
+  @images.push($o);
+}
+
+{
+  say "Scale...";
+  my $o = $original.clone;
+  $o.scale(0.6);
+  $o.label("Scale");
+  @images.push($o);
+}
+
 =begin TODO
-
-print "Roll...\n";
-$example=$model->Clone();
-$example->Label('Roll');
-$example->Roll(geometry=>'+20+10');
-
-
-print "Rotate...\n";
-$example=$model->Clone();
-$example->Label('Rotate');
-$example->Rotate(45);
-
-
-print "Sample...\n";
-$example=$model->Clone();
-$example->Label('Sample');
-$example->Sample('60%');
-
-
-print "Scale...\n";
-$example=$model->Clone();
-$example->Label('Scale');
-$example->Scale('60%');
-
 
 print "Segment...\n";
 $example=$model->Clone();

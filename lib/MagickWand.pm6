@@ -643,9 +643,9 @@ these filters: Bessel, Blackman, Box, Catrom, CubicGaussian, Hanning, Hermite,
 Lanczos, Mitchell, PointQuandratic, Sinc, Triangle
 
 =end pod
-multi method resize(Int $columns, Int $rows, FilterTypes $filter = UndefinedFilter, Real $blur = 0) returns Bool {
+multi method resize(Int $width, Int $height, FilterTypes $filter = UndefinedFilter, Real $blur = 0) returns Bool {
   die "No wand handle defined!" unless $.handle.defined;
-  return MagickResizeImage( $.handle, $columns, $rows, $filter, $blur.Num) == MagickTrue;
+  return MagickResizeImage( $.handle, $width, $height, $filter, $blur.Num) == MagickTrue;
 }
 
 =begin pod
@@ -659,8 +659,38 @@ these filters: Bessel, Blackman, Box, Catrom, CubicGaussian, Hanning, Hermite,
 Lanczos, Mitchell, PointQuandratic, Sinc, Triangle
 
 =end pod
-multi method resize(Real $percent, FilterTypes $filter = UndefinedFilter, Real $blur = 0) returns Bool {
+multi method resize(Real $percent, FilterTypes $filter = BoxFilter, Real $blur = 0) returns Bool {
   return self.resize( Int(self.width * $percent), Int(self.height * $percent), $filter, $blur.Num) == MagickTrue;
+}
+
+method roll(Int $x, Int $y) returns Bool {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickRollImage( $.handle, $x, $y) == MagickTrue;
+}
+
+method rotate(Real $degrees, Str $background = "white") returns Bool {
+  die "No wand handle defined!" unless $.handle.defined;
+  $.p_handle = NewPixelWand unless $.p_handle.defined;
+  return (PixelSetColor( $.p_handle, $background) == MagickTrue) &&
+    (MagickRotateImage( $.handle, $.p_handle, $degrees.Num) == MagickTrue);
+}
+
+multi method sample(Int $width, Int $height) returns Bool {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickSampleImage( $.handle, $width, $height) == MagickTrue;
+}
+
+multi method sample(Real $percent) returns Bool {
+  return self.sample( Int(self.width * $percent), Int(self.height * $percent)) == MagickTrue;
+}
+
+multi method scale(Int $width, Int $height) returns Bool {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickScaleImage( $.handle, $width, $height) == MagickTrue;
+}
+
+multi method scale(Real $percent) returns Bool {
+  return self.scale( Int(self.width * $percent), Int(self.height * $percent)) == MagickTrue;
 }
 
 method cleanup {
