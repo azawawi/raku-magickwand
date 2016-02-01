@@ -4769,7 +4769,15 @@ is export { * };
     MagickBooleanType MagickSolarizeImageChannel(MagickWand *wand,
       const ChannelType channel,const double threshold)
 
-MagickSolarizeImage() applies a special effect to the image, similar to the effect achieved in a photo darkroom by selectively exposing areas of photo sensitive paper to light.  Threshold ranges from 0 to QuantumRange and is a measure of the extent of the solarization.- wand: the magick wand. - channel: the image channel(s). - threshold:  Define the extent of the solarization. 
+MagickSolarizeImage() applies a special effect to the image, similar to the
+effect achieved in a photo darkroom by selectively exposing areas of photo
+sensitive paper to light.  Threshold ranges from 0 to QuantumRange and is a
+measure of the extent of the solarization.
+
+- wand: the magick wand.
+- channel: the image channel(s).
+- threshold:  Define the extent of the solarization.  
+
 =end pod
 sub MagickSolarizeImage(
    Pointer $wand,
@@ -4836,7 +4844,12 @@ is export { * };
 
     MagickBooleanType MagickSpreadImage(MagickWand *wand,const double radius)
 
-MagickSpreadImage() is a special effects method that randomly displaces each pixel in a block defined by the radius parameter.- wand: the magick wand. - radius:  Choose a random pixel in a neighborhood of this extent. 
+MagickSpreadImage() is a special effects method that randomly displaces each
+pixel in a block defined by the radius parameter.
+
+- wand: the magick wand.
+- radius:  Choose a random pixel in a neighborhood of this extent.
+
 =end pod
 sub MagickSpreadImage(
    Pointer $wand,
@@ -4943,7 +4956,13 @@ is export { * };
 
     MagickBooleanType MagickSwirlImage(MagickWand *wand,const double degrees)
 
-MagickSwirlImage() swirls the pixels about the center of the image, where degrees indicates the sweep of the arc through which each pixel is moved. You get a more dramatic effect as the degrees move from 1 to 360.- wand: the magick wand. - degrees: Define the tightness of the swirling effect. 
+MagickSwirlImage() swirls the pixels about the center of the image, where
+degrees indicates the sweep of the arc through which each pixel is moved. You
+get a more dramatic effect as the degrees move from 1 to 360.
+
+- wand: the magick wand.
+- degrees: Define the tightness of the swirling effect.
+
 =end pod
 sub MagickSwirlImage(
    Pointer $wand,

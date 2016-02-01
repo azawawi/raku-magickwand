@@ -545,25 +545,31 @@ $example->Label('Segment');
   @images.push($o);
 }
 
+{
+  say "Spread...";
+  my $o = $original.clone;
+  $o.spread;
+  $o.label("Spread");
+  @images.push($o);
+}
+
+{
+  say "Solarize...";
+  my $o = $original.clone;
+  $o.solarize;
+  $o.label("Solarize");
+  @images.push($o);
+}
+
+{
+  say "Swirl...";
+  my $o = $original.clone;
+  $o.swirl(90);
+  $o.label("Swirl");
+  @images.push($o);
+}
+
 =begin TODO
-
-print "Spread...\n";
-$example=$model->Clone();
-$example->Label('Spread');
-$example->Spread();
-
-
-print "Solarize...\n";
-$example=$model->Clone();
-$example->Label('Solarize');
-$example->Solarize();
-
-
-print "Swirl...\n";
-$example=$model->Clone();
-$example->Label('Swirl');
-$example->Swirl(90);
-
 
 print "Unsharp Mask...\n";
 $example=$model->Clone();

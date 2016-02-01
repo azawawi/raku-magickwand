@@ -734,6 +734,21 @@ multi method sigmoidal-contrast(Bool $sharpen, Real $alpha, Real $beta) returns 
   return MagickSigmoidalContrastImage( $.handle, $sharpen.Int, $alpha.Num, $beta.Num) == MagickTrue;
 }
 
+method spread(Real $radius = 0) returns Bool {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickSpreadImage( $.handle, $radius.Num) == MagickTrue;
+}
+
+method solarize(Real $threshold = 0) returns Bool {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickSolarizeImage( $.handle, $threshold.Num) == MagickTrue;
+}
+
+method swirl(Real $degrees) returns Bool {
+  die "No wand handle defined!" unless $.handle.defined;
+  return MagickSwirlImage( $.handle, $degrees.Num) == MagickTrue;
+}
+
 method cleanup {
   if $.handle.defined {
     DestroyMagickWand($.handle);
