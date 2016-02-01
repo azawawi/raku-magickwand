@@ -527,14 +527,15 @@ $example->Label('Segment');
   @images.push($o);
 }
 
+{
+  say "Sketch...";
+  my $o = $original.clone;
+  $o.sketch(0, 20, 120);
+  $o.label("Sketch");
+  @images.push($o);
+}
+
 =begin TODO
-
-print "Sketch...\n";
-$example=$model->Clone();
-$example->Label('Sketch');
-$example->Set(colorspace=>'Gray');
-$example->Sketch('0x20+120');
-
 
 print "Sigmoidal Contrast...\n";
 $example=$model->Clone();
