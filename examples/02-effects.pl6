@@ -10,7 +10,7 @@ my @images;
 
 # Read the original image
 my $original = MagickWand.new;
-$original.read("examples/images/aero1.jpg");
+$original.read("examples/images/model.gif");
 say $original.width, "x", $original.height;
 $original.label("Da Original");
 @images.push($original);
