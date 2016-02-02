@@ -9,6 +9,7 @@
   "authors"       : [ "Ahmad M. Zawawi" ],
   "provides"      : {
     "MagickWand"                             : "lib/MagickWand.pm6",
+    "MagickWand::Enums"                      : "lib/MagickWand/Enums.pm6",
     "MagickWand::NativeCall"                 : "lib/MagickWand/NativeCall.pm6",
     "MagickWand::NativeCall::Common"         : "lib/MagickWand/NativeCall/Common.pm6",
     "MagickWand::NativeCall::Deprecated"     : "lib/MagickWand/NativeCall/Deprecated.pm6",
