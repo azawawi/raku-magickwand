@@ -1,7 +1,7 @@
 {
   "name"          : "MagickWand",
   "version"       : "0.0.1",
-  "perl"          : "v6",
+  "perl"          : "6.c",
   "description"   : "ImageMagick's MagickWand API Bindings for Perl6",
   "build-depends" : [ ],
   "depends"       : [ "LibraryCheck" ],
