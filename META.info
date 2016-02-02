@@ -11,6 +11,7 @@
     "MagickWand"                             : "lib/MagickWand.pm6",
     "MagickWand::NativeCall"                 : "lib/MagickWand/NativeCall.pm6",
     "MagickWand::NativeCall::Common"         : "lib/MagickWand/NativeCall/Common.pm6",
+    "MagickWand::NativeCall::Deprecated"     : "lib/MagickWand/NativeCall/Deprecated.pm6",
     "MagickWand::NativeCall::DrawingWand"    : "lib/MagickWand/NativeCall/DrawingWand.pm6",
     "MagickWand::NativeCall::Image"          : "lib/MagickWand/NativeCall/Image.pm6",
     "MagickWand::NativeCall::PixelIterator"  : "lib/MagickWand/NativeCall/PixelIterator.pm6",
