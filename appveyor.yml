@@ -8,7 +8,7 @@ install:
   - SET PATH=C:\strawberry\c\bin;C:\strawberry\perl\site\bin;C:\strawberry\perl\bin;%PATH%
   - SET MAGICK_DLL_INSTALLER=ImageMagick-6.9.3-5-Q16-x64-dll.exe
   - appveyor DownloadFile http://www.imagemagick.org/download/binaries/%MAGICK_DLL_INSTALLER%
-  - %MAGICK_DLL_INSTALLER% /SILENT
+  - "%MAGICK_DLL_INSTALLER% /SILENT"
   - SET MAGICK_DLL_INSTALLER=
   - SET PATH=C:\Program Files\ImageMagick-6.9.3-Q16;%PATH%
   - git clone https://github.com/tadzik/rakudobrew %USERPROFILE%\rakudobrew
