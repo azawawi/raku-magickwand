@@ -29,8 +29,8 @@ constant IMAGE-FILENAME = "t/images/aero1.jpg";
   ok $temp-file-name.IO ~~ :e, "write() output file exists";
 
   LEAVE {
-    $o.cleanup if $o.defined;
-    $temp-file-name.IO.unlink;
+    $o.cleanup                if $o.defined;
+    $temp-file-name.IO.unlink if $temp-file-name.defined;
   }
 }
 
