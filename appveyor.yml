@@ -10,7 +10,7 @@ install:
   - appveyor DownloadFile http://www.imagemagick.org/download/binaries/%MAGICK_DLL_INSTALLER%
   - "%MAGICK_DLL_INSTALLER% /SILENT"
   - SET MAGICK_DLL_INSTALLER=
-  - SET PATH=C:\Program Files\ImageMagick-7.0.4-3-Q8;%PATH%
+  - SET PATH=C:\Program Files\ImageMagick-7.0.4-Q8;%PATH%
   - git clone https://github.com/tadzik/rakudobrew %USERPROFILE%\rakudobrew
   - SET PATH=%USERPROFILE%\rakudobrew\bin;%PATH%
   - rakudobrew build moar 2016.12
