@@ -6,7 +6,7 @@ install:
   - '"C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64'
   - choco install strawberryperl --allow-empty-checksums
   - SET PATH=C:\strawberry\c\bin;C:\strawberry\perl\site\bin;C:\strawberry\perl\bin;%PATH%
-  - SET MAGICK_DLL_INSTALLER=ImageMagick-6.9.7-3-Q16-x64-dll.exe
+  - SET MAGICK_DLL_INSTALLER=ImageMagick-6.9.7-4-Q16-x64-dll.exe
   - appveyor DownloadFile http://www.imagemagick.org/download/binaries/%MAGICK_DLL_INSTALLER%
   - "%MAGICK_DLL_INSTALLER% /SILENT"
   - SET MAGICK_DLL_INSTALLER=
