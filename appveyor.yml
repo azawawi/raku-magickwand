@@ -13,7 +13,7 @@ install:
   - SET PATH=C:\Program Files\ImageMagick-6.9.7-Q16;%PATH%
   - git clone https://github.com/tadzik/rakudobrew %USERPROFILE%\rakudobrew
   - SET PATH=%USERPROFILE%\rakudobrew\bin;%PATH%
-  - rakudobrew build moar 2016.12
+  - rakudobrew build moar 2016.11
   - rakudobrew build zef
   - cd %APPVEYOR_BUILD_FOLDER%
   - zef --depsonly install .
