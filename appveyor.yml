@@ -2,6 +2,11 @@ os: Visual Studio 2015
 
 platform: x64
 
+environment:
+        matrix:
+        - test_moar: 2016.11
+        - test_moar: '' #latest
+
 install:
   - '"C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64'
   - choco install strawberryperl --allow-empty-checksums
@@ -13,7 +18,7 @@ install:
   - SET PATH=C:\Program Files\ImageMagick-6.9.7-Q16;%PATH%
   - git clone https://github.com/tadzik/rakudobrew %USERPROFILE%\rakudobrew
   - SET PATH=%USERPROFILE%\rakudobrew\bin;%PATH%
-  - rakudobrew build moar 2016.11
+  - rakudobrew build moar %TEST_MOAR%
   - rakudobrew build zef
   - cd %APPVEYOR_BUILD_FOLDER%
   - zef --depsonly install .
