@@ -1,5 +1,6 @@
 {
   "name"          : "MagickWand",
+  "license"       : "MIT",
   "version"       : "0.0.2",
   "perl"          : "6.c",
   "description"   : "ImageMagick's MagickWand API Bindings for Perl6",
