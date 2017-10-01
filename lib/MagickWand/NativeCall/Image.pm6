@@ -3461,8 +3461,8 @@ MagickReadImageBlob() reads an image or image sequence from a blob.- wand: the m
 =end pod
 sub MagickReadImageBlob(
    Pointer $wand,
-   Pointer[void] $blob,
-   int32 $length
+   Pointer $blob,
+   size_t $length
 )
 returns uint32 
 is native(&library)

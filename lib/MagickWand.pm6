@@ -73,7 +73,11 @@ method read(Str $file-name) returns Bool {
   return MagickReadImage( $.handle, $file-name ) == MagickTrue;
 }
 
-#TODO  method read-buffer(Buf :$buffer) returns Bool # uses MagickReadImageBlob
+#TODO  multi method read-buffer(Buf :$buffer) returns Bool # uses MagickReadImageBlob
+multi method read-buffer($buffer, $length) returns Bool {
+    $.handle = NewMagickWand unless $.handle.defined;
+    return MagickReadImageBlob( $.handle, $buffer, $length) == MagickTrue;
+}
 
 method get-image-gamma returns Num {
   die "No wand handle defined!" unless $.handle.defined;
@@ -485,7 +489,7 @@ method reduce-noise(Real $radius = 0) returns Bool {
     $wand.resize(320, 240);     # Scale to 320x240
 
 Scales an image to the desired percentage of the current dimensions with one of
-these filters: Bessel, Blackman, Box, Catrom, CubicGaussian, Hanning, Hermite, 
+these filters: Bessel, Blackman, Box, Catrom, CubicGaussian, Hanning, Hermite,
 Lanczos, Mitchell, PointQuandratic, Sinc, Triangle
 
 =end pod
@@ -501,7 +505,7 @@ multi method resize(Int $width, Int $height, FilterTypes $filter = UndefinedFilt
     $wand.resize(0.6);     # 60% of original dimensions
 
 Scales an image to the desired percentage of the current dimensions with one of
-these filters: Bessel, Blackman, Box, Catrom, CubicGaussian, Hanning, Hermite, 
+these filters: Bessel, Blackman, Box, Catrom, CubicGaussian, Hanning, Hermite,
 Lanczos, Mitchell, PointQuandratic, Sinc, Triangle
 
 =end pod
