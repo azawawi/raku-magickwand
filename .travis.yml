@@ -6,17 +6,27 @@ os:
   - linux
   - osx
 
-perl6:
-  - latest
+env:
+  global:
+    - export PATH="/opt/rakudo-pkg/bin:/opt/rakudo-pkg/share/perl6/site/bin:$PATH"
+addons:
+  apt:
+    sources:
+      - sourceline: 'deb https://dl.bintray.com/nxadm/rakudo-pkg-debs $(lsb_release -cs) main'
+        key_url: 'http://keyserver.ubuntu.com/pks/lookup?search=0x379CE192D401AB61&op=get'
+    packages:
+      - rakudo-pkg
 
-install:
+before_install:
   - echo $TRAVIS_OS_NAME
+  # Debian-based libmagicwand-dev installation
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get -qq update                   ; fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then sudo apt-get install -y libmagickwand-dev ; fi
   - if [ "$TRAVIS_OS_NAME" == "osx"   ]; then brew update                               ; fi
+  # macOS rakudo-star and imagemagick installation
+  - if [ "$TRAVIS_OS_NAME" == "osx"   ]; then brew install rakudo-star                  ; fi
   - if [ "$TRAVIS_OS_NAME" == "osx"   ]; then brew install imagemagick@7                ; fi
   - if [ "$TRAVIS_OS_NAME" == "osx"   ]; then ln -s /usr/local/opt/imagemagick@7/lib/*.dylib* /usr/local/lib/ ; fi
-  - rakudobrew build zef
-  - zef --depsonly install .
 
-script: prove -v -e perl6 t/
+install:
+  - zef install . && zef test . --verbose
