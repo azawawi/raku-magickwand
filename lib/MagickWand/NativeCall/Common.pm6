@@ -9,7 +9,7 @@ use LibraryCheck;
 
 sub library is export {
   # On windows
-  return "CORE_RL_wand_.dll" if $*DISTRO.is-win;
+  return "CORE_RL_MagickWand_.dll" if $*DISTRO.is-win;
 
   # On MacOS X using howbrew
   return "libMagickWand-6.Q16.dylib" if $*KERNEL.name eq 'darwin';
