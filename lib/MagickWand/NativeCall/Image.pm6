@@ -3746,6 +3746,28 @@ returns uint32
 is native(&library)
 is export { * };
 
+=begin pod
+=head1 MagickSeparateImage
+
+    MagickBooleanType MagickSeparateImageChannel(MagickWand *wand,
+      const ChannelType channel)
+
+MagickSeparateImageChannel() separates a channel from the image and returns a
+grayscale image.  A channel is a particular color component of each pixel in the
+image.
+
+- wand: the magick wand.
+- channel: the image channel(s).
+
+=end pod
+sub MagickSeparateImage(
+   Pointer $wand,
+   uint32 $channel
+)
+returns uint32 
+is native(&library)
+is export { * };
+
 
 =begin pod
 =head1 MagickSepiaToneImage

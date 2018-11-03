@@ -217,7 +217,11 @@ method border(Str $border_color, Int $width, Int $height) {
 
 method channel(ChannelType $channel_type) returns Bool {
   die "No wand handle defined!" unless $.handle.defined;
-  return MagickSeparateImageChannel( $.handle, $channel_type.Int ) == MagickTrue;
+  if self.version<number> >= 0x700 {
+    return MagickSeparateImage( $.handle, $channel_type.Int ) == MagickTrue;
+  } else {
+    return MagickSeparateImageChannel( $.handle, $channel_type.Int ) == MagickTrue;
+  }
 }
 
 method composite(MagickWand $camelia, CompositeOperator $compose, Int $x, Int $y) returns Bool {

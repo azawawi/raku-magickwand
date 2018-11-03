@@ -9,10 +9,6 @@ use MagickWand::Enums;
 # Store images so we can montage them later
 my @images;
 
-say sprintf("ImageMagick API version   is %x, %s", MagickWand.version<number>,
-  MagickWand.version<string>);
-say sprintf("ImageMagick API copyright is %s", MagickWand.copyright);
-
 # Read the original image
 my $original = MagickWand.new;
 $original.read("examples/images/model.gif");
