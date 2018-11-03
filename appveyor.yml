@@ -8,7 +8,7 @@ install:
   - appveyor DownloadFile http://www.imagemagick.org/download/binaries/%MAGICK_DLL_INSTALLER%
   - "%MAGICK_DLL_INSTALLER% /SILENT"
   - SET MAGICK_DLL_INSTALLER=
-  - SET PATH=C:\Program Files\ImageMagick-7.0.8-14-Q16;%PATH%
+  - SET PATH=C:\Program Files\ImageMagick-7.0.8-Q16;%PATH%
   # Install rakudostar for faster CI builds. No windows user will actually use
   # rakudobrew
   - choco install rakudostar
