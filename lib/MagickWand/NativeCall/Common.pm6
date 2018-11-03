@@ -12,7 +12,7 @@ sub library is export {
   return "CORE_RL_MagickWand_.dll" if $*DISTRO.is-win;
 
   # On MacOS X using howbrew
-  return "libMagickWand-6.Q16.dylib" if $*KERNEL.name eq 'darwin';
+  return "libMagickWand-7.Q16.dylib" if $*KERNEL.name eq 'darwin';
 
   # Linux/UNIX
   if library-exists(LIB, v4) {
