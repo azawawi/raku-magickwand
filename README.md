@@ -76,10 +76,10 @@ Also please remember to enable **"Add to PATH"** option.
 
 ## Installation
 
-To install it using Panda (a module management tool bundled with Rakudo Star):
+- Install this module using [zef](https://github.com/ugexe/zef):
 
 ```
-$ zef install
+$ zef install MagickWand
 ```
 
 ## Testing
