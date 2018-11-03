@@ -4,27 +4,28 @@ platform: x64
 
 environment:
         matrix:
-        - test_moar: '' #latest
+        #latest
+        - test_moar: ''
 
 install:
-  - '"C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /x64'
-  - choco install strawberryperl --allow-empty-checksums
-  - SET PATH=C:\strawberry\c\bin;C:\strawberry\perl\site\bin;C:\strawberry\perl\bin;%PATH%
-  - SET MAGICK_DLL_INSTALLER=ImageMagick-6.9.9-17-Q8-x64-dll.exe
+  # Install rakudostar for faster CI builds. No windows user will actually use
+  # rakudobrew
+  - choco install rakudostar
+  # Refresh environment variables so zef works
+  - refreshenv
+  # Install ImageMagick v7 DLLs
+  - SET MAGICK_DLL_INSTALLER=https://imagemagick.org/download/binaries/ImageMagick-7.0.8-14-Q16-x64-dll.exe
   - appveyor DownloadFile http://www.imagemagick.org/download/binaries/%MAGICK_DLL_INSTALLER%
   - "%MAGICK_DLL_INSTALLER% /SILENT"
   - SET MAGICK_DLL_INSTALLER=
-  - SET PATH=C:\Program Files\ImageMagick-6.9.9-Q8;%PATH%
-  - git clone https://github.com/tadzik/rakudobrew %USERPROFILE%\rakudobrew
-  - SET PATH=%USERPROFILE%\rakudobrew\bin;%PATH%
-  - rakudobrew build moar %TEST_MOAR%
-  - rakudobrew build zef
+  - SET PATH=C:\Program Files\ImageMagick-7.0.8-14-Q16;%PATH%
+  # And let us start testing...
   - cd %APPVEYOR_BUILD_FOLDER%
-  - zef --depsonly install .
 
 build: off
 
 test_script:
-  - prove -v -e "perl6 -Ilib" t/
+  # Test for fun :)
+  - zef install . --verbose
 
 shallow_clone: true
