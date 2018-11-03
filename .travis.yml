@@ -1,7 +1,5 @@
 sudo: required
 
-language: perl6
-
 os:
   - linux
   - osx
