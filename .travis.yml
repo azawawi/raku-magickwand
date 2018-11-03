@@ -26,7 +26,6 @@ before_install:
   # macOS rakudo-star and imagemagick installation
   - if [ "$TRAVIS_OS_NAME" == "osx"   ]; then brew install rakudo-star                  ; fi
   - if [ "$TRAVIS_OS_NAME" == "osx"   ]; then brew install imagemagick@7                ; fi
-  - if [ "$TRAVIS_OS_NAME" == "osx"   ]; then ln -s /usr/local/opt/imagemagick@7/lib/*.dylib* /usr/local/lib/ ; fi
 
 install:
   - zef install . && zef test . --verbose
