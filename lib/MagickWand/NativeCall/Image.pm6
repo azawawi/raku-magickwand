@@ -4904,7 +4904,7 @@ the neighborhood of the specified width and height.
 sub MagickStatisticImage(
    Pointer $wand,
    uint32 $type,
-   num64 $width,
+   uint32 $width,
    uint32 $height
 )
 returns uint32 
