@@ -396,10 +396,9 @@ method level(Real $black_point, Real $gamma, Real $white_point) returns Bool {
     $white_point.Num ) == MagickTrue;
 }
 
-method median-filter($width = 1e0, $height = 1) returns Bool {
+method median-filter($width = 2, $height = 2) returns Bool {
   die "No wand handle defined!" unless $.handle.defined;
-  my $type = (MedianStatistic.Int)<>;
-  return MagickStatisticImage( $.handle, $type, $width.Num, $height.Int ) == MagickTrue;
+  return MagickStatisticImage( $.handle, MedianStatistic.Int, $width.Int, $height.Int ) == MagickTrue;
 }
 
 method modulate(Real $brightness, Real $saturation, Real $hue) returns Bool {
