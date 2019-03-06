@@ -4,7 +4,7 @@ platform: x64
 
 install:
   # Install ImageMagick v7 DLLs
-  - SET MAGICK_DLL_INSTALLER=ImageMagick-7.0.8-22-Q16-x64-dll.exe
+  - SET MAGICK_DLL_INSTALLER=ImageMagick-7.0.8-32-Q16-x64-dll.exe
   - appveyor DownloadFile http://www.imagemagick.org/download/binaries/%MAGICK_DLL_INSTALLER%
   - "%MAGICK_DLL_INSTALLER% /SILENT"
   - SET MAGICK_DLL_INSTALLER=
