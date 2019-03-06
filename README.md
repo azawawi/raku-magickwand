@@ -79,6 +79,10 @@ Also please remember to enable **"Add to PATH"** option.
 $ zef install MagickWand
 ```
 
+## Handling PDF files
+
+To process PDF files, please remember to install [Ghostscript](https://www.ghostscript.com) from [here](https://www.ghostscript.com/download/gsdnld.html).
+
 ## Testing
 
 To run tests:
