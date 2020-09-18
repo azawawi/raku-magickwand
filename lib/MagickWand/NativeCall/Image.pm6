@@ -1700,7 +1700,7 @@ sub MagickGetImageBlob(
    Pointer $wand,
    Pointer[int32] $length
 )
-returns Str
+returns CArray[byte]
 is native(&library)
 is export { * };
 
@@ -1716,7 +1716,7 @@ sub MagickGetImagesBlob(
    Pointer $wand,
    Pointer[int32] $length
 )
-returns Str
+returns CArray[byte]
 is native(&library)
 is export { * };
 
