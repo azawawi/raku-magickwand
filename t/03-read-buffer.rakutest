@@ -45,4 +45,3 @@ $image .= Str;
     }
 }
 
-# vim: ft=perl6

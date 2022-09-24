@@ -1,7 +1,7 @@
 {
   "name"          : "MagickWand",
   "license"       : "MIT",
-  "version"       : "0.1.1",
+  "version"       : "0.1.2",
   "perl"          : "6.c",
   "description"   : "ImageMagick's MagickWand API Bindings for Perl6",
   "test-depends"  : [
@@ -11,20 +11,20 @@
   "auth"          : "github:azawawi",
   "authors"       : [ "Ahmad M. Zawawi" ],
   "provides"      : {
-    "MagickWand"                             : "lib/MagickWand.pm6",
-    "MagickWand::Enums"                      : "lib/MagickWand/Enums.pm6",
-    "MagickWand::NativeCall"                 : "lib/MagickWand/NativeCall.pm6",
-    "MagickWand::NativeCall::Common"         : "lib/MagickWand/NativeCall/Common.pm6",
-    "MagickWand::NativeCall::Deprecated"     : "lib/MagickWand/NativeCall/Deprecated.pm6",
-    "MagickWand::NativeCall::DrawingWand"    : "lib/MagickWand/NativeCall/DrawingWand.pm6",
-    "MagickWand::NativeCall::Image"          : "lib/MagickWand/NativeCall/Image.pm6",
-    "MagickWand::NativeCall::PixelIterator"  : "lib/MagickWand/NativeCall/PixelIterator.pm6",
-    "MagickWand::NativeCall::PixelWand"      : "lib/MagickWand/NativeCall/PixelWand.pm6",
-    "MagickWand::NativeCall::Mogrify"        : "lib/MagickWand/NativeCall/Mogrify.pm6",
-    "MagickWand::NativeCall::Property"       : "lib/MagickWand/NativeCall/Property.pm6",
-    "MagickWand::NativeCall::Wand"           : "lib/MagickWand/NativeCall/Wand.pm6",
-    "MagickWand::NativeCall::WandView"       : "lib/MagickWand/NativeCall/WandView.pm6"
+    "MagickWand"                             : "lib/MagickWand.rakumod",
+    "MagickWand::Enums"                      : "lib/MagickWand/Enums.rakumod",
+    "MagickWand::NativeCall"                 : "lib/MagickWand/NativeCall.rakumod",
+    "MagickWand::NativeCall::Common"         : "lib/MagickWand/NativeCall/Common.rakumod",
+    "MagickWand::NativeCall::Deprecated"     : "lib/MagickWand/NativeCall/Deprecated.rakumod",
+    "MagickWand::NativeCall::DrawingWand"    : "lib/MagickWand/NativeCall/DrawingWand.rakumod",
+    "MagickWand::NativeCall::Image"          : "lib/MagickWand/NativeCall/Image.rakumod",
+    "MagickWand::NativeCall::PixelIterator"  : "lib/MagickWand/NativeCall/PixelIterator.rakumod",
+    "MagickWand::NativeCall::PixelWand"      : "lib/MagickWand/NativeCall/PixelWand.rakumod",
+    "MagickWand::NativeCall::Mogrify"        : "lib/MagickWand/NativeCall/Mogrify.rakumod",
+    "MagickWand::NativeCall::Property"       : "lib/MagickWand/NativeCall/Property.rakumod",
+    "MagickWand::NativeCall::Wand"           : "lib/MagickWand/NativeCall/Wand.rakumod",
+    "MagickWand::NativeCall::WandView"       : "lib/MagickWand/NativeCall/WandView.rakumod"
   },
   "resources"     : [ ],
-  "source-url"    : "git://github.com/azawawi/perl6-magickwand.git"
+  "source-url"    : "git://github.com/azawawi/raku-magickwand.git"
 }

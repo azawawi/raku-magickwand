@@ -35,7 +35,7 @@ LEAVE {
 =head1 DESCRIPTION
 
 This provides a Perl 6 object-oriented [NativeCall](
-http://doc.perl6.org/language/nativecall)-based API for ImageMagick's
+http://docs.raku.org/language/nativecall)-based API for ImageMagick's
 [MagickWand C API](http://www.imagemagick.org/script/magick-wand.php).
 
 =end pod

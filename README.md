@@ -1,18 +1,14 @@
 # MagickWand
 
-This provides a Perl 6 object-oriented [NativeCall](http://doc.perl6.org/language/nativecall)-based API for ImageMagick's
+[![Actions
+Status](https://github.com/azawawi/raku-file-homedir/workflows/test/badge.svg)](https://github.com/azawawi/raku-file-homedir/actions)
+
+This provides a Raku object-oriented [NativeCall](http://docs.raku.org/language/nativecall)-based API for ImageMagick's
 [MagickWand C API](http://www.imagemagick.org/script/magick-wand.php).
-
-## Build Status
-
-| Operating System  |   Build Status  | CI Provider |
-| ----------------- | --------------- | ----------- |
-| Linux / Mac OS X  | [![Build Status](https://travis-ci.org/azawawi/perl6-magickwand.svg?branch=master)](https://travis-ci.org/azawawi/perl6-magickwand)  | Travis CI |
-| Windows 7 64-bit  | [![Build status](https://ci.appveyor.com/api/projects/status/github/azawawi/perl6-magickwand?svg=true)](https://ci.appveyor.com/project/azawawi/perl6-magickwand/branch/master)  | AppVeyor |
 
 ## Example
 
-```Perl6
+```Raku
 use v6;
 use MagickWand;
 
@@ -85,15 +81,21 @@ To process PDF files, please remember to install [Ghostscript](https://www.ghost
 
 ## Testing
 
-To run tests:
-
+- To run tests:
 ```
-$ prove -ve "perl6 -Ilib"
+$ prove --ext .rakutest -ve "raku -I."
+```
+
+- To run all tests including author tests (Please make sure
+[Test::Meta](https://github.com/jonathanstowe/Test-META) is installed):
+```
+$ zef install Test::META
+$ TEST_AUTHOR=1 prove --ext .rakutest -ve "raku -I."
 ```
 
 ## Author
 
-Ahmad M. Zawawi, azawawi on #perl6, https://github.com/azawawi/
+Ahmad M. Zawawi, azawawi on #raku, https://github.com/azawawi/
 
 ## License
 
