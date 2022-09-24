@@ -40,6 +40,7 @@ jobs:
           fi
           # Install and test dependencies
           zef install --/test --test-depends --deps-only .
+        shell: bash
       - name: Install App::Prove6
         run: zef install --/test App::Prove6
       - name: Run Tests
