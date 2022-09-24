@@ -25,7 +25,21 @@ jobs:
         with:
           raku-version: ${{ matrix.raku-version }}
       - name: Install Dependencies
-        run: zef install --/test --test-depends --deps-only .
+        run: |
+          # Install imagemagick
+          if [ "$RUNNER_OS" == "Linux" ]; then
+              sudo apt-get install -y libmagickwand-dev
+          elif [ "$RUNNER_OS" == "macOS" ]; then
+              brew update
+              brew install imagemagick@7
+          elif [ "$RUNNER_OS" == "Windows" ]; then
+              choco install imagemagick
+          else
+              echo "$RUNNER_OS not supported"
+              exit 1;
+          fi
+          # Install and test dependencies
+          zef install --/test --test-depends --deps-only .
       - name: Install App::Prove6
         run: zef install --/test App::Prove6
       - name: Run Tests
