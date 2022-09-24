@@ -1,7 +1,7 @@
 # MagickWand
 
 [![Actions
-Status](https://github.com/azawawi/raku-file-homedir/workflows/test/badge.svg)](https://github.com/azawawi/raku-file-homedir/actions)
+Status](https://github.com/azawawi/raku-magickwand/workflows/test/badge.svg)](https://github.com/azawawi/raku-magickwand/actions)
 
 This provides a Raku object-oriented [NativeCall](http://docs.raku.org/language/nativecall)-based API for ImageMagick's
 [MagickWand C API](http://www.imagemagick.org/script/magick-wand.php).
